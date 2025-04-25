@@ -11,16 +11,33 @@
   </style>
 </head>
 <body class="bg-gray-900 text-white">
+
   <!-- Навигация -->
   <header class="bg-transparent text-white shadow-none">
     <div class="container mx-auto flex justify-between items-center p-6">
       <h1 class="text-2xl font-bold">Arizona RP</h1>
-      <nav class="space-x-4 flex items-center">
+      <!-- Навигация для больших экранов -->
+      <nav class="hidden md:flex space-x-6">
         <a href="#home" class="text-gray-300 hover:text-yellow-400 transition duration-300">Главная</a>
         <a href="#servers" class="text-gray-300 hover:text-yellow-400 transition duration-300">Сервера</a>
         <a href="#contact" class="text-gray-300 hover:text-yellow-400 transition duration-300">Контакты</a>
-        <a href="https://donate.arizona-rp.com" class="bg-yellow-500 text-black py-2 px-4 rounded-full text-sm font-semibold hover:bg-yellow-400 transition duration-300 ml-4">Донат</a>
+        <a href="https://donate.arizona-rp.com" class="bg-yellow-500 text-black py-2 px-4 rounded-full text-sm font-semibold hover:bg-yellow-400 transition duration-300">Донат</a>
       </nav>
+      <!-- Навигация для мобильных устройств -->
+      <div class="md:hidden flex items-center">
+        <button class="text-white" id="mobile-menu-button">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- Мобильное меню -->
+    <div class="md:hidden bg-gray-800 text-white p-4" id="mobile-menu" style="display: none;">
+      <a href="#home" class="block py-2 hover:text-yellow-400 transition duration-300">Главная</a>
+      <a href="#servers" class="block py-2 hover:text-yellow-400 transition duration-300">Сервера</a>
+      <a href="#contact" class="block py-2 hover:text-yellow-400 transition duration-300">Контакты</a>
+      <a href="https://donate.arizona-rp.com" class="block py-2 bg-yellow-500 text-black rounded-full text-sm font-semibold hover:bg-yellow-400 transition duration-300">Донат</a>
     </div>
   </header>
 
@@ -84,5 +101,13 @@
       <a href="https://arizona-games.com/privacy-policy" class="text-yellow-400 hover:underline">Политика обработки персональных данных</a>
     </div>
   </footer>
+
+  <!-- Скрипт для мобильного меню -->
+  <script>
+    document.getElementById("mobile-menu-button").addEventListener("click", function() {
+      const mobileMenu = document.getElementById("mobile-menu");
+      mobileMenu.style.display = (mobileMenu.style.display === "none" || mobileMenu.style.display === "") ? "block" : "none";
+    });
+  </script>
 </body>
 </html>
