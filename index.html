@@ -8,81 +8,58 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Poppins', sans-serif; }
-    .fade-in {
-      animation: fadeIn 1s ease-in-out;
-    }
-    .scale-up {
-      animation: scaleUp 0.3s ease-in-out;
-    }
-    @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-    @keyframes scaleUp {
-      0% { transform: scale(0.95); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-    /* Анимация для появления при скролле */
-    .animate-on-scroll {
-      opacity: 0;
-      transition: opacity 1s ease-out;
-    }
-    .animate-on-scroll.visible {
-      opacity: 1;
-    }
   </style>
 </head>
 <body class="bg-gray-900 text-white">
   <!-- Навигация -->
-  <header class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white shadow-lg fade-in">
+  <header class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white shadow-lg">
     <div class="container mx-auto flex justify-between items-center p-4">
       <h1 class="text-2xl font-bold">Arizona RP</h1>
       <nav class="space-x-4 flex items-center">
         <a href="#home" class="hover:text-yellow-400">Главная</a>
         <a href="#servers" class="hover:text-yellow-400">Сервера</a>
         <a href="#contact" class="hover:text-yellow-400">Контакты</a>
-        <!-- Кнопка доната -->
-        <a href="https://donate.arizona-rp.com" class="bg-yellow-500 text-black py-2 px-4 rounded-full text-sm font-semibold hover:bg-yellow-400 transition duration-300 ml-4 scale-up">Донат</a>
+        <a href="https://donate.arizona-rp.com" class="bg-yellow-500 text-black py-2 px-4 rounded-full text-sm font-semibold hover:bg-yellow-400 transition duration-300 ml-4">Донат</a>
       </nav>
     </div>
   </header>
 
   <!-- Герой -->
-  <section id="home" class="relative h-screen bg-cover bg-center fade-in" style="background-image:url('https://example.com/hero.jpg')">
+  <section id="home" class="relative h-screen bg-cover bg-center" style="background-image:url('https://example.com/hero.jpg')">
     <div class="absolute inset-0 bg-black opacity-60"></div>
     <div class="relative z-10 flex flex-col justify-center items-center h-full">
-      <h2 class="text-5xl font-extrabold text-white drop-shadow-lg mb-6 scale-up">Добро пожаловать в Arizona RolePlay</h2>
-      <a href="#start" class="bg-yellow-500 text-black py-3 px-8 rounded-full text-xl font-semibold hover:bg-yellow-400 transition duration-300 scale-up">Начать играть</a>
+      <h2 class="text-5xl font-extrabold text-white drop-shadow-lg mb-6">Добро пожаловать в Arizona RolePlay</h2>
+      <a href="#start" class="bg-yellow-500 text-black py-3 px-8 rounded-full text-xl font-semibold hover:bg-yellow-400 transition duration-300">Начать играть</a>
     </div>
   </section>
 
   <!-- О серверах -->
   <section id="servers" class="container mx-auto py-16">
-    <h3 class="text-3xl font-bold mb-8 text-center text-yellow-400 fade-in">Наши сервера</h3>
+    <h3 class="text-3xl font-bold mb-8 text-center text-yellow-400">Наши сервера</h3>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div class="bg-gray-800 rounded-xl shadow-lg p-6 transform transition duration-300 hover:scale-105 animate-on-scroll">
+      <div class="bg-gray-800 rounded-xl shadow-lg p-6 transform transition duration-300 hover:scale-105">
         <h4 class="text-xl font-semibold mb-2 text-cyan-400">Tucson</h4>
         <p>IP: <strong class="text-green-400">185.169.134.45:7777</strong></p>
         <p>Онлайн: <strong>~900</strong> 🟢</p>
-        <p>Акция: <strong>x4</strong></p>
+        <p>Режим: <strong>Акция</strong></p>
         <a href="https://arizona-rp.com" class="text-yellow-500 hover:underline mt-4 block">Перейти на сервер</a>
       </div>
-      <div class="bg-gray-800 rounded-xl shadow-lg p-6 transform transition duration-300 hover:scale-105 animate-on-scroll">
+      <div class="bg-gray-800 rounded-xl shadow-lg p-6 transform transition duration-300 hover:scale-105">
         <h4 class="text-xl font-semibold mb-2 text-cyan-400">Scottsdale</h4>
         <p>IP: <strong class="text-green-400">185.169.134.46:7777</strong></p>
         <p>Онлайн: <strong>~700</strong> 🟢</p>
-        <p>Акция: <strong>x2</strong></p>
+        <p>Режим: <strong>Акция</strong></p>
         <a href="https://arizona-rp.com" class="text-yellow-500 hover:underline mt-4 block">Перейти на сервер</a>
       </div>
     </div>
   </section>
 
   <!-- Описание проекта -->
-  <section class="bg-gradient-to-r from-teal-500 via-green-500 to-blue-500 py-16 fade-in">
+  <section class="bg-gradient-to-r from-teal-500 via-green-500 to-blue-500 py-16">
     <div class="container mx-auto text-center">
       <h3 class="text-3xl font-bold mb-6 text-white">О проекте Arizona RP</h3>
       <div class="max-w-4xl mx-auto bg-gray-700 p-8 rounded-xl shadow-xl">
-        <p class="text-lg mb-6 text-gray-300 leading-relaxed">Arizona RolePlay - это один из самых популярных проектов в мире, предлагающий игрокам уникальные возможности для развлечений и общения в виртуальном мире. Мы предлагаем вам по-настоящему погружение в атмосферу различных ролевых игр и сюжета, где каждый может найти себе занятие по душе.</p>
+        <p class="text-lg mb-6 text-gray-300 leading-relaxed">Arizona RolePlay — это один из самых популярных проектов в мире, предлагающий игрокам уникальные возможности для развлечений и общения в виртуальном мире. Мы предлагаем вам по-настоящему погружение в атмосферу различных ролевых игр и сюжета, где каждый может найти себе занятие по душе.</p>
         <p class="text-lg mb-6 text-gray-300 leading-relaxed">Проект представляет собой тщательно проработанную систему, основанную на принципах ролевых игр, где каждый игрок может внести свой вклад в развитие истории, взаимодействовать с другими участниками и в полной мере наслаждаться игровым процессом.</p>
         <p class="text-lg mb-6 text-gray-300 leading-relaxed">Мы стремимся предоставить вам лучший опыт, и каждое ваше пожертвование помогает улучшать проект, добавляя новые функции и возможности. Присоединяйтесь к нашему сообществу, и пусть Arizona RolePlay станет частью вашего игрового мира.</p>
       </div>
@@ -90,36 +67,21 @@
   </section>
 
   <!-- Контакты -->
-  <section id="contact" class="bg-gray-800 py-16 fade-in">
+  <section id="contact" class="bg-gray-800 py-16">
     <div class="container mx-auto text-center">
       <h3 class="text-3xl font-bold mb-8 text-yellow-400">Контакты администрации</h3>
       <p class="text-lg text-gray-300 mb-4">Мы всегда рады помочь вам. Свяжитесь с нами через один из следующих каналов:</p>
-      <p class="text-center">Telegram: <a href="t.me/tiffor" class="text-cyan-400 hover:underline">@Tiffor</a></p>
+      <p class="text-center">Telegram: <a href="https://t.me/tiffor" class="text-cyan-400 hover:underline">@Tiffor</a></p>
       <p class="text-center">Форум: <a href="https://forum.arizona-rp.com/" class="text-cyan-400 hover:underline">forum.arizona-rp.com</a></p>
-      <p class="text-center">Discord: <a href="" class="text-cyan-400 hover:underline">Скоро...</a></p>
+      <p class="text-center">Discord: <a href="#" class="text-cyan-400 hover:underline">Скоро...</a></p>
     </div>
   </section>
 
-  <!-- Футер -->
-  <footer class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white py-4">
+  <!-- Политика обработки персональных данных -->
+  <footer class="bg-gray-900 text-white py-4">
     <div class="container mx-auto text-center">
-      &copy; 2025 Arizona RolePlay. Все права защищены.
+      <a href="https://arizona-games.com/privacy-policy" class="text-yellow-400 hover:underline">Политика обработки персональных данных</a>
     </div>
   </footer>
-
-  <!-- Скрипт для анимации появления при прокрутке -->
-  <script>
-    const elements = document.querySelectorAll('.animate-on-scroll');
-    const scrollHandler = () => {
-      elements.forEach(element => {
-        const rect = element.getBoundingClientRect();
-        if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
-          element.classList.add('visible');
-        }
-      });
-    };
-    window.addEventListener('scroll', scrollHandler);
-    scrollHandler(); // Initial check
-  </script>
 </body>
 </html>
