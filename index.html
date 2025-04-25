@@ -7,46 +7,151 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Poppins', sans-serif; }
+    body { font-family: 'Poppins', sans-serif; background-color: #111; }
+    .main-container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+    .header { background-color: #1f1f1f; padding: 20px 0; }
+    .header h1 { color: #fff; text-align: center; font-size: 2.5rem; font-weight: 700; }
+    .header nav { text-align: center; margin-top: 10px; }
+    .header nav a { color: #ff9900; padding: 10px 20px; text-decoration: none; font-weight: 600; }
+    .header nav a:hover { background-color: #333; border-radius: 5px; }
+
+    .hero { background: url('https://example.com/hero.jpg') center center no-repeat; background-size: cover; padding: 120px 0; color: white; text-align: center; }
+    .hero h2 { font-size: 4rem; font-weight: 800; }
+
+    .section { margin: 50px 0; }
+    .section-title { font-size: 2rem; font-weight: 600; text-align: center; margin-bottom: 20px; color: #ff9900; }
+
+    .card { background-color: #333; border-radius: 8px; padding: 20px; text-align: center; transition: all 0.3s ease; }
+    .card:hover { transform: scale(1.05); background-color: #444; }
+    .card h4 { font-size: 1.5rem; color: #fff; margin-bottom: 15px; }
+    .card p { font-size: 1.2rem; color: #ccc; }
+
+    .footer { background-color: #1f1f1f; color: white; padding: 20px 0; text-align: center; }
+    .footer a { color: #ff9900; text-decoration: none; }
+
+    .modal-background { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); display: none; justify-content: center; align-items: center; }
+    .modal-content { background-color: #222; color: white; padding: 30px; border-radius: 8px; max-width: 400px; width: 100%; }
+    .modal-close { position: absolute; top: 10px; right: 10px; font-size: 1.5rem; cursor: pointer; color: #ff9900; }
+
   </style>
 </head>
-<body class="bg-gray-900 text-white">
+<body>
+
   <!-- Навигация -->
-  <header class="bg-red-800 text-white shadow-lg">
-    <div class="container mx-auto flex justify-between items-center p-4">
-      <h1 class="text-2xl font-bold">Arizona RP</h1>
-      <nav class="space-x-4">
-        <a href="index.html" class="hover:text-yellow-400">Главная</a>
-        <a href="servers.html" class="hover:text-yellow-400">Сервера</a>
-        <a href="news.html" class="hover:text-yellow-400">Новости</a>
-        <a href="donate.html" class="hover:text-yellow-400">Донат</a>
-        <a href="contact.html" class="hover:text-yellow-400">Контакты</a>
-        <a href="login.html" class="hover:text-yellow-400">Войти</a>
+  <header class="header">
+    <div class="main-container">
+      <h1>Arizona RP</h1>
+      <nav>
+        <a href="#home">Главная</a>
+        <a href="#servers">Сервера</a>
+        <a href="#news">Новости</a>
+        <a href="#donate">Донат</a>
+        <a href="#contact">Контакты</a>
+        <a href="#" onclick="openLoginModal()">Войти</a>
       </nav>
     </div>
   </header>
 
   <!-- Герой -->
-  <section id="home" class="relative h-screen bg-cover bg-center" style="background-image:url('https://cdn.arizona-rp.com/images/slider/slider_1.jpg')">
-    <div class="absolute inset-0 bg-black opacity-60"></div>
-    <div class="relative z-10 flex justify-center items-center h-full">
-      <h2 class="text-5xl font-extrabold text-white drop-shadow-lg">Добро пожаловать в Arizona RolePlay</h2>
+  <section id="home" class="hero">
+    <div class="overlay">
+      <h2>Добро пожаловать в Arizona RolePlay</h2>
     </div>
   </section>
 
-  <!-- Контакты (временно оставим на главной) -->
-  <section id="contact" class="container mx-auto py-16">
-    <h3 class="text-3xl font-bold mb-4 text-center text-yellow-400">Контакты администрации</h3>
-    <p class="text-center">Telegram: <a href="https://t.me/AdminName" class="text-cyan-400 hover:underline">@AdminName</a></p>
-    <p class="text-center">Форум: <a href="https://arizona-rp.com" class="text-cyan-400 hover:underline">arizona-rp.com</a></p>
-    <p class="text-center">Discord: <a href="https://discord.gg/arizona" class="text-cyan-400 hover:underline">discord.gg/arizona</a></p>
+  <!-- Сервера -->
+  <section id="servers" class="section">
+    <h3 class="section-title">Наши сервера</h3>
+    <div class="main-container">
+      <div class="card">
+        <h4>Tucson</h4>
+        <p>IP: 185.169.134.45:7777</p>
+        <p>Онлайн: ~900</p>
+        <p>Режим: x4</p>
+      </div>
+      <div class="card">
+        <h4>Scottsdale</h4>
+        <p>IP: 185.169.134.46:7777</p>
+        <p>Онлайн: ~700</p>
+        <p>Режим: x2</p>
+      </div>
+    </div>
   </section>
+
+  <!-- Новости -->
+  <section id="news" class="section bg-gray-800">
+    <h3 class="section-title">Последние новости</h3>
+    <div class="main-container">
+      <!-- Новости динамически загружаются -->
+      <div id="news-list"></div>
+    </div>
+  </section>
+
+  <!-- Донат -->
+  <section id="donate" class="section">
+    <h3 class="section-title">Поддержи проект</h3>
+    <div class="main-container">
+      <p class="text-center">Ты можешь поддержать наш проект, сделав донат. Каждое ваше пожертвование помогает улучшать проект!</p>
+      <div class="text-center">
+        <a href="https://donate.arizona-rp.com" class="bg-orange-600 text-white py-3 px-6 rounded-md">Перейти к донату</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Контакты -->
+  <section id="contact" class="section">
+    <h3 class="section-title">Контакты администрации</h3>
+    <div class="main-container">
+      <p class="text-center">Telegram: <a href="https://t.me/AdminName" class="text-orange-500">@AdminName</a></p>
+      <p class="text-center">Форум: <a href="https://arizona-rp.com" class="text-orange-500">arizona-rp.com</a></p>
+      <p class="text-center">Discord: <a href="https://discord.gg/arizona" class="text-orange-500">discord.gg/arizona</a></p>
+    </div>
+  </section>
+
+  <!-- Модальное окно для авторизации -->
+  <div id="loginModal" class="modal-background">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeLoginModal()">&times;</span>
+      <h3 class="text-center">Авторизация</h3>
+      <form class="mt-4">
+        <input type="text" placeholder="Логин" class="w-full p-3 mb-3 text-black" required>
+        <input type="password" placeholder="Пароль" class="w-full p-3 mb-3 text-black" required>
+        <button type="submit" class="w-full bg-orange-600 text-white py-3 rounded-md">Войти</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Скрипт для новостей -->
+  <script>
+    async function loadNews() {
+      const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://lenta.ru/rss/news');
+      const data = await response.json();
+      const container = document.getElementById('news-list');
+      data.items.slice(0, 5).forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'bg-gray-700 rounded-lg shadow p-4 mb-4';
+        div.innerHTML = `
+          <h4 class="text-xl font-semibold text-pink-400"><a href="${item.link}" class="hover:underline">${item.title}</a></h4>
+          <p class="text-gray-400 text-sm">${new Date(item.pubDate).toLocaleDateString()}</p>
+        `;
+        container.appendChild(div);
+      });
+    }
+    loadNews();
+
+    function openLoginModal() {
+      document.getElementById('loginModal').style.display = 'flex';
+    }
+
+    function closeLoginModal() {
+      document.getElementById('loginModal').style.display = 'none';
+    }
+  </script>
 
   <!-- Футер -->
-  <footer class="bg-red-800 text-white py-4">
-    <div class="container mx-auto text-center">
-      &copy; 2025 Arizona RolePlay. Все права защищены.
-    </div>
+  <footer class="footer">
+    <div>© 2025 Arizona RolePlay. Все права защищены.</div>
   </footer>
+
 </body>
 </html>
