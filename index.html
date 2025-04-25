@@ -15,9 +15,9 @@
   <!-- Навигация -->
   <header class="bg-transparent text-white shadow-none">
     <div class="container mx-auto flex justify-between items-center p-6">
-      <!-- Логотип -->
-      <img src="https://arizona-rp.com/images/logo.png" alt="Arizona RP" class="h-12">
-      <!-- Навигация для больших экранов -->
+      <!-- Логотип как текст -->
+      <h1 class="text-2xl font-bold text-white">Arizona RolePlay</h1>
+      <!-- Навигация для ПК -->
       <nav class="hidden md:flex space-x-6">
         <!-- Кнопка Донат -->
         <a href="https://donate.arizona-rp.com" class="bg-yellow-500 text-black py-2 px-6 rounded-full text-sm font-semibold hover:bg-yellow-400 transition duration-300">Донат</a>
@@ -26,7 +26,7 @@
         <a href="#servers" class="text-gray-300 hover:text-yellow-400 transition duration-300">Сервера</a>
         <a href="#contact" class="text-gray-300 hover:text-yellow-400 transition duration-300">Контакты</a>
       </nav>
-      <!-- Навигация для мобильных устройств -->
+      <!-- Мобильное меню -->
       <div class="md:hidden flex items-center">
         <button class="text-white" id="mobile-menu-button">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -35,13 +35,15 @@
         </button>
       </div>
     </div>
-    <!-- Мобильное меню -->
+    <!-- Мобильное меню с кнопками по центру -->
     <div class="md:hidden bg-gray-800 text-white p-4" id="mobile-menu" style="display: none;">
-      <!-- Перемещаем кнопку "Донат" наверх мобильного меню -->
-      <a href="https://donate.arizona-rp.com" class="block py-2 bg-yellow-500 text-black rounded-full text-sm font-semibold hover:bg-yellow-400 transition duration-300">Донат</a>
-      <a href="#home" class="block py-2 hover:text-yellow-400 transition duration-300">Главная</a>
-      <a href="#servers" class="block py-2 hover:text-yellow-400 transition duration-300">Сервера</a>
-      <a href="#contact" class="block py-2 hover:text-yellow-400 transition duration-300">Контакты</a>
+      <!-- Перемещаем кнопки в центр для мобильных -->
+      <div class="flex flex-col items-center space-y-4">
+        <a href="https://donate.arizona-rp.com" class="block py-2 bg-yellow-500 text-black rounded-full text-sm font-semibold hover:bg-yellow-400 transition duration-300">Донат</a>
+        <a href="#home" class="block py-2 hover:text-yellow-400 transition duration-300">Главная</a>
+        <a href="#servers" class="block py-2 hover:text-yellow-400 transition duration-300">Сервера</a>
+        <a href="#contact" class="block py-2 hover:text-yellow-400 transition duration-300">Контакты</a>
+      </div>
     </div>
   </header>
 
@@ -49,9 +51,7 @@
   <section id="home" class="relative h-screen bg-cover bg-center" style="background-image:url('https://example.com/hero.jpg')">
     <div class="absolute inset-0 bg-black opacity-60"></div>
     <div class="relative z-10 flex flex-col justify-center items-center h-full">
-      <!-- Адаптивный заголовок -->
       <h2 class="text-5xl font-extrabold text-white drop-shadow-lg mb-6 sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">Добро пожаловать в Arizona RolePlay</h2>
-      <!-- Кнопка "Начать играть" с улучшениями -->
       <a href="#start" class="bg-yellow-500 text-black py-5 px-12 rounded-full text-3xl font-semibold hover:bg-yellow-400 transition duration-300 sm:px-8 sm:py-4 sm:text-2xl">
         Начать играть
       </a>
@@ -75,18 +75,6 @@
         <p>Онлайн: <strong>~700</strong> 🟢</p>
         <p>Режим: <strong>Акция</strong></p>
         <a href="https://arizona-rp.com" class="text-yellow-500 hover:underline mt-4 block">Перейти на сервер</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Описание проекта -->
-  <section class="bg-gradient-to-r from-teal-500 via-green-500 to-blue-500 py-16">
-    <div class="container mx-auto text-center">
-      <h3 class="text-3xl font-bold mb-6 text-white">О проекте Arizona RP</h3>
-      <div class="max-w-4xl mx-auto bg-gray-700 p-8 rounded-xl shadow-xl">
-        <p class="text-lg mb-6 text-gray-300 leading-relaxed">Arizona RolePlay — это один из самых популярных проектов в мире, предлагающий игрокам уникальные возможности для развлечений и общения в виртуальном мире. Мы предлагаем вам по-настоящему погружение в атмосферу различных ролевых игр и сюжета, где каждый может найти себе занятие по душе.</p>
-        <p class="text-lg mb-6 text-gray-300 leading-relaxed">Проект представляет собой тщательно проработанную систему, основанную на принципах ролевых игр, где каждый игрок может внести свой вклад в развитие истории, взаимодействовать с другими участниками и в полной мере наслаждаться игровым процессом.</p>
-        <p class="text-lg mb-6 text-gray-300 leading-relaxed">Мы стремимся предоставить вам лучший опыт, и каждое ваше пожертвование помогает улучшать проект, добавляя новые функции и возможности. Присоединяйтесь к нашему сообществу, и пусть Arizona RolePlay станет частью вашего игрового мира.</p>
       </div>
     </div>
   </section>
