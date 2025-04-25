@@ -21,11 +21,15 @@
         <a href="#news" class="hover:text-yellow-400">Новости</a>
         <a href="#contact" class="hover:text-yellow-400">Контакты</a>
       </nav>
+      <div class="flex items-center space-x-4">
+        <a href="#login" class="hover:text-yellow-400">Войти</a>
+        <a href="#register" class="hover:text-yellow-400">Зарегистрироваться</a>
+      </div>
     </div>
   </header>
 
   <!-- Герой -->
-  <section id="home" class="relative h-screen bg-cover bg-center" style="background-image:url('https://img.freepik.com/free-vector/futuristic-video-game-controller-background-with-text-space_1017-54730.jpg?semt=ais_hybrid&w=740')">
+  <section id="home" class="relative h-screen bg-cover bg-center" style="background-image:url('https://example.com/hero.jpg')">
     <div class="absolute inset-0 bg-black opacity-60"></div> <!-- Тень поверх изображения -->
     <div class="relative z-10 flex justify-center items-center h-full text-center">
       <div>
@@ -71,6 +75,37 @@
     <p class="text-center">Telegram: <a href="https://t.me/AdminName" class="text-cyan-400 hover:underline">@AdminName</a></p>
     <p class="text-center">Форум: <a href="https://arizona-rp.com" class="text-cyan-400 hover:underline">arizona-rp.com</a></p>
     <p class="text-center">Discord: <a href="https://discord.gg/arizona" class="text-cyan-400 hover:underline">discord.gg/arizona</a></p>
+  </section>
+
+  <!-- Форма для входа -->
+  <section id="login" class="container mx-auto py-16">
+    <h3 class="text-3xl font-bold mb-4 text-center text-yellow-400">Войти в аккаунт</h3>
+    <form class="max-w-lg mx-auto bg-gray-800 p-6 rounded-lg shadow-lg">
+      <label for="login-email" class="block text-lg font-semibold text-gray-300 mb-2">Email</label>
+      <input type="email" id="login-email" class="w-full p-3 mb-4 bg-gray-700 text-white rounded-lg" placeholder="Введите email">
+      
+      <label for="login-password" class="block text-lg font-semibold text-gray-300 mb-2">Пароль</label>
+      <input type="password" id="login-password" class="w-full p-3 mb-6 bg-gray-700 text-white rounded-lg" placeholder="Введите пароль">
+      
+      <button type="submit" class="w-full bg-yellow-400 text-black p-3 rounded-lg text-lg font-semibold hover:bg-yellow-500 transition">Войти</button>
+    </form>
+  </section>
+
+  <!-- Форма для регистрации -->
+  <section id="register" class="container mx-auto py-16">
+    <h3 class="text-3xl font-bold mb-4 text-center text-yellow-400">Зарегистрироваться</h3>
+    <form class="max-w-lg mx-auto bg-gray-800 p-6 rounded-lg shadow-lg">
+      <label for="register-email" class="block text-lg font-semibold text-gray-300 mb-2">Email</label>
+      <input type="email" id="register-email" class="w-full p-3 mb-4 bg-gray-700 text-white rounded-lg" placeholder="Введите email">
+      
+      <label for="register-password" class="block text-lg font-semibold text-gray-300 mb-2">Пароль</label>
+      <input type="password" id="register-password" class="w-full p-3 mb-4 bg-gray-700 text-white rounded-lg" placeholder="Введите пароль">
+      
+      <label for="register-confirm-password" class="block text-lg font-semibold text-gray-300 mb-2">Подтвердите пароль</label>
+      <input type="password" id="register-confirm-password" class="w-full p-3 mb-6 bg-gray-700 text-white rounded-lg" placeholder="Подтвердите пароль">
+      
+      <button type="submit" class="w-full bg-yellow-400 text-black p-3 rounded-lg text-lg font-semibold hover:bg-yellow-500 transition">Зарегистрироваться</button>
+    </form>
   </section>
 
   <!-- Скрипт для динамических новостей -->
