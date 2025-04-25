@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Arizona RolePlay</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
@@ -11,26 +11,66 @@
   </style>
 </head>
 <body class="bg-gray-900 text-white">
-
   <!-- Навигация -->
   <header class="bg-red-800 text-white shadow-lg">
     <div class="container mx-auto flex justify-between items-center p-4">
       <h1 class="text-2xl font-bold">Arizona RP</h1>
       <nav class="space-x-4">
         <a href="#home" class="hover:text-yellow-400">Главная</a>
+        <button onclick="toggleModal('login-modal')" class="hover:text-yellow-400">Войти</button>
         <a href="#news" class="hover:text-yellow-400">Новости</a>
         <a href="#contact" class="hover:text-yellow-400">Контакты</a>
-        <a href="#" onclick="toggleLoginModal()" class="hover:text-yellow-400">Войти</a>
       </nav>
     </div>
   </header>
 
-  <!-- Главный экран -->
-  <section id="home" class="relative h-screen bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1609081838510-5a1d2d5987af?auto=format&fit=crop&w=1470&q=80')">
+  <!-- Герой -->
+  <section id="home" class="relative h-screen bg-cover bg-center" style="background-image:url('https://i.imgur.com/GYDpFMS.jpeg')">
     <div class="absolute inset-0 bg-black opacity-60"></div>
     <div class="relative z-10 flex flex-col justify-center items-center h-full text-center">
       <h2 class="text-5xl font-extrabold text-white drop-shadow-lg mb-6">Добро пожаловать в Arizona RolePlay</h2>
-      <button onclick="toggleLoginModal()" class="bg-yellow-400 text-black px-6 py-3 rounded-xl font-semibold hover:bg-yellow-500 transition">Войти</button>
+      <button onclick="toggleModal('login-modal')" class="bg-yellow-400 text-black font-bold py-2 px-6 rounded-lg shadow hover:bg-yellow-300 transition">Войти</button>
+    </div>
+  </section>
+
+  <!-- Модальное окно авторизации -->
+  <div id="login-modal" class="fixed inset-0 bg-black bg-opacity-60 hidden flex items-center justify-center z-50">
+    <div class="bg-white text-black rounded-lg w-full max-w-sm p-6 relative">
+      <button onclick="toggleModal('login-modal')" class="absolute top-2 right-2 text-gray-500 hover:text-gray-800">&times;</button>
+      <div class="mb-4 flex justify-center space-x-4">
+        <button onclick="switchForm('login')" id="btn-login" class="font-bold text-blue-600">Вход</button>
+        <button onclick="switchForm('register')" id="btn-register" class="text-gray-500 hover:text-blue-600">Регистрация</button>
+      </div>
+      <form id="login-form">
+        <input type="text" placeholder="Никнейм" class="w-full mb-3 p-2 border rounded">
+        <input type="password" placeholder="Пароль" class="w-full mb-3 p-2 border rounded">
+        <button type="submit" class="w-full bg-red-700 text-white py-2 rounded hover:bg-red-800">Войти</button>
+      </form>
+      <form id="register-form" class="hidden">
+        <input type="text" placeholder="Никнейм" class="w-full mb-3 p-2 border rounded">
+        <input type="email" placeholder="Email" class="w-full mb-3 p-2 border rounded">
+        <input type="password" placeholder="Пароль" class="w-full mb-3 p-2 border rounded">
+        <button type="submit" class="w-full bg-green-700 text-white py-2 rounded hover:bg-green-800">Зарегистрироваться</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- О серверах -->
+  <section id="servers" class="container mx-auto py-16">
+    <h3 class="text-3xl font-bold mb-8 text-center text-yellow-400">Наши сервера</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="bg-gray-800 rounded-xl shadow-lg p-6 transform transition duration-300 hover:scale-105">
+        <h4 class="text-xl font-semibold mb-2 text-cyan-400">Tucson</h4>
+        <p>IP: <strong class="text-green-400">185.169.134.45:7777</strong></p>
+        <p>Онлайн: <strong>~900</strong> 🟢</p>
+        <p>Режим: <strong>x4</strong></p>
+      </div>
+      <div class="bg-gray-800 rounded-xl shadow-lg p-6 transform transition duration-300 hover:scale-105">
+        <h4 class="text-xl font-semibold mb-2 text-cyan-400">Scottsdale</h4>
+        <p>IP: <strong class="text-green-400">185.169.134.46:7777</strong></p>
+        <p>Онлайн: <strong>~700</strong> 🟢</p>
+        <p>Режим: <strong>x2</strong></p>
+      </div>
     </div>
   </section>
 
@@ -52,27 +92,29 @@
     <p class="text-center">Discord: <a href="https://discord.gg/arizona" class="text-cyan-400 hover:underline">discord.gg/arizona</a></p>
   </section>
 
-  <!-- Модальное окно авторизации -->
-  <div id="login-modal" class="fixed inset-0 z-50 bg-black bg-opacity-70 hidden justify-center items-center">
-    <div class="bg-gray-900 p-8 rounded-lg shadow-lg w-full max-w-md relative">
-      <button onclick="toggleLoginModal()" class="absolute top-2 right-2 text-white text-xl">&times;</button>
-      <h3 class="text-2xl font-bold text-yellow-400 mb-4 text-center">Войти</h3>
-      <form>
-        <label class="block mb-2">Email</label>
-        <input type="email" class="w-full p-3 mb-4 bg-gray-700 text-white rounded" placeholder="Введите email">
-        <label class="block mb-2">Пароль</label>
-        <input type="password" class="w-full p-3 mb-6 bg-gray-700 text-white rounded" placeholder="Введите пароль">
-        <button type="submit" class="w-full bg-yellow-400 text-black p-3 rounded hover:bg-yellow-500 font-semibold">Войти</button>
-      </form>
-    </div>
-  </div>
-
-  <!-- Скрипт -->
+  <!-- Скрипты -->
   <script>
-    function toggleLoginModal() {
-      const modal = document.getElementById('login-modal');
-      modal.classList.toggle('hidden');
-      modal.classList.toggle('flex');
+    function toggleModal(id) {
+      document.getElementById(id).classList.toggle('hidden');
+    }
+
+    function switchForm(type) {
+      const login = document.getElementById('login-form');
+      const register = document.getElementById('register-form');
+      const btnLogin = document.getElementById('btn-login');
+      const btnRegister = document.getElementById('btn-register');
+
+      if (type === 'login') {
+        login.classList.remove('hidden');
+        register.classList.add('hidden');
+        btnLogin.classList.add('text-blue-600');
+        btnRegister.classList.remove('text-blue-600');
+      } else {
+        login.classList.add('hidden');
+        register.classList.remove('hidden');
+        btnRegister.classList.add('text-blue-600');
+        btnLogin.classList.remove('text-blue-600');
+      }
     }
 
     async function loadNews() {
