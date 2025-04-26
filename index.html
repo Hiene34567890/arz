@@ -15,7 +15,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      backdrop-filter: blur(5px);
+      backdrop-filter: blur(10px);
       background-color: rgba(31, 41, 55, 0.9);
       z-index: 40;
       transition: background-color 0.4s ease, padding 0.4s ease, top 0.5s ease;
@@ -26,6 +26,47 @@
       padding-bottom: 0.75rem;
     }
 
+    /* Стиль для шапки */
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      color: white;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      font-size: 1.1rem;
+      color: #fff;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #f59e0b;
+    }
+
+    /* Кнопки */
+    .btn {
+      padding: 10px 20px;
+      background-color: transparent;
+      border: 2px solid #f59e0b;
+      color: #f59e0b;
+      font-weight: bold;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #f59e0b;
+      color: black;
+    }
+
+    /* Hero Section */
     .hero-bg {
       background: linear-gradient(270deg, #6a11cb, #2575fc, #6a11cb);
       background-size: 600% 600%;
@@ -43,37 +84,13 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Кнопки */
-    .btn {
-      padding: 10px 20px;
-      background-color: #f59e0b;
-      color: black;
-      font-weight: bold;
-      border-radius: 50px;
-      transition: background-color 0.3s ease;
+    /* Разделы */
+    .section {
+      padding: 50px 20px;
+      text-align: center;
     }
 
-    .btn:hover {
-      background-color: #fbbf24;
-    }
-
-    /* Форма обратной связи */
-    .form-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 20px;
-    }
-
-    .contact-form {
-      background-color: #2d3748;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      width: 100%;
-      max-width: 500px;
-    }
-
+    /* Формы */
     .contact-form input, .contact-form textarea {
       width: 100%;
       padding: 12px;
@@ -106,6 +123,7 @@
       border-radius: 8px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-bottom: 20px;
     }
 
     .server-card:hover {
@@ -129,7 +147,6 @@
       padding-top: 10px;
       padding-bottom: 10px;
     }
-
   </style>
 </head>
 <body>
@@ -137,14 +154,15 @@
   <!-- Шапка -->
   <header id="site-header" class="fixed top-0 left-0 w-full backdrop-blur-lg bg-transparent py-4">
     <div class="container mx-auto flex justify-between items-center px-4">
-      <h1 class="text-3xl font-extrabold text-white">Arizona Role Play</h1>
-      <nav class="flex space-x-6 items-center">
-        <a href="#home" class="text-gray-200 hover:text-yellow-400">Главная</a>
-        <a href="#servers" class="text-gray-200 hover:text-yellow-400">Сервера</a>
-        <a href="#rules" class="text-gray-200 hover:text-yellow-400">Правила</a>
-        <a href="#shop" class="text-gray-200 hover:text-yellow-400">Магазин</a>
-        <a href="#wiki" class="text-gray-200 hover:text-yellow-400">Вики</a>
-        <a href="#contact" class="text-gray-200 hover:text-yellow-400">Контакты</a>
+      <div class="logo">
+        Arizona Role Play
+      </div>
+      <nav class="nav-links">
+        <a href="#home" class="nav-link">Главная</a>
+        <a href="#servers" class="nav-link">Сервера</a>
+        <a href="#rules" class="nav-link">Правила</a>
+        <a href="#shop" class="nav-link">Магазин</a>
+        <a href="#contact" class="nav-link">Контакты</a>
       </nav>
     </div>
   </header>
@@ -158,27 +176,30 @@
   </section>
 
   <!-- Раздел Сервера -->
-  <section id="servers" class="container mx-auto py-16 px-4">
-    <h3 class="text-3xl font-bold text-center text-yellow-400 mb-10">Наши сервера</h3>
+  <section id="servers" class="section">
+    <h3 class="text-3xl font-bold text-yellow-400 mb-10">Наши сервера</h3>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
       <div class="server-card">
         <h4>Tucson</h4>
         <p>IP: 185.169.134.45:7777 | Онлайн: ~900 | Режим: Акция</p>
+        <a href="#" class="btn mt-4">Подключиться</a>
       </div>
       <div class="server-card">
         <h4>Phoenix</h4>
         <p>IP: 185.169.134.46:7777 | Онлайн: ~700 | Режим: Стандарт</p>
+        <a href="#" class="btn mt-4">Подключиться</a>
       </div>
       <div class="server-card">
         <h4>Chandler</h4>
         <p>IP: 185.169.134.47:7777 | Онлайн: ~500 | Режим: Новичок</p>
+        <a href="#" class="btn mt-4">Подключиться</a>
       </div>
     </div>
   </section>
 
   <!-- Раздел Правила -->
-  <section id="rules" class="container mx-auto py-16 px-4">
-    <h3 class="text-3xl font-bold text-center text-yellow-400 mb-10">Правила игры</h3>
+  <section id="rules" class="section">
+    <h3 class="text-3xl font-bold text-yellow-400 mb-10">Правила игры</h3>
     <div class="space-y-4">
       <p>1. Соблюдение законов игры. Не нарушайте правила.</p>
       <p>2. Уважение других игроков. Взаимная вежливость – залог хорошей атмосферы.</p>
@@ -188,8 +209,8 @@
   </section>
 
   <!-- Раздел Магазин -->
-  <section id="shop" class="container mx-auto py-16 px-4">
-    <h3 class="text-3xl font-bold text-center text-yellow-400 mb-10">Магазин</h3>
+  <section id="shop" class="section">
+    <h3 class="text-3xl font-bold text-yellow-400 mb-10">Магазин</h3>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
       <div class="server-card">
         <h4>Премиум-аккаунт</h4>
@@ -210,7 +231,7 @@
   </section>
 
   <!-- Форма обратной связи -->
-  <section id="contact" class="form-container">
+  <section id="contact" class="section">
     <div class="contact-form">
       <h2 class="text-2xl font-semibold text-center text-yellow-400 mb-6">Свяжитесь с нами</h2>
       <form action="#">
@@ -246,5 +267,6 @@
       });
     })();
   </script>
+
 </body>
 </html>
