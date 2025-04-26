@@ -172,13 +172,20 @@
       const headerEl = document.getElementById('site-header');
       let lastScrollY = window.scrollY;
 
+      // Убираем скрытие шапки на главной странице
+      if (window.location.hash === '#home') {
+        headerEl.classList.remove('scrolled');
+      }
+
       window.addEventListener('scroll', () => {
-        if (window.scrollY > lastScrollY) {
-          headerEl.style.top = '-100px';
-        } else {
-          headerEl.style.top = '0';
+        if (window.location.hash !== '#home') {
+          if (window.scrollY > lastScrollY) {
+            headerEl.style.top = '-100px';
+          } else {
+            headerEl.style.top = '0';
+          }
+          headerEl.classList.toggle('scrolled', window.pageYOffset > 50);
         }
-        headerEl.classList.toggle('scrolled', window.pageYOffset > 50);
         lastScrollY = window.scrollY;
       });
     })();
