@@ -3,342 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сайт</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <style>
-        /* Общий стиль */
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-
-        h2 {
-            color: #333;
-        }
-
-        .container {
-            width: 80%;
-            margin: 0 auto;
-        }
-
-        /* Панель поиска */
-        .search-container {
-            position: relative;
-            width: 300px;
-            margin: 0 auto;
-            margin-top: 20px;
-        }
-
-        #searchInput {
-            width: 100%;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-        }
-
-        .autocomplete-results {
-            position: absolute;
-            top: 40px;
-            width: 100%;
-            background-color: white;
-            border: 1px solid #ddd;
-            max-height: 200px;
-            overflow-y: auto;
-            z-index: 1000;
-        }
-
-        .autocomplete-results div {
-            padding: 10px;
-            cursor: pointer;
-        }
-
-        .autocomplete-results div:hover {
-            background-color: #f0f0f0;
-        }
-
-        /* Панель отзывов */
-        .reviews-section {
-            padding: 50px 20px;
-            background-color: #f7f7f7;
-            text-align: center;
-        }
-
-        .reviews-list {
-            margin-bottom: 30px;
-        }
-
-        .review {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            padding: 15px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-        }
-
-        .review-text {
-            font-style: italic;
-        }
-
-        .review-author {
-            font-weight: bold;
-            margin-top: 10px;
-        }
-
-        #reviewForm textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-
-        #reviewForm button {
-            padding: 10px 20px;
-            background-color: #00aaff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        #reviewForm button:hover {
-            background-color: #008ecc;
-        }
-
-        /* Популярные товары */
-        .popular-products-section {
-            padding: 50px 20px;
-            background-color: #f7f7f7;
-            text-align: center;
-        }
-
-        .popular-products-list {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .popular-product {
-            width: 30%;
-            text-align: center;
-            background-color: #fff;
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .popular-product img {
-            width: 100%;
-            height: auto;
-        }
-
-        .price {
-            font-weight: bold;
-            color: #00aaff;
-            margin-top: 10px;
-        }
-
-        /* Галерея изображений */
-        .gallery-section {
-            padding: 50px 20px;
-            text-align: center;
-        }
-
-        .gallery {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .gallery-item {
-            width: 30%;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.1);
-        }
-
-        /* Footer */
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-            position: relative;
-        }
-
-        footer a {
-            color: #00aaff;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Cookie Consent */
-        .cookie-consent {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-            z-index: 9999;
-        }
-
-        .cookie-consent button {
-            background-color: #00aaff;
-            color: white;
-            padding: 5px 10px;
-            border: none;
-            cursor: pointer;
-            margin-left: 10px;
-        }
-    </style>
+    <title>Сайт - Объявления</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Шапка сайта -->
     <header>
-        <div class="container">
-            <h1>Ваш сайт</h1>
-            <nav>
-                <a href="#">Главная</a> | 
-                <a href="#">О нас</a> | 
-                <a href="#">Контакты</a>
-            </nav>
+        <div class="logo">
+            <h1>Объявления</h1>
         </div>
+        <nav>
+            <a href="#">Главная</a>
+            <a href="#">Добавить объявление</a>
+            <a href="#">Чат</a>
+            <a href="#">Отзывы</a>
+        </nav>
     </header>
 
     <main>
-        <!-- Панель поиска -->
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Поиск..." oninput="searchProducts()">
-            <div id="autocompleteResults" class="autocomplete-results"></div>
-        </div>
+        <!-- Форма создания объявления -->
+        <section id="create-ad">
+            <h2>Создать объявление</h2>
+            <form id="adForm">
+                <div class="form-group">
+                    <label for="title">Название</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Описание</label>
+                    <textarea id="description" name="description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="price">Цена</label>
+                    <input type="number" id="price" name="price" required>
+                </div>
+                <div class="form-group">
+                    <label for="category">Категория</label>
+                    <select id="category" name="category" required>
+                        <option value="Техника">Техника</option>
+                        <option value="Авто">Авто</option>
+                        <option value="Услуги">Услуги</option>
+                        <option value="Недвижимость">Недвижимость</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="image">Изображение (по желанию)</label>
+                    <input type="file" id="image" name="image">
+                </div>
+                <button type="submit">Добавить объявление</button>
+            </form>
+        </section>
 
-        <!-- Панель отзывов -->
-        <div class="reviews-section">
-            <h2>Отзывы пользователей</h2>
-            <div class="reviews-list">
-                <div class="review">
-                    <p class="review-text">Отличный товар, работает без нареканий!</p>
-                    <p class="review-author">Иван Иванов</p>
-                </div>
-                <div class="review">
-                    <p class="review-text">Доставка была быстрая, всё пришло в отличном состоянии.</p>
-                    <p class="review-author">Мария Смирнова</p>
-                </div>
+        <!-- Поиск объявлений -->
+        <section id="search">
+            <h2>Поиск объявлений</h2>
+            <form id="searchForm">
+                <input type="text" id="searchQuery" placeholder="Поиск по объявлениям...">
+                <button type="submit">Найти</button>
+            </form>
+
+            <div id="adsContainer"></div>
+        </section>
+
+        <!-- Чат -->
+        <section id="chat">
+            <h2>Чат</h2>
+            <div id="chatBox">
+                <div id="messages"></div>
+                <textarea id="messageInput" placeholder="Введите сообщение..."></textarea>
+                <button onclick="sendMessage()">Отправить</button>
             </div>
+        </section>
+
+        <!-- Отзывы -->
+        <section id="reviews">
+            <h2>Отзывы</h2>
             <form id="reviewForm">
-                <textarea id="reviewInput" placeholder="Оставьте свой отзыв" required></textarea>
+                <textarea id="reviewText" placeholder="Ваш отзыв"></textarea>
+                <input type="number" id="rating" min="1" max="5" placeholder="Оценка (1-5)">
                 <button type="submit">Оставить отзыв</button>
             </form>
-        </div>
-
-        <!-- Популярные товары -->
-        <div class="popular-products-section">
-            <h2>Популярные товары</h2>
-            <div class="popular-products-list">
-                <div class="popular-product">
-                    <img src="https://via.placeholder.com/300" alt="Товар 1">
-                    <p>Телефон Samsung Galaxy S21</p>
-                    <p class="price">$999</p>
-                </div>
-                <div class="popular-product">
-                    <img src="https://via.placeholder.com/300" alt="Товар 2">
-                    <p>Ноутбук Apple MacBook Pro</p>
-                    <p class="price">$1999</p>
-                </div>
-                <div class="popular-product">
-                    <img src="https://via.placeholder.com/300" alt="Товар 3">
-                    <p>Книга "Как стать программистом"</p>
-                    <p class="price">$20</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Галерея изображений -->
-        <div class="gallery-section">
-            <h2>Галерея товаров</h2>
-            <div class="gallery">
-                <img src="https://via.placeholder.com/300" alt="Изображение 1" class="gallery-item">
-                <img src="https://via.placeholder.com/300" alt="Изображение 2" class="gallery-item">
-                <img src="https://via.placeholder.com/300" alt="Изображение 3" class="gallery-item">
-            </div>
-        </div>
+        </section>
     </main>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Все права защищены. <a href="#">Политика конфиденциальности</a></p>
-    </footer>
-
-    <!-- Cookie Consent -->
-    <div class="cookie-consent" id="cookieConsent">
-        <p>Мы используем файлы cookie для улучшения работы нашего сайта. <a href="#">Подробнее</a></p>
-        <button onclick="acceptCookies()">Принять</button>
-    </div>
-
-    <script>
-        // Пример списка продуктов для автодополнения
-        const products = [
-            'Телефон Samsung Galaxy S21',
-            'Ноутбук Apple MacBook Pro',
-            'Книга "Как стать программистом"',
-            'Курс по веб-разработке',
-            'Футболка с логотипом',
-            'Мышка Logitech G Pro'
-        ];
-
-        function searchProducts() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            const resultsContainer = document.getElementById('autocompleteResults');
-            resultsContainer.innerHTML = ''; // Очистить результаты
-
-            if (query.length > 0) {
-                const filteredResults = products.filter(product => product.toLowerCase().includes(query));
-
-                filteredResults.forEach(result => {
-                    const div = document.createElement('div');
-                    div.textContent = result;
-                    div.onclick = () => {
-                        document.getElementById('searchInput').value = result;
-                        resultsContainer.innerHTML = ''; // Очистить результаты
-                    };
-                    resultsContainer.appendChild(div);
-                });
-            }
-        }
-
-        // Обработка отзыва
-        document.getElementById('reviewForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const reviewText = document.getElementById('reviewInput').value;
-            const reviewsList = document.querySelector('.reviews-list');
-
-            const newReview = document.createElement('div');
-            newReview.classList.add('review');
-            newReview.innerHTML = `
-                <p class="review-text">${reviewText}</p>
-                <p class="review-author">Новый отзыв</p>
-            `;
-            reviewsList.appendChild(newReview);
-            document.getElementById('reviewInput').value = ''; // Очистить форму
-        });
-
-        // Cookie Consent
-        function acceptCookies() {
-            document.getElementById('cookieConsent').style.display = 'none';
-        }
-    </script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
