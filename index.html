@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Arizona RolePlay</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link
+    href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    rel="stylesheet"
+  >
   <style>
     body { font-family: 'Poppins', sans-serif; }
     html { scroll-padding-top: 4rem; }
@@ -18,7 +21,8 @@
                  bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 shadow-lg">
     <div class="container mx-auto flex flex-col md:flex-row justify-between items-center p-4">
       <h1 class="text-2xl font-bold">Arizona RP</h1>
-      <nav class="mt-3 md:mt-0 flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 items-center w-full md:w-auto text-center">
+      <nav class="mt-3 md:mt-0 flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 items-center
+                  w-full md:w-auto text-center">
         <a href="#home" class="px-4 py-2 hover:text-yellow-400 transition">Главная</a>
         <a href="#servers" class="px-4 py-2 hover:text-yellow-400 transition">Сервера</a>
         <a href="#contact" class="px-4 py-2 hover:text-yellow-400 transition">Контакты</a>
@@ -115,17 +119,21 @@
     let lastScroll = 0;
     let ticking = false;
     const header = document.getElementById('site-header');
+    const deltaThreshold = 50;
 
     window.addEventListener('scroll', () => {
-      const current = window.pageYOffset;
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          if (current > lastScroll && current > 100) {
+          const current = window.pageYOffset;
+          const delta = current - lastScroll;
+
+          if (delta > deltaThreshold && current > header.offsetHeight) {
             header.classList.add('-translate-y-full');
-          } else {
+            lastScroll = current;
+          } else if (delta < -deltaThreshold) {
             header.classList.remove('-translate-y-full');
+            lastScroll = current;
           }
-          lastScroll = current;
           ticking = false;
         });
         ticking = true;
