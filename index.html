@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Arizona Role Play</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
@@ -28,6 +28,28 @@
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
+    #mobile-menu-button {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #mobile-menu a {
+      padding: 1rem 1.5rem;
+      font-size: 1.125rem;
+    }
+    .login-button {
+      padding: 0.5rem 1rem;
+      background-color: #facc15;
+      color: black;
+      border-radius: 9999px;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+    .login-button:hover {
+      background-color: #fbbf24;
+    }
   </style>
 </head>
 <body class="bg-gray-900 text-white pt-20">
@@ -43,7 +65,7 @@
         <a href="#shop" class="text-gray-200 hover:text-yellow-400">Магазин</a>
         <a href="#wiki" class="text-gray-200 hover:text-yellow-400">Вики</a>
         <a href="#contact" class="text-gray-200 hover:text-yellow-400">Контакты</a>
-        <a href="auth.html" class="ml-4 bg-yellow-500 text-black px-5 py-2 rounded-full hover:bg-yellow-400">Войти</a>
+        <a href="auth.html" class="login-button ml-4">Войти</a>
       </nav>
       <button id="mobile-menu-button" class="lg:hidden text-white focus:outline-none">
         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -59,7 +81,7 @@
         <a href="#shop" class="text-gray-200 hover:text-yellow-400">Магазин</a>
         <a href="#wiki" class="text-gray-200 hover:text-yellow-400">Вики</a>
         <a href="#contact" class="text-gray-200 hover:text-yellow-400">Контакты</a>
-        <a href="auth.html" class="mt-2 bg-yellow-500 text-black px-5 py-2 rounded-full hover:bg-yellow-400">Войти</a>
+        <a href="auth.html" class="login-button text-center">Войти</a>
       </nav>
     </div>
   </header>
@@ -109,7 +131,7 @@
     <div class="container mx-auto text-center">
       <h3 class="text-3xl font-bold text-white mb-6">Магазин внутриигровых товаров</h3>
       <p class="text-gray-200 mb-4">Уникальные скины, автомобили, VIP-пакеты и многое другое.</p>
-      <a href="https://shop.arizona-rp.com" target="_blank" class="bg-yellow-500 text-black px-6 py-3 rounded-full hover:bg-yellow-400 transition">Перейти в магазин</a>
+      <a href="https://shop.arizona-rp.com" class="bg-yellow-500 text-black px-6 py-3 rounded-full hover:bg-yellow-400 transition">Перейти в магазин</a>
     </div>
   </section>
 
@@ -118,32 +140,29 @@
     <h3 class="text-3xl font-bold text-center text-yellow-400 mb-6">Arizona RP Вики</h3>
     <p class="text-gray-300 text-center mb-4">Полное собрание статей по геймплею, лору и механикам.</p>
     <div class="text-center">
-      <a href="https://wiki.arizona-rp.com" target="_blank" class="bg-yellow-500 text-black px-6 py-3 rounded-full hover:bg-yellow-400 transition">Открыть Вики</a>
+      <a href="https://wiki.arizona-rp.com" class="bg-yellow-500 text-black px-6 py-3 rounded-full hover:bg-yellow-400 transition">Открыть Вики</a>
     </div>
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="py-20 px-4 text-center">
-    <h3 class="text-3xl font-bold mb-6">Контакты</h3>
-    <p class="text-gray-300 mb-2">
-      Поддержка: <a href="mailto:support@arizona-rp.com" class="text-yellow-400 hover:underline">support@arizona-rp.com</a>
-    </p>
-    <p class="text-gray-300 mb-2">
-      Форум: <a href="https://forum.arizona-rp.com" target="_blank" class="text-yellow-400 hover:underline">forum.arizona-rp.com</a>
-    </p>
-    <p class="text-gray-300">
-      Телеграм: <a href="https://t.me/arizonarp" target="_blank" class="text-yellow-400 hover:underline">@arizonarp</a>
-    </p>
+  <section id="contact" class="bg-gray-800 py-16 px-4">
+    <div class="container mx-auto text-center">
+      <h3 class="text-3xl font-bold text-yellow-400 mb-8">Контакты администрации</h3>
+      <p class="text-gray-300 mb-4">Telegram: <a href="https://t.me/tiffor" class="text-cyan-400 hover:underline">@Tiffor</a></p>
+      <p class="text-gray-300 mb-4">Форум: <a href="https://forum.arizona-rp.com" class="text-cyan-400 hover:underline">forum.arizona-rp.com</a></p>
+      <p class="text-gray-300">Discord: <span class="text-gray-500">Скоро...</span></p>
+    </div>
   </section>
 
   <!-- Footer -->
   <footer class="bg-gray-900 text-white py-6 px-4">
     <div class="container mx-auto text-center">
-      <a href="https://arizona-games.com/privacy-policy" target="_blank" class="text-yellow-400 hover:underline mb-2 inline-block">Политика обработки персональных данных</a>
+      <a href="https://arizona-games.com/privacy-policy" class="text-yellow-400 hover:underline mb-2 inline-block">Политика обработки персональных данных</a>
       <p class="text-sm mt-2">&copy; 2025 Arizona Role Play. Все права защищены.</p>
     </div>
   </footer>
 
+  <!-- Script -->
   <script>
     (function() {
       const headerEl = document.getElementById('site-header');
@@ -170,6 +189,12 @@
         link.addEventListener('click', () => {
           menuEl.classList.add('hidden');
         });
+      });
+
+      window.addEventListener('click', function(event) {
+        if (!menuEl.contains(event.target) && !menuBtnEl.contains(event.target)) {
+          menuEl.classList.add('hidden');
+        }
       });
     })();
   </script>
