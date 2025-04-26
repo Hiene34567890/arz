@@ -1,15 +1,15 @@
-/* Основной стиль сайта */
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
+    background: #f4f4f4;
 }
 
 header {
-    background-color: #1a73e8;
-    padding: 20px;
+    background-color: #00aaff;
     color: white;
+    padding: 10px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -17,89 +17,132 @@ header {
 
 header .logo h1 {
     margin: 0;
+    padding-left: 20px;
 }
 
-header nav a {
-    color: white;
-    margin-left: 20px;
-    text-decoration: none;
-}
-
-header nav a:hover {
-    text-decoration: underline;
-}
-
-main {
-    padding: 20px;
-}
-
-h2 {
-    margin-bottom: 20px;
-}
-
-section {
-    margin-bottom: 40px;
-}
-
-form {
+header nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
     display: flex;
-    flex-direction: column;
 }
 
-.form-group {
-    margin-bottom: 10px;
+header nav ul li {
+    margin-right: 20px;
 }
 
-input, textarea, select {
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+#search-bar {
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+}
+
+#search-input {
+    width: 60%;
     padding: 10px;
     font-size: 16px;
-    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
 }
 
-button {
-    padding: 10px;
-    background-color: #1a73e8;
+#search-btn {
+    padding: 10px 20px;
+    background-color: #00aaff;
     color: white;
     border: none;
     cursor: pointer;
+    border-radius: 5px;
 }
 
-button:hover {
-    background-color: #1558a5;
+#search-btn:hover {
+    background-color: #0077cc;
 }
 
-#chatBox {
-    border: 1px solid #ccc;
-    padding: 10px;
+#category-filter {
+    text-align: center;
+    padding: 20px;
     background-color: white;
-    margin-bottom: 10px;
 }
 
-#messages {
-    height: 200px;
-    overflow-y: auto;
+#category-select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
-textarea {
-    resize: none;
-}
-
-#adsContainer {
-    margin-top: 20px;
+#ad-list {
+    padding: 20px;
 }
 
 .ad {
     background-color: white;
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
-    padding: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .ad h3 {
-    margin: 0;
-    font-size: 18px;
+    margin-top: 0;
+    color: #333;
 }
 
-.ad p {
-    margin: 10px 0;
+#ad-list .ad p {
+    margin: 0;
+    color: #555;
+}
+
+#about-us, #contact {
+    padding: 20px;
+    background-color: white;
+    margin-top: 20px;
+}
+
+#about-us h2, #contact h2 {
+    font-size: 24px;
+}
+
+#about-us p, #contact p {
+    font-size: 16px;
+    color: #555;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #222;
+    color: white;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #search-bar {
+        flex-direction: column;
+    }
+
+    #category-filter {
+        text-align: center;
+    }
+
+    .ad-list {
+        flex-direction: column;
+    }
 }
