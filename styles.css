@@ -1,148 +1,126 @@
-/* General Styles */
+/* Основные стили */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f4f4f4;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
 }
 
 header {
-    background-color: #00aaff;
-    color: white;
-    padding: 10px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  background-color: #2196F3;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 24px;
 }
 
-header .logo h1 {
-    margin: 0;
-    padding-left: 20px;
+/* Сортировка */
+.sorting {
+  margin: 20px 0;
+  text-align: center;
 }
 
-header nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
+#sort-by {
+  padding: 10px;
+  font-size: 16px;
 }
 
-header nav ul li {
-    margin-right: 20px;
+/* Управление объявлениями */
+.manage-ad {
+  margin-top: 20px;
+  text-align: center;
 }
 
-header nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
+.delete-ad, .block-ad {
+  padding: 10px 20px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
 }
 
-#search-bar {
-    text-align: center;
-    padding: 20px;
-    background-color: white;
+.block-ad {
+  background-color: #FFC107;
 }
 
-#search-input {
-    width: 60%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-right: 10px;
+/* История поиска */
+.search-history {
+  margin: 40px 0;
+  text-align: center;
 }
 
-#search-btn {
-    padding: 10px 20px;
-    background-color: #00aaff;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
+#history-list {
+  list-style-type: none;
+  padding: 0;
 }
 
-#search-btn:hover {
-    background-color: #0077cc;
+#history-list li {
+  background-color: #f1f1f1;
+  padding: 10px;
+  margin-bottom: 5px;
 }
 
-#category-filter {
-    text-align: center;
-    padding: 20px;
-    background-color: white;
+/* Пагинация */
+.pagination {
+  margin: 30px 0;
+  text-align: center;
 }
 
-#category-select {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+#prev-page, #next-page {
+  padding: 10px 20px;
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin: 0 10px;
 }
 
-#ad-list {
-    padding: 20px;
+/* Лучшие продавцы */
+.top-sellers {
+  margin: 40px 0;
+  text-align: center;
 }
 
-.ad {
-    background-color: white;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.seller {
+  background-color: #f1f1f1;
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
-.ad h3 {
-    margin-top: 0;
-    color: #333;
+/* Форма добавления объявления */
+.add-ad-form {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-#ad-list .ad p {
-    margin: 0;
-    color: #555;
+.add-ad-form form {
+  display: flex;
+  flex-direction: column;
 }
 
-#about-us, #contact {
-    padding: 20px;
-    background-color: white;
-    margin-top: 20px;
+.add-ad-form label {
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 
-#about-us h2, #contact h2 {
-    font-size: 24px;
+.add-ad-form input, .add-ad-form textarea, .add-ad-form select {
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
-#about-us p, #contact p {
-    font-size: 16px;
-    color: #555;
-}
-
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #222;
-    color: white;
-}
-
-/* Media Queries */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    header nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #search-bar {
-        flex-direction: column;
-    }
-
-    #category-filter {
-        text-align: center;
-    }
-
-    .ad-list {
-        flex-direction: column;
-    }
+.add-ad-form button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
 }
