@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Arizona Role Play</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    body { font-family: 'Poppins', sans-serif; }
-    html { scroll-padding-top: 5rem; }
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    html {
+      scroll-padding-top: 5rem;
+    }
 
     /* Header Styles */
     #site-header {
@@ -32,9 +38,17 @@
     }
 
     @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
     /* Overlay for background blur */
@@ -226,9 +240,9 @@
       background-color: #ff6600;
       transform: scale(1.1);
     }
-
   </style>
 </head>
+
 <body class="bg-gray-900 text-white pt-20">
 
   <!-- Header -->
@@ -246,7 +260,7 @@
       </nav>
       <button id="mobile-menu-button" class="lg:hidden text-white focus:outline-none">
         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
     </div>
@@ -269,89 +283,8 @@
     </div>
   </section>
 
-  <!-- Servers Section -->
-  <section id="servers" class="py-20 bg-gray-800">
-    <div class="container mx-auto text-center">
-      <h2 class="section-title">Наши Сервера</h2>
-      <p class="section-content">Выберите сервер для игры в Arizona RP!</p>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-6">
-        <div class="server-card bg-gray-700 p-6 rounded-lg">
-          <h3 class="text-xl font-semibold text-yellow-500">Сервер 1</h3>
-          <p class="text-gray-300">IP: 192.168.1.1</p>
-          <p class="text-gray-300">Онлайн: 120/200</p>
-        </div>
-        <div class="server-card bg-gray-700 p-6 rounded-lg">
-          <h3 class="text-xl font-semibold text-yellow-500">Сервер 2</h3>
-          <p class="text-gray-300">IP: 192.168.1.2</p>
-          <p class="text-gray-300">Онлайн: 90/200</p>
-        </div>
-        <div class="server-card bg-gray-700 p-6 rounded-lg">
-          <h3 class="text-xl font-semibold text-yellow-500">Сервер 3</h3>
-          <p class="text-gray-300">IP: 192.168.1.3</p>
-          <p class="text-gray-300">Онлайн: 150/200</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Rules Section -->
-  <section id="rules" class="py-20 bg-gray-800">
-    <div class="container mx-auto text-center">
-      <h2 class="section-title">Правила игры</h2>
-      <p class="section-content">Прочитайте наши правила, чтобы избежать неприятных ситуаций в игре.</p>
-      <ul class="text-gray-300 text-left mt-6">
-        <li>- Соблюдайте уважение к другим игрокам.</li>
-        <li>- Не используйте чит-коды или баги.</li>
-        <li>- Реклама других серверов запрещена.</li>
-        <li>- Запрещены оскорбления и угрозы.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Shop Section -->
-  <section id="shop" class="py-20 bg-gray-800">
-    <div class="container mx-auto text-center">
-      <h2 class="section-title">Магазин</h2>
-      <p class="section-content">Покупайте предметы и улучшения для вашего персонажа.</p>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-6">
-        <div class="shop-item bg-gray-700 p-6 rounded-lg">
-          <h3 class="text-xl font-semibold text-yellow-500">Предмет 1</h3>
-          <p class="text-gray-300">Описание предмета</p>
-          <p class="text-yellow-400">Цена: 1000$</p>
-        </div>
-        <div class="shop-item bg-gray-700 p-6 rounded-lg">
-          <h3 class="text-xl font-semibold text-yellow-500">Предмет 2</h3>
-          <p class="text-gray-300">Описание предмета</p>
-          <p class="text-yellow-400">Цена: 1500$</p>
-        </div>
-        <div class="shop-item bg-gray-700 p-6 rounded-lg">
-          <h3 class="text-xl font-semibold text-yellow-500">Предмет 3</h3>
-          <p class="text-gray-300">Описание предмета</p>
-          <p class="text-yellow-400">Цена: 2000$</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Wiki Section -->
-  <section id="wiki" class="py-20 bg-gray-800">
-    <div class="container mx-auto text-center">
-      <h2 class="section-title">Вики</h2>
-      <p class="section-content">Получите полезную информацию о нашем сервере.</p>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="py-20 bg-gray-800">
-    <div class="container mx-auto text-center">
-      <h2 class="section-title">Контакты</h2>
-      <p class="section-content">Свяжитесь с нами через Telegram или Email.</p>
-      <ul class="text-gray-300">
-        <li><a href="https://t.me/username">Телеграм: @username</a></li>
-        <li><a href="mailto:support@domain.com">Email: support@domain.com</a></li>
-      </ul>
-    </div>
-  </section>
+  <!-- Support Button -->
+  <button id="support-btn">Поддержка</button>
 
   <!-- Support Modal -->
   <div id="supportModal" class="hidden">
@@ -363,16 +296,57 @@
     </form>
   </div>
 
-  <script>
-    // Toggle mobile menu
-    document.getElementById('mobile-menu-button').addEventListener('click', () => {
-      document.getElementById('mobile-menu').classList.toggle('hidden');
-    });
+  <!-- Сервера -->
+  <section id="servers">
+    <h2 class="section-title">Наши сервера</h2>
+    <div class="section-content">
+      <p>IP-адреса серверов:</p>
+      <ul>
+        <li>Аризона РП 1: 123.456.789.0</li>
+        <li>Аризона РП 2: 987.654.321.0</li>
+      </ul>
+    </div>
+  </section>
 
+  <!-- Правила -->
+  <section id="rules">
+    <h2 class="section-title">Правила игры</h2>
+    <div class="section-content">
+      <ol>
+        <li>Не нарушать правила сервера.</li>
+        <li>Уважать других игроков.</li>
+        <li>Не использовать читы.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Магазин -->
+  <section id="shop">
+    <h2 class="section-title">Магазин</h2>
+    <div class="section-content">
+      <p>Посетите наш <a href="https://donate.arizona-rp.com" class="text-yellow-400">магазин</a> для покупки внутриигровых товаров.</p>
+    </div>
+  </section>
+
+  <!-- Контакты -->
+  <section id="contact">
+    <h2 class="section-title">Контакты</h2>
+    <div class="section-content">
+      <p>Свяжитесь с нами через:</p>
+      <ul>
+        <li>Email: <a href="mailto:support@arizona-rp.com" class="text-yellow-400">support@arizona-rp.com</a></li>
+        <li>Telegram: <a href="https://t.me/arizona_support" class="text-yellow-400">@arizona_support</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <script>
     // Show Support Modal
     document.getElementById('support-btn').addEventListener('click', () => {
-      document.getElementById('supportModal').classList.toggle('hidden');
+      const modal = document.getElementById('supportModal');
+      modal.classList.toggle('hidden');
     });
   </script>
 </body>
+
 </html>
