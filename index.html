@@ -48,11 +48,14 @@
     .pagination button { padding:6px 10px; border:none; background:#007BFF; color:#fff; cursor:pointer; border-radius:4px; }
     .pagination button:hover { background:#0056b3; }
 
-    /* ===== Modal ===== */
-    .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4); justify-content:center; align-items:center; }
-    .modal-content { background:#fff; padding:20px; border-radius:8px; max-width:400px; width:90%; position:relative; transition:background .3s,color .3s; }
-    .modal-content.dark-mode { background:#222; color:#fff; }
-    .close-btn { position:absolute; top:10px; right:10px; font-size:24px; cursor:pointer; }
+    /* ===== Create Ad ===== */
+    .create-ad { max-width:400px; margin:20px auto; background:#fff; padding:20px; border-radius:8px; box-shadow:0 4px 8px rgba(0,0,0,0.1); transition:background .3s,color .3s; }
+    .create-ad.dark-mode { background:#333; color:#fff; }
+    .create-ad h3 { margin-bottom:10px; }
+    .create-ad form { display:flex; flex-direction:column; gap:10px; }
+    .create-ad input, .create-ad select, .create-ad textarea, .create-ad button { padding:8px; border:1px solid #ccc; border-radius:4px; }
+    .create-ad button { background:#4CAF50; color:#fff; border:none; cursor:pointer; }
+    .create-ad button:hover { background:#45a049; }
 
     /* ===== Favorites ===== */
     .favorites { max-width:600px; margin:20px auto; background:#fff; padding:20px; border-radius:8px; box-shadow:0 4px 8px rgba(0,0,0,0.1); transition:background .3s,color .3s; }
@@ -73,6 +76,12 @@
     #reviews-list .review { background:#f4f4f4; padding:10px; border-radius:4px; margin-top:10px; transition:background .3s,color .3s; }
     .reviews .review.dark-mode { background:#444; }
 
+    /* ===== Modal ===== */
+    .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4); justify-content:center; align-items:center; }
+    .modal-content { background:#fff; padding:20px; border-radius:8px; max-width:400px; width:90%; position:relative; transition:background .3s,color .3s; }
+    .modal-content.dark-mode { background:#222; color:#fff; }
+    .close-btn { position:absolute; top:10px; right:10px; font-size:24px; cursor:pointer; }
+
     /* ===== Dark Mode ===== */
     body.dark-mode { background:#121212; color:#ddd; }
     header.dark-mode a { color:#ddd; }
@@ -85,6 +94,7 @@
       .search-bar, .filters { flex-direction:column; align-items:center; }
       .product-list { flex-direction:column; align-items:center; }
       .product-card { width:90%; }
+      .create-ad { width:90%; }
     }
   </style>
 </head>
@@ -131,6 +141,26 @@
 
     <!-- Пагинация -->
     <section class="pagination"></section>
+
+    <!-- Создать объявление -->
+    <section class="create-ad">
+      <h3>Создать объявление</h3>
+      <form id="create-ad-form">
+        <input type="text" id="new-name" placeholder="Название" required />
+        <input type="url" id="new-image" placeholder="URL изображения" required />
+        <input type="number" id="new-price" placeholder="Цена" required />
+        <select id="new-category">
+          <option value="electronics">Электроника</option>
+          <option value="furniture">Мебель</option>
+        </select>
+        <select id="new-condition">
+          <option value="new">Новое</option>
+          <option value="used">Б/у</option>
+        </select>
+        <textarea id="new-desc" placeholder="Описание"></textarea>
+        <button type="submit">Добавить</button>
+      </form>
+    </section>
 
     <!-- Избранное -->
     <section class="favorites">
@@ -188,14 +218,15 @@
     const reviewForm = document.getElementById('review-form');
     const reviewsList = document.getElementById('reviews-list');
     const favoritesList = document.getElementById('favorites-list');
+    const createForm = document.getElementById('create-ad-form');
 
     /* ===== Functions ===== */
     function displayProducts(data) {
       productList.innerHTML = '';
-      data.forEach((prod, index) => {
+      data.forEach((prod, idx) => {
         const card = document.createElement('div');
         card.className = 'product-card';
-        card.setAttribute('data-index', index);
+        card.setAttribute('data-index', idx);
         card.innerHTML = `
           <img src="${prod.image}" loading="lazy" alt="${prod.name}">
           <h4>${prod.name}</h4>
@@ -253,16 +284,12 @@
       });
     }
 
-    function loadFavorites(){
-      return JSON.parse(localStorage.getItem('favs')||'[]');
-    }
-    function saveFavorites(favs){
-      localStorage.setItem('favs', JSON.stringify(favs));
-    }
+    function loadFavorites(){ return JSON.parse(localStorage.getItem('favs')||'[]'); }
+    function saveFavorites(f){ localStorage.setItem('favs',JSON.stringify(f)); }
     function updateFavoritesUI(){
-      favoritesList.innerHTML = '';
-      loadFavorites().forEach(name=>{
-        const li=document.createElement('li'); li.textContent=name;
+      favoritesList.innerHTML='';
+      loadFavorites().forEach(n=>{
+        const li=document.createElement('li'); li.textContent=n;
         if(document.body.classList.contains('dark-mode')) li.classList.add('dark-mode');
         favoritesList.append(li);
       });
@@ -272,56 +299,55 @@
       document.querySelectorAll('.favorite-btn').forEach((btn,i)=>{
         const prod = filteredData[(currentPage-1)*itemsPerPage + i];
         const favs = loadFavorites();
-        if(favs.includes(prod.name)) btn.textContent='★';
+        btn.textContent = favs.includes(prod.name)?'★':'❤';
         btn.onclick = ()=>{
-          let favs = loadFavorites();
-          if(favs.includes(prod.name)){
-            favs = favs.filter(n=>n!==prod.name);
-            btn.textContent='❤';
-          } else {
-            favs.push(prod.name);
-            btn.textContent='★';
-          }
-          saveFavorites(favs);
-          updateFavoritesUI();
+          let f = loadFavorites();
+          if(f.includes(prod.name)) f = f.filter(x=>x!==prod.name);
+          else f.push(prod.name);
+          saveFavorites(f); updateFavoritesUI(); btn.textContent=f.includes(prod.name)?'★':'❤';
         };
       });
     }
 
     function applyDarkMode(){
       const dark = document.body.classList.contains('dark-mode');
-      document.querySelectorAll('header, .product-card, .reviews, .favorites').forEach(el=>{
+      document.querySelectorAll('header, .product-card, .reviews, .favorites, .create-ad, .modal-content').forEach(el=>{
         el.classList.toggle('dark-mode',dark);
       });
     }
 
-    /* ===== Event Listeners ===== */
+    /* ===== Events ===== */
     filterForm.addEventListener('submit',e=>{ e.preventDefault(); applyFilters(); });
-    searchBtn.addEventListener('input',applyFilters);
     searchBtn.addEventListener('click',applyFilters);
-
     closeBtn.onclick = ()=> modal.style.display='none';
     window.onclick = e=>{ if(e.target===modal) modal.style.display='none'; };
-
-    themeToggle.onclick = ()=>{
-      document.body.classList.toggle('dark-mode');
-      document.querySelector('header').classList.toggle('dark-mode');
-      applyDarkMode();
-      updateFavoritesUI();
-    };
-
+    themeToggle.onclick = ()=>{ document.body.classList.toggle('dark-mode'); applyDarkMode(); updateFavoritesUI(); };
     reviewForm.addEventListener('submit',e=>{
+      e.preventDefault(); const txt=reviewForm.querySelector('textarea').value;
+      const d=document.createElement('div'); d.className='review'; d.textContent=txt;
+      if(document.body.classList.contains('dark-mode')) d.classList.add('dark-mode');
+      reviewsList.append(d); reviewForm.reset();
+    });
+    createForm.addEventListener('submit',e=>{
       e.preventDefault();
-      const txt = reviewForm.querySelector('textarea').value;
-      const div = document.createElement('div'); div.className='review'; div.textContent=txt;
-      if(document.body.classList.contains('dark-mode')) div.classList.add('dark-mode');
-      reviewsList.append(div);
-      reviewForm.reset();
+      const newProd={
+        image:document.getElementById('new-image').value,
+        name:document.getElementById('new-name').value,
+        price:parseInt(document.getElementById('new-price').value),
+        rating:0,
+        category:document.getElementById('new-category').value,
+        condition:document.getElementById('new-condition').value,
+        desc:document.getElementById('new-desc').value
+      };
+      productsData.push(newProd);
+      applyFilters();
+      currentPage=Math.ceil(filteredData.length/itemsPerPage);
+      paginate(filteredData);
+      createForm.reset();
     });
 
     /* ===== Init ===== */
-    updateFavoritesUI();
-    paginate(filteredData);
+    updateFavoritesUI(); paginate(filteredData);
   </script>
 </body>
 </html>
