@@ -59,6 +59,7 @@
       font-weight: bold;
       border-radius: 50px;
       transition: all 0.3s ease;
+      margin: 10px 0;
     }
 
     .btn:hover {
@@ -76,6 +77,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-direction: column;
+      text-align: center;
     }
 
     @keyframes gradientMove {
@@ -147,6 +150,27 @@
       padding-top: 10px;
       padding-bottom: 10px;
     }
+
+    /* Адаптивность */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: block;
+        gap: 10px;
+      }
+
+      .btn {
+        width: 100%;
+        padding: 15px;
+      }
+
+      .hero-bg h2 {
+        font-size: 2.5rem;
+      }
+
+      .server-card {
+        margin-bottom: 10px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -169,7 +193,7 @@
 
   <!-- Hero Section -->
   <section id="home" class="hero-bg">
-    <div class="text-center">
+    <div>
       <h2 class="text-5xl font-extrabold mb-6">Добро пожаловать в Arizona Role Play</h2>
       <a href="#servers" class="btn">Начать играть</a>
     </div>
