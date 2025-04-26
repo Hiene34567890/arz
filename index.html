@@ -4,23 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Arizona RolePlay</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    /* Поддержка Tailwind */
-    @import url('https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css');
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
-
-    html {
-      scroll-padding-top: 4rem; /* учёт высоты хедера при скролле по якорям */
-    }
-    body {
-      font-family: 'Poppins', sans-serif;
-    }
+    body { font-family: 'Poppins', sans-serif; }
   </style>
 </head>
 <body class="bg-gray-900 text-white pt-16">
 
   <!-- Навигация -->
-  <header class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 shadow-lg fixed w-full z-20">
+  <header id="site-header" class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 shadow-lg fixed top-0 left-0 w-full z-20 transition-transform duration-300">
     <div class="container mx-auto flex flex-col md:flex-row justify-between items-center p-4">
       <h1 class="text-2xl font-bold">Arizona RP</h1>
       <nav class="mt-3 md:mt-0 flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 items-center w-full md:w-auto text-center">
@@ -52,62 +44,8 @@
     </div>
   </section>
 
-  <!-- О серверах -->
-  <section id="servers" class="container mx-auto py-16 px-4">
-    <h3 class="text-3xl font-bold mb-8 text-center text-yellow-400">Наши сервера</h3>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div class="bg-gray-800 rounded-xl shadow-lg p-6 transform hover:scale-105 transition">
-        <h4 class="text-xl font-semibold mb-2 text-cyan-400">Tucson</h4>
-        <p>IP: <strong class="text-green-400">185.169.134.45:7777</strong></p>
-        <p>Онлайн: <strong>~900</strong> 🟢</p>
-        <p>Режим: <strong>Акция</strong></p>
-        <a href="https://arizona-rp.com" class="mt-4 inline-block text-yellow-500 hover:underline">
-          Перейти на сервер
-        </a>
-      </div>
-      <div class="bg-gray-800 rounded-xl shadow-lg p-6 transform hover:scale-105 transition">
-        <h4 class="text-xl font-semibold mb-2 text-cyan-400">Scottsdale</h4>
-        <p>IP: <strong class="text-green-400">185.169.134.46:7777</strong></p>
-        <p>Онлайн: <strong>~700</strong> 🟢</p>
-        <p>Режим: <strong>Акция</strong></p>
-        <a href="https://arizona-rp.com" class="mt-4 inline-block text-yellow-500 hover:underline">
-          Перейти на сервер
-        </a>
-      </div>
-    </div>
-  </section>
+  <!-- остальной контент ... -->
 
-  <!-- О проекте -->
-  <section class="bg-gradient-to-r from-teal-500 via-green-500 to-blue-500 py-16 px-4">
-    <div class="container mx-auto text-center">
-      <h3 class="text-3xl font-bold mb-6 text-white">О проекте Arizona RP</h3>
-      <div class="max-w-4xl mx-auto bg-gray-700 p-8 rounded-xl shadow-xl">
-        <p class="text-lg mb-6 text-gray-300 leading-relaxed">
-          Arizona RolePlay — это один из самых популярных проектов в мире, предлагающий игрокам уникальные возможности
-          для развлечений и общения в виртуальном мире.
-        </p>
-        <p class="text-lg mb-6 text-gray-300 leading-relaxed">
-          Проект представляет собой тщательно проработанную систему, основанную на принципах ролевых игр.
-        </p>
-        <p class="text-lg mb-6 text-gray-300 leading-relaxed">
-          Мы стремимся предоставить вам лучший опыт, и каждое ваше пожертвование помогает улучшать проект.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Контакты -->
-  <section id="contact" class="bg-gray-800 py-16 px-4">
-    <div class="container mx-auto text-center">
-      <h3 class="text-3xl font-bold mb-8 text-yellow-400">Контакты администрации</h3>
-      <p class="text-lg text-gray-300 mb-4">Мы всегда рады помочь вам. Свяжитесь с нами через:</p>
-      <p class="mb-2">Telegram: <a href="https://t.me/tiffor" class="text-cyan-400 hover:underline">@Tiffor</a></p>
-      <p class="mb-2">Форум: <a href="https://forum.arizona-rp.com/" class="text-cyan-400 hover:underline">forum.arizona-rp.com</a></p>
-      <p>Discord: <a href="#" class="text-cyan-400 hover:underline">Скоро...</a></p>
-    </div>
-  </section>
-
-  <!-- Политика и права -->
   <footer class="bg-gray-900 text-white py-6 px-4">
     <div class="container mx-auto text-center">
       <a href="https://arizona-games.com/privacy-policy" class="text-yellow-400 hover:underline mb-2 inline-block">
@@ -117,5 +55,20 @@
     </div>
   </footer>
 
+  <script>
+    let lastScroll = 0;
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      const current = window.pageYOffset;
+      if (current > lastScroll && current > 100) {
+        // прокрутка вниз — скрываем
+        header.classList.add('-translate-y-full');
+      } else {
+        // прокрутка вверх — показываем
+        header.classList.remove('-translate-y-full');
+      }
+      lastScroll = current;
+    });
+  </script>
 </body>
 </html>
