@@ -45,25 +45,9 @@
         <a href="#contact" class="text-gray-200 hover:text-yellow-400">Контакты</a>
         <a href="https://donate.arizona-rp.com" class="ml-4 bg-yellow-500 text-black px-5 py-2 rounded-full hover:bg-yellow-400">Донат</a>
         <!-- Кнопка входа -->
-        <a href="https://login.arizona-rp.com" class="ml-4 bg-blue-500 text-white px-5 py-2 rounded-full hover:bg-blue-400">Войти</a>
-      </nav>
-      <button id="mobile-menu-button" class="lg:hidden text-white focus:outline-none">
-        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-      </button>
-    </div>
-    <div id="mobile-menu" class="hidden lg:hidden bg-gray-800 bg-opacity-95">
-      <nav class="flex flex-col p-4 space-y-2">
-        <a href="#home" class="text-gray-200 hover:text-yellow-400">Главная</a>
-        <a href="#servers" class="text-gray-200 hover:text-yellow-400">Сервера</a>
-        <a href="#rules" class="text-gray-200 hover:text-yellow-400">Правила</a>
-        <a href="#shop" class="text-gray-200 hover:text-yellow-400">Магазин</a>
-        <a href="#wiki" class="text-gray-200 hover:text-yellow-400">Вики</a>
-        <a href="#contact" class="text-gray-200 hover:text-yellow-400">Контакты</a>
-        <a href="https://donate.arizona-rp.com" class="mt-2 bg-yellow-500 text-black px-5 py-2 rounded-full hover:bg-yellow-400">Донат</a>
-        <!-- Мобильная кнопка входа -->
-        <a href="https://login.arizona-rp.com" class="mt-2 bg-blue-500 text-white px-5 py-2 rounded-full hover:bg-blue-400">Войти</a>
+        <button id="login-button" class="ml-4 bg-yellow-500 text-black px-5 py-2 rounded-full hover:bg-yellow-400">Войти</button>
+        <!-- Кнопка выхода (если пользователь авторизован) -->
+        <a href="{{ url_for('logout') }}" class="hidden ml-4 bg-red-500 text-black px-5 py-2 rounded-full hover:bg-red-400" id="logout-button">Выйти</a>
       </nav>
     </div>
   </header>
@@ -95,46 +79,34 @@
     </div>
   </section>
 
-  <!-- Rules Section -->
-  <section id="rules" class="bg-gray-800 py-16 px-4">
-    <div class="container mx-auto">
-      <h3 class="text-3xl font-bold text-center text-yellow-400 mb-8">Правила проекта</h3>
-      <ul class="list-disc list-inside space-y-4 text-gray-300">
-        <li>Запрещены читы, багюз и другие нечестные методы.</li>
-        <li>Уважайте других игроков и администрацию.</li>
-        <li>Запрещено рекламировать сторонние проекты.</li>
-        <li>Соблюдайте правила РП-поведения.</li>
-      </ul>
-    </div>
-  </section>
+  <!-- Модальное окно для авторизации -->
+  <div id="login-modal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
+    <div class="bg-gray-800 p-6 rounded-lg">
+      <form action="/login" method="POST">
+        <label for="username" class="block text-gray-300">Логин</label>
+        <input type="text" name="username" id="username" class="w-full p-3 mb-4 bg-gray-700 text-white rounded-md" required>
 
-  <!-- Shop Section -->
-  <section id="shop" class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 py-16 px-4">
-    <div class="container mx-auto text-center">
-      <h3 class="text-3xl font-bold text-white mb-6">Магазин внутриигровых товаров</h3>
-      <p class="text-gray-200 mb-4">Уникальные скины, автомобили, VIP-пакеты и многое другое.</p>
-      <a href="https://shop.arizona-rp.com" class="bg-yellow-500 text-black px-6 py-3 rounded-full hover:bg-yellow-400 transition">Перейти в магазин</a>
-    </div>
-  </section>
+        <label for="password" class="block text-gray-300">Пароль</label>
+        <input type="password" name="password" id="password" class="w-full p-3 mb-4 bg-gray-700 text-white rounded-md" required>
 
-  <!-- Wiki Section -->
-  <section id="wiki" class="container mx-auto py-16 px-4">
-    <h3 class="text-3xl font-bold text-center text-yellow-400 mb-6">Arizona RP Вики</h3>
-    <p class="text-gray-300 text-center mb-4">Полное собрание статей по геймплею, лору и механикам.</p>
-    <div class="text-center">
-      <a href="https://wiki.arizona-rp.com" class="bg-yellow-500 text-black px-6 py-3 rounded-full hover:bg-yellow-400 transition">Открыть Вики</a>
+        <button type="submit" class="w-full bg-blue-500 text-white p-3 rounded-md">Войти</button>
+      </form>
     </div>
-  </section>
+  </div>
 
-  <!-- Contact Section -->
-  <section id="contact" class="bg-gray-800 py-16 px-4">
-    <div class="container mx-auto text-center">
-      <h3 class="text-3xl font-bold text-yellow-400 mb-8">Контакты администрации</h3>
-      <p class="text-gray-300 mb-4">Telegram: <a href="https://t.me/tiffor" class="text-cyan-400 hover:underline">@Tiffor</a></p>
-      <p class="text-gray-300 mb-4">Форум: <a href="https://forum.arizona-rp.com" class="text-cyan-400 hover:underline">forum.arizona-rp.com</a></p>
-      <p class="text-gray-300">Discord: <span class="text-gray-500">Скоро...</span></p>
-    </div>
-  </section>
+  <!-- Скрипт для показа/скрытия модального окна -->
+  <script>
+    document.getElementById('login-button').addEventListener('click', function() {
+      document.getElementById('login-modal').classList.remove('hidden');
+    });
+
+    // Закрытие модального окна при клике вне его
+    document.getElementById('login-modal').addEventListener('click', function(event) {
+      if (event.target === this) {
+        this.classList.add('hidden');
+      }
+    });
+  </script>
 
   <!-- Footer -->
   <footer class="bg-gray-900 text-white py-6 px-4">
@@ -143,36 +115,6 @@
       <p class="text-sm mt-2">&copy; 2025 Arizona Role Play. Все права защищены.</p>
     </div>
   </footer>
-
-  <script>
-    (function() {
-      const headerEl = document.getElementById('site-header');
-      let lastScrollY = window.scrollY;
-
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > lastScrollY) {
-          headerEl.style.top = '-100px';
-        } else {
-          headerEl.style.top = '0';
-        }
-        headerEl.classList.toggle('scrolled', window.pageYOffset > 50);
-        lastScrollY = window.scrollY;
-      });
-
-      const menuBtnEl = document.getElementById('mobile-menu-button');
-      const menuEl = document.getElementById('mobile-menu');
-
-      menuBtnEl.addEventListener('click', () => {
-        menuEl.classList.toggle('hidden');
-      });
-
-      menuEl.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          menuEl.classList.add('hidden');
-        });
-      });
-    })();
-  </script>
 
 </body>
 </html>
