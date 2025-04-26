@@ -6,7 +6,6 @@
   <title>Arizona Role Play</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    /* Общий стиль страницы */
     body {
       font-family: 'Poppins', sans-serif;
       background-color: #1f2937;
@@ -15,141 +14,115 @@
       padding: 0;
       overflow-x: hidden;
     }
-    html {
-      scroll-padding-top: 5rem;
-    }
-
-    /* Шапка с анимацией */
-    #site-header {
+    
+    /* Шапка */
+    header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      backdrop-filter: blur(10px);
-      background-color: rgba(31, 41, 55, 0.9);
-      z-index: 40;
-      transition: background-color 0.4s ease, padding 0.4s ease, top 0.5s ease;
+      background: rgba(31, 41, 55, 0.9);
+      padding: 15px 0;
+      z-index: 50;
+      transition: 0.3s ease;
     }
-    #site-header.scrolled {
-      background-color: rgba(31, 41, 55, 0.9);
-      padding-top: 0.75rem;
-      padding-bottom: 0.75rem;
+    header.scrolled {
+      background: rgba(31, 41, 55, 1);
+      padding: 10px 0;
     }
 
-    /* Стиль для шапки */
+    /* Логотип */
     .logo {
-      font-size: 2rem;
-      font-weight: 700;
+      font-size: 1.75rem;
+      font-weight: bold;
       color: white;
       letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
     }
 
+    .logo:hover {
+      color: #f59e0b;
+    }
+
+    /* Меню */
     .nav-links {
       display: flex;
-      gap: 24px;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 10px;
     }
 
     .nav-link {
       text-decoration: none;
-      font-size: 1.1rem;
-      color: #fff;
-      transition: color 0.3s ease;
+      font-size: 1.2rem;
+      color: white;
+      padding: 8px 20px;
+      border-radius: 20px;
+      transition: background-color 0.3s ease;
     }
 
     .nav-link:hover {
-      color: #f59e0b;
-    }
-
-    /* Анимации */
-    @keyframes slideInFromLeft {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(0); }
-    }
-
-    @keyframes slideInFromRight {
-      0% { transform: translateX(100%); }
-      100% { transform: translateX(0); }
-    }
-
-    @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-
-    /* Hero Section */
-    .hero-bg {
-      background: linear-gradient(270deg, #6a11cb, #2575fc, #6a11cb);
-      background-size: 600% 600%;
-      animation: gradientMove 16s ease infinite;
-      color: white;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      animation: fadeIn 2s ease-out;
-    }
-
-    .hero-content h2 {
-      font-size: 4rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      animation: slideInFromLeft 1s ease-out;
-    }
-
-    .btn-cta {
-      margin-top: 20px;
-      padding: 15px 30px;
       background-color: #f59e0b;
-      border-radius: 50px;
-      font-weight: bold;
-      font-size: 1.25rem;
-      color: black;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
-      animation: slideInFromRight 1.2s ease-out;
     }
 
-    .btn-cta:hover {
+    /* Форма для связи */
+    .contact-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #f59e0b;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+      z-index: 100;
+    }
+
+    .contact-btn:hover {
       background-color: #fbbf24;
     }
 
-    /* Контейнер секции */
-    .section {
-      padding: 50px 20px;
-      text-align: center;
+    .contact-form {
+      display: none;
+      position: fixed;
+      right: 20px;
+      bottom: 100px;
+      background-color: #1f2937;
+      padding: 20px;
+      border-radius: 15px;
+      width: 250px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      z-index: 101;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.3s ease;
     }
 
-    /* Формы */
+    .contact-form.show {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .contact-form input, .contact-form textarea {
       width: 100%;
-      padding: 12px;
-      margin-bottom: 20px;
-      background-color: #1f2937;
+      padding: 10px;
+      margin: 10px 0;
+      background-color: #374151;
       color: white;
-      border: 1px solid #374151;
+      border: 1px solid #6b7280;
       border-radius: 8px;
     }
 
     .contact-form button {
       background-color: #f59e0b;
       color: black;
+      padding: 10px 20px;
       border-radius: 8px;
-      padding: 12px 30px;
       width: 100%;
       font-weight: bold;
       cursor: pointer;
@@ -160,29 +133,59 @@
       background-color: #fbbf24;
     }
 
-    /* Анимация прокрутки */
-    .scroll-animation {
-      animation: fadeIn 2s ease-out;
+    /* Стили для геро-секции */
+    .hero-bg {
+      background: linear-gradient(270deg, #6a11cb, #2575fc);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    .hero-btn {
+      padding: 12px 30px;
+      background-color: #f59e0b;
+      border-radius: 50px;
+      color: black;
+      font-weight: bold;
+      font-size: 1.25rem;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .hero-btn:hover {
+      background-color: #fbbf24;
+    }
+
+    /* Анимации */
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
     }
 
     /* Адаптивность */
     @media (max-width: 768px) {
-      .nav-links {
-        display: block;
-        gap: 10px;
-      }
-
-      .btn-cta {
-        width: 100%;
-        padding: 15px;
-      }
-
-      .hero-bg h2 {
+      .hero-content h1 {
         font-size: 2.5rem;
       }
-
-      .server-card {
-        margin-bottom: 10px;
+      .nav-links {
+        gap: 15px;
+      }
+      .contact-form {
+        width: 200px;
       }
     }
   </style>
@@ -191,7 +194,7 @@
 
   <!-- Шапка -->
   <header id="site-header" class="fixed top-0 left-0 w-full backdrop-blur-lg bg-transparent py-4">
-    <div class="container mx-auto flex justify-between items-center px-4">
+    <div class="container mx-auto flex justify-between items-center px-6">
       <div class="logo">
         Arizona Role Play
       </div>
@@ -205,90 +208,61 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Герой-секция -->
   <section id="home" class="hero-bg">
     <div class="hero-content">
-      <h2 class="scroll-animation">Добро пожаловать в Arizona Role Play</h2>
-      <a href="#servers" class="btn-cta scroll-animation">Начать играть</a>
+      <h1 class="fade-in">Добро пожаловать в Arizona Role Play</h1>
+      <p class="fade-in">Присоединяйтесь к нашему уникальному миру, создайте своего персонажа и погружайтесь в захватывающие приключения!</p>
+      <a href="#servers" class="hero-btn fade-in">Начать играть</a>
     </div>
   </section>
 
-  <!-- Раздел Сервера -->
-  <section id="servers" class="section scroll-animation">
-    <h3 class="text-3xl font-bold text-yellow-400 mb-10">Наши сервера</h3>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div class="server-card bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
-        <h4 class="text-xl font-semibold mb-2">Tucson</h4>
-        <p class="text-sm text-gray-400 mb-4">IP: 185.169.134.45:7777</p>
-        <p class="text-gray-500">Онлайн: ~900 | Режим: Акция</p>
-      </div>
-      <div class="server-card bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
-        <h4 class="text-xl font-semibold mb-2">Phoenix</h4>
-        <p class="text-sm text-gray-400 mb-4">IP: 185.169.134.46:7777</p>
-        <p class="text-gray-500">Онлайн: ~700 | Режим: Стандарт</p>
-      </div>
-      <div class="server-card bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
-        <h4 class="text-xl font-semibold mb-2">Chandler</h4>
-        <p class="text-sm text-gray-400 mb-4">IP: 185.169.134.47:7777</p>
-        <p class="text-gray-500">Онлайн: ~500 | Режим: Новичок</p>
-      </div>
-    </div>
-  </section>
+  <!-- Контактная кнопка -->
+  <button class="contact-btn" id="contactButton">Связаться с нами</button>
 
-  <!-- Раздел Правила -->
-  <section id="rules" class="section scroll-animation">
-    <h3 class="text-3xl font-bold text-yellow-400 mb-10">Правила игры</h3>
-    <div class="space-y-4">
-      <p>1. Соблюдение законов игры. Не нарушайте правила.</p>
-      <p>2. Уважение других игроков. Взаимная вежливость – залог хорошей атмосферы.</p>
-      <p>3. Запрещены читы, баги и использование программ для получения преимущества.</p>
-      <p>4. Запрещены оскорбления и агрессия по отношению к другим игрокам.</p>
-    </div>
-  </section>
+  <!-- Форма для связи -->
+  <div class="contact-form" id="contactForm">
+    <h3 class="text-xl font-semibold text-center text-yellow-400 mb-4">Напишите нам</h3>
+    <input type="text" placeholder="Ваше имя" id="name" required>
+    <input type="email" placeholder="Ваш Email" id="email" required>
+    <textarea rows="4" placeholder="Ваше сообщение" id="message" required></textarea>
+    <button type="submit" id="sendMessage">Отправить сообщение</button>
+  </div>
 
-  <!-- Раздел Магазин -->
-  <section id="shop" class="section scroll-animation">
-    <h3 class="text-3xl font-bold text-yellow-400 mb-10">Магазин</h3>
-    <p class="text-xl text-gray-400">Все ваши покупки доступны прямо здесь!</p>
-  </section>
-
-  <!-- Форма обратной связи -->
-  <section id="contact" class="section scroll-animation">
-    <div class="contact-form">
-      <h2 class="text-2xl font-semibold text-center text-yellow-400 mb-6">Свяжитесь с нами</h2>
-      <form action="#">
-        <input type="text" placeholder="Ваше имя" required>
-        <input type="email" placeholder="Ваш Email" required>
-        <textarea rows="4" placeholder="Ваше сообщение" required></textarea>
-        <button type="submit">Отправить сообщение</button>
-      </form>
-    </div>
+  <!-- Сервера, правила и прочее -->
+  <section id="servers" class="section">
+    <!-- Ваши серверы и информация здесь -->
   </section>
 
   <!-- Подвал -->
   <footer class="bg-gray-900 text-white py-6 px-4">
     <div class="container mx-auto text-center">
-      <a href="https://arizona-games.com/privacy-policy" class="text-yellow-400 hover:underline mb-2 inline-block">Политика обработки персональных данных</a>
       <p class="text-sm mt-2">&copy; 2025 Arizona Role Play. Все права защищены.</p>
     </div>
   </footer>
 
   <script>
-    (function() {
-      const headerEl = document.getElementById('site-header');
-      let lastScrollY = window.scrollY;
+    // Скрипт для прокрутки шапки
+    const header = document.getElementById('site-header');
+    let lastScrollY = window.scrollY;
 
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > lastScrollY) {
-          headerEl.style.top = '-100px';
-        } else {
-          headerEl.style.top = '0';
-        }
-        headerEl.classList.toggle('scrolled', window.pageYOffset > 50);
-        lastScrollY = window.scrollY;
-      });
-    })();
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > lastScrollY) {
+        header.style.top = '-100px';
+      } else {
+        header.style.top = '0';
+      }
+      header.classList.toggle('scrolled', window.pageYOffset > 50);
+      lastScrollY = window.scrollY;
+    });
+
+    // Открытие и закрытие формы для связи
+    const contactButton = document.getElementById('contactButton');
+    const contactForm = document.getElementById('contactForm');
+
+    contactButton.addEventListener('click', () => {
+      contactForm.classList.toggle('show');
+    });
   </script>
-
 </body>
 </html>
