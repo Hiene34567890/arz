@@ -44,8 +44,6 @@
         <a href="#wiki" class="text-gray-200 hover:text-yellow-400">Вики</a>
         <a href="#contact" class="text-gray-200 hover:text-yellow-400">Контакты</a>
         <a href="https://donate.arizona-rp.com" class="ml-4 bg-yellow-500 text-black px-5 py-2 rounded-full hover:bg-yellow-400">Донат</a>
-        <!-- Кнопка входа -->
-        <button id="login-btn" class="bg-yellow-500 text-black px-5 py-2 rounded-full hover:bg-yellow-400">Войти</button>
       </nav>
       <button id="mobile-menu-button" class="lg:hidden text-white focus:outline-none">
         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -65,25 +63,6 @@
       </nav>
     </div>
   </header>
-
-  <!-- Модальное окно авторизации -->
-  <div id="login-modal" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden">
-    <div class="bg-gray-800 p-6 rounded-lg w-96">
-      <h2 class="text-2xl font-bold text-yellow-400 mb-4 text-center">Авторизация</h2>
-      <form id="login-form">
-        <div class="mb-4">
-          <label for="nickname" class="block text-gray-200">Никнейм</label>
-          <input type="text" id="nickname" name="nickname" class="w-full p-2 rounded-md bg-gray-700 text-white" required>
-        </div>
-        <div class="mb-6">
-          <label for="password" class="block text-gray-200">Пароль</label>
-          <input type="password" id="password" name="password" class="w-full p-2 rounded-md bg-gray-700 text-white" required>
-        </div>
-        <button type="submit" class="w-full bg-yellow-500 text-black py-2 rounded-md hover:bg-yellow-400 transition">Войти</button>
-      </form>
-      <button id="close-modal" class="mt-4 w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-400">Закрыть</button>
-    </div>
-  </div>
 
   <!-- Hero Section -->
   <section id="home" class="hero-bg flex items-center justify-center text-center px-4">
@@ -134,16 +113,61 @@
     </div>
   </section>
 
-  <script>
-    // Открытие модального окна при нажатии на кнопку "Войти"
-    document.getElementById('login-btn').addEventListener('click', function() {
-      document.getElementById('login-modal').classList.remove('hidden');
-    });
+  <!-- Wiki Section -->
+  <section id="wiki" class="container mx-auto py-16 px-4">
+    <h3 class="text-3xl font-bold text-center text-yellow-400 mb-6">Arizona RP Вики</h3>
+    <p class="text-gray-300 text-center mb-4">Полное собрание статей по геймплею, лору и механикам.</p>
+    <div class="text-center">
+      <a href="https://wiki.arizona-rp.com" class="bg-yellow-500 text-black px-6 py-3 rounded-full hover:bg-yellow-400 transition">Открыть Вики</a>
+    </div>
+  </section>
 
-    // Закрытие модального окна при нажатии на кнопку "Закрыть"
-    document.getElementById('close-modal').addEventListener('click', function() {
-      document.getElementById('login-modal').classList.add('hidden');
-    });
+  <!-- Contact Section -->
+  <section id="contact" class="bg-gray-800 py-16 px-4">
+    <div class="container mx-auto text-center">
+      <h3 class="text-3xl font-bold text-yellow-400 mb-8">Контакты администрации</h3>
+      <p class="text-gray-300 mb-4">Telegram: <a href="https://t.me/tiffor" class="text-cyan-400 hover:underline">@Tiffor</a></p>
+      <p class="text-gray-300 mb-4">Форум: <a href="https://forum.arizona-rp.com" class="text-cyan-400 hover:underline">forum.arizona-rp.com</a></p>
+      <p class="text-gray-300">Discord: <span class="text-gray-500">Скоро...</span></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-6 px-4">
+    <div class="container mx-auto text-center">
+      <a href="https://arizona-games.com/privacy-policy" class="text-yellow-400 hover:underline mb-2 inline-block">Политика обработки персональных данных</a>
+      <p class="text-sm mt-2">&copy; 2025 Arizona Role Play. Все права защищены.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      const headerEl = document.getElementById('site-header');
+      let lastScrollY = window.scrollY;
+
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > lastScrollY) {
+          headerEl.style.top = '-100px';
+        } else {
+          headerEl.style.top = '0';
+        }
+        headerEl.classList.toggle('scrolled', window.pageYOffset > 50);
+        lastScrollY = window.scrollY;
+      });
+
+      const menuBtnEl = document.getElementById('mobile-menu-button');
+      const menuEl = document.getElementById('mobile-menu');
+
+      menuBtnEl.addEventListener('click', () => {
+        menuEl.classList.toggle('hidden');
+      });
+
+      menuEl.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          menuEl.classList.add('hidden');
+        });
+      });
+    })();
   </script>
 
 </body>
