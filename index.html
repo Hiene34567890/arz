@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,34 +8,17 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden; /* Убирает горизонтальную прокрутку */
+      background-color: #1a202c;
     }
-
-    html {
-      scroll-padding-top: 5rem;
-    }
-
-    /* Header Styles */
     #site-header {
       transition: background-color 0.4s ease, padding 0.4s ease, top 0.5s ease;
       z-index: 40;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      left: 0;
-      right: 0;
-      padding: 1rem 0;
     }
-
     #site-header.scrolled {
       background-color: rgba(31, 41, 55, 0.9);
       padding-top: 0.75rem;
       padding-bottom: 0.75rem;
     }
-
-    /* Hero Section */
     .hero-bg {
       position: relative;
       background: linear-gradient(270deg, #6a11cb, #2575fc, #6a11cb);
@@ -48,224 +30,61 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 0 20px;
     }
-
     @keyframes gradientMove {
-      0% {
-        background-position: 0% 50%;
-      }
-
-      50% {
-        background-position: 100% 50%;
-      }
-
-      100% {
-        background-position: 0% 50%;
-      }
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
-
-    /* Overlay for background blur */
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba(0, 0, 0, 0.5);
-      display: none;
-      z-index: 40;
-    }
-
-    /* Modal Styles */
-    #supportModal {
-      display: none;
-      position: fixed;
-      bottom: 10%;
-      right: 10%;
-      background-color: rgba(0, 0, 0, 0.8);
-      color: white;
-      padding: 20px;
-      border-radius: 10px;
-      width: 300px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-      z-index: 50;
-    }
-
-    #supportModal input,
-    #supportModal textarea {
-      width: 100%;
-      margin-bottom: 10px;
-      padding: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      background-color: #333;
-      color: white;
-    }
-
-    #supportModal button {
-      background-color: #ff9800;
-      color: white;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    #supportModal button:hover {
-      background-color: #ff6600;
-    }
-
-    /* Mobile-friendly buttons */
-    .mobile-btn {
-      background-color: #ff9800;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 5px;
-      text-align: center;
-      width: 100%;
-    }
-
-    /* Header Mobile Styles */
-    #mobile-menu {
-      display: none;
-    }
-
-    #mobile-menu-button {
-      display: block;
-      background: transparent;
-      border: none;
-      color: white;
-      cursor: pointer;
-    }
-
-    .mobile-nav {
-      display: none;
-      flex-direction: column;
-      padding: 1rem;
-      background-color: rgba(0, 0, 0, 0.8);
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 30;
-    }
-
-    .mobile-nav a {
-      color: white;
-      text-decoration: none;
-      padding: 0.5rem 0;
-      font-size: 1.2rem;
-      border-bottom: 1px solid #444;
-    }
-
-    /* Support Button */
-    #support-btn {
-      position: fixed;
-      bottom: 10px;
-      right: 10px;
-      background-color: #ff9800;
-      color: white;
-      padding: 15px 25px;
-      border-radius: 50%;
-      font-size: 20px;
-      cursor: pointer;
-      z-index: 60;
+    .hero-button {
+      background-color: #fbbf24;
+      padding: 15px 40px;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 25px;
+      color: black;
       transition: background-color 0.3s ease;
     }
-
-    #support-btn:hover {
-      background-color: #ff6600;
+    .hero-button:hover {
+      background-color: #f59e0b;
     }
-
-    /* Media Queries for Mobile */
-    @media (max-width: 768px) {
-      #mobile-menu-button {
-        display: block;
-      }
-
-      #mobile-menu {
-        display: none;
-      }
-
-      .mobile-nav {
-        display: block;
-      }
-    }
-
-    @media (min-width: 769px) {
-      #mobile-menu-button {
-        display: none;
-      }
-    }
-
-    /* Button hover effects */
-    .btn {
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-
-    .btn:hover {
-      background-color: #ff6600;
-      transform: scale(1.05);
-    }
-
-    /* Styling for sections */
-    section {
-      padding: 60px 0;
-      background-color: #1f2937;
+    .section-header {
+      font-size: 36px;
+      color: #fbbf24;
+      font-weight: bold;
       text-align: center;
+      margin-bottom: 2rem;
     }
-
-    .section-title {
-      font-size: 2rem;
-      font-weight: 700;
+    .info-card {
+      background-color: #2d3748;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .info-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+    .info-card h4 {
+      font-size: 20px;
       color: #fbbf24;
-      text-transform: uppercase;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
-
-    .section-content {
-      color: #e5e7eb;
-      font-size: 1.125rem;
-      line-height: 1.6;
+    .info-card p {
+      color: #cbd5e0;
     }
-
-    .section-content a {
-      color: #fbbf24;
+    .contact-link {
+      color: #38bdf8;
+      text-decoration: none;
       transition: color 0.3s ease;
     }
-
-    .section-content a:hover {
-      color: #ff6600;
-    }
-
-    .cta-button {
-      padding: 15px 30px;
-      background-color: #fbbf24;
-      color: black;
-      font-size: 1.125rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      border-radius: 5px;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-
-    .cta-button:hover {
-      background-color: #ff6600;
-      transform: scale(1.1);
-    }
-
-    /* Content container fix */
-    .content-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
+    .contact-link:hover {
+      color: #0ea5e9;
     }
   </style>
 </head>
-
-<body class="bg-gray-900 text-white pt-20">
+<body>
 
   <!-- Header -->
   <header id="site-header" class="fixed top-0 left-0 w-full backdrop-blur-lg bg-transparent py-4">
@@ -276,109 +95,94 @@
         <a href="#servers" class="text-gray-200 hover:text-yellow-400">Сервера</a>
         <a href="#rules" class="text-gray-200 hover:text-yellow-400">Правила</a>
         <a href="#shop" class="text-gray-200 hover:text-yellow-400">Магазин</a>
-        <a href="#wiki" class="text-gray-200 hover:text-yellow-400">Вики</a>
         <a href="#contact" class="text-gray-200 hover:text-yellow-400">Контакты</a>
-        <a href="https://donate.arizona-rp.com" class="ml-4 bg-yellow-500 text-black px-5 py-2 rounded-full hover:bg-yellow-400">Донат</a>
       </nav>
-      <button id="mobile-menu-button" class="lg:hidden text-white focus:outline-none">
-        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-    </div>
-    <div id="mobile-menu" class="mobile-nav">
-      <a href="#home">Главная</a>
-      <a href="#servers">Сервера</a>
-      <a href="#rules">Правила</a>
-      <a href="#shop">Магазин</a>
-      <a href="#wiki">Вики</a>
-      <a href="#contact">Контакты</a>
-      <a href="https://donate.arizona-rp.com">Донат</a>
     </div>
   </header>
 
   <!-- Hero Section -->
   <section id="home" class="hero-bg">
-    <div class="relative z-10">
-      <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6">Добро пожаловать в Arizona Role Play</h2>
-      <a href="#servers" class="cta-button">Начать играть</a>
+    <div>
+      <h2 class="text-4xl font-extrabold mb-6 text-white">Добро пожаловать в Arizona Role Play</h2>
+      <a href="#servers" class="hero-button">Начать играть</a>
     </div>
   </section>
 
-  <!-- Support Button -->
-  <button id="support-btn">Поддержка</button>
+  <!-- Servers Section -->
+  <section id="servers" class="container mx-auto py-16 px-4">
+    <h3 class="section-header">Наши сервера</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="info-card">
+        <h4>Tucson</h4>
+        <p>IP: 185.169.134.45:7777 | Онлайн: ~900 | Режим: Акция</p>
+      </div>
+      <div class="info-card">
+        <h4>Phoenix</h4>
+        <p>IP: 185.169.134.46:7777 | Онлайн: ~700 | Режим: Стандарт</p>
+      </div>
+      <div class="info-card">
+        <h4>Chandler</h4>
+        <p>IP: 185.169.134.47:7777 | Онлайн: ~500 | Режим: Новичок</p>
+      </div>
+    </div>
+  </section>
 
-  <!-- Support Modal -->
-  <div id="supportModal" class="hidden">
-    <h3 class="text-xl font-semibold">Поддержка</h3>
-    <form>
-      <input type="text" placeholder="Ваше имя" required>
-      <textarea placeholder="Ваш вопрос" required></textarea>
-      <button type="submit">Отправить</button>
-    </form>
-  </div>
-
-  <!-- Сервера -->
-  <section id="servers" class="content-container">
-    <h2 class="section-title">Наши сервера</h2>
-    <div class="section-content">
-      <p>IP-адреса серверов:</p>
-      <ul>
-        <li>Аризона РП 1: 123.456.789.0</li>
-        <li>Аризона РП 2: 987.654.321.0</li>
+  <!-- Rules Section -->
+  <section id="rules" class="bg-gray-800 py-16 px-4">
+    <div class="container mx-auto">
+      <h3 class="section-header text-yellow-400">Правила проекта</h3>
+      <ul class="list-disc list-inside space-y-4 text-gray-300">
+        <li>Запрещены читы, багюз и другие нечестные методы.</li>
+        <li>Уважайте других игроков и администрацию.</li>
+        <li>Запрещено рекламировать сторонние проекты.</li>
+        <li>Соблюдайте правила РП-поведения.</li>
       </ul>
     </div>
   </section>
 
-  <!-- Правила -->
-  <section id="rules" class="content-container">
-    <h2 class="section-title">Правила игры</h2>
-    <div class="section-content">
-      <ol>
-        <li>Не нарушать правила сервера.</li>
-        <li>Уважать других игроков.</li>
-        <li>Не использовать читы.</li>
-      </ol>
+  <!-- Shop Section -->
+  <section id="shop" class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 py-16 px-4">
+    <div class="container mx-auto text-center">
+      <h3 class="section-header text-white">Магазин внутриигровых товаров</h3>
+      <p class="text-gray-200 mb-4">Уникальные скины, автомобили, VIP-пакеты и многое другое.</p>
+      <a href="https://shop.arizona-rp.com" class="hero-button">Перейти в магазин</a>
     </div>
   </section>
 
-  <!-- Магазин -->
-  <section id="shop" class="content-container">
-    <h2 class="section-title">Магазин</h2>
-    <div class="section-content">
-      <p>Посетите наш <a href="https://donate.arizona-rp.com" class="text-yellow-400">магазин</a> для покупки внутриигровых товаров.</p>
+  <!-- Contact Section -->
+  <section id="contact" class="bg-gray-800 py-16 px-4">
+    <div class="container mx-auto text-center">
+      <h3 class="section-header text-yellow-400">Контакты администрации</h3>
+      <p class="text-gray-300 mb-4">Telegram: <a href="https://t.me/tiffor" class="contact-link">Tiffor</a></p>
+      <p class="text-gray-300 mb-4">Форум: <a href="https://forum.arizona-rp.com" class="contact-link">forum.arizona-rp.com</a></p>
+      <p class="text-gray-300">Discord: <span class="text-gray-500">Скоро...</span></p>
     </div>
   </section>
 
-  <!-- Контакты -->
-  <section id="contact" class="content-container">
-    <h2 class="section-title">Контакты</h2>
-    <div class="section-content">
-      <p>Свяжитесь с нами через:</p>
-      <ul>
-        <li>Email: <a href="mailto:support@arizona-rp.com" class="text-yellow-400">support@arizona-rp.com</a></li>
-        <li>Telegram: <a href="https://t.me/arizona_support" class="text-yellow-400">@arizona_support</a></li>
-      </ul>
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-6 px-4">
+    <div class="container mx-auto text-center">
+      <a href="https://arizona-games.com/privacy-policy" class="text-yellow-400 hover:underline mb-2 inline-block">Политика обработки персональных данных</a>
+      <p class="text-sm mt-2">&copy; 2025 Arizona Role Play. Все права защищены.</p>
     </div>
-  </section>
+  </footer>
 
   <script>
-    // Show Support Modal
-    document.getElementById('support-btn').addEventListener('click', () => {
-      const modal = document.getElementById('supportModal');
-      modal.classList.toggle('hidden');
-    });
+    (function() {
+      const headerEl = document.getElementById('site-header');
+      let lastScrollY = window.scrollY;
 
-    // Handle header animation on scroll
-    window.addEventListener('scroll', () => {
-      const header = document.getElementById('site-header');
-      if (window.scrollY > 100) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > lastScrollY) {
+          headerEl.style.top = '-100px';
+        } else {
+          headerEl.style.top = '0';
+        }
+        headerEl.classList.toggle('scrolled', window.pageYOffset > 50);
+        lastScrollY = window.scrollY;
+      });
+    })();
   </script>
-</body>
 
+</body>
 </html>
