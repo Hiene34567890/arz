@@ -1,1 +1,105 @@
+/* Основной стиль сайта */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
 
+header {
+    background-color: #1a73e8;
+    padding: 20px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo h1 {
+    margin: 0;
+}
+
+header nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+input, textarea, select {
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1558a5;
+}
+
+#chatBox {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+#messages {
+    height: 200px;
+    overflow-y: auto;
+}
+
+textarea {
+    resize: none;
+}
+
+#adsContainer {
+    margin-top: 20px;
+}
+
+.ad {
+    background-color: white;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.ad h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.ad p {
+    margin: 10px 0;
+}
