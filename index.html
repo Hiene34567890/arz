@@ -1,94 +1,94 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Авито - это сайт, где можно купить и продать товары с рук. Лучшие объявления по всем категориям.">
-  <meta name="keywords" content="купить, продать, объявления, товары, Авито">
-  <meta name="author" content="Ваша компания">
-  <title>Авито — Купить и продать товары онлайн</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Авито — Купить и продать товары онлайн">
+    <meta property="og:description" content="Авито — сайт для покупки и продажи товаров с рук. Объявления на все категории.">
+    <meta property="og:image" content="https://example.com/preview-image.jpg">
+    <meta property="og:url" content="https://example.com">
+    <title>Авито — Объявления о продаже товаров</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Шапка -->
-  <header>
-    <div class="logo">
-      <h1>Авито</h1>
-    </div>
+
+<header>
     <nav>
-      <ul>
-        <li><a href="#">Главная</a></li>
-        <li><a href="#">Товары</a></li>
-        <li><a href="#">Услуги</a></li>
-        <li><a href="#">Контакты</a></li>
-      </ul>
+        <ul>
+            <li><a href="#">Главная</a></li>
+            <li><a href="#">Категории</a></li>
+            <li><a href="#">Магазин</a></li>
+            <li><a href="#">Контакты</a></li>
+        </ul>
     </nav>
-  </header>
+</header>
 
-  <!-- Поиск -->
-  <div class="search-bar">
-    <input type="text" id="search" placeholder="Поиск товаров...">
-    <button>Найти</button>
-  </div>
+<main>
+    <section class="search-bar">
+        <input type="text" id="search-input" placeholder="Поиск товаров...">
+        <button>Поиск</button>
+    </section>
 
-  <!-- Фильтры -->
-  <div class="filters">
-    <h3>Фильтры</h3>
-    <form id="filter-form">
-      <label for="category">Категория:</label>
-      <select id="category" name="category">
-        <option value="all">Все</option>
-        <option value="electronics">Электроника</option>
-        <option value="clothing">Одежда</option>
-        <option value="furniture">Мебель</option>
-      </select>
-      <br>
-      
-      <label for="price">Цена:</label>
-      <input type="range" id="price" name="price" min="0" max="10000" step="100">
-      <span id="price-value">0</span>
-      <br>
-      
-      <label for="condition">Состояние:</label>
-      <select id="condition" name="condition">
-        <option value="new">Новое</option>
-        <option value="used">Б/у</option>
-      </select>
-      
-      <button type="submit">Применить фильтры</button>
-    </form>
-  </div>
+    <section class="filters">
+        <form id="filter-form">
+            <label for="category">Категория:</label>
+            <select id="category">
+                <option value="all">Все</option>
+                <option value="electronics">Электроника</option>
+                <option value="furniture">Мебель</option>
+            </select>
 
-  <!-- Карточки товаров -->
-  <div class="product-list">
-    <div class="product-card">
-      <img src="https://via.placeholder.com/200" alt="Товар">
-      <h4>Телефон Samsung Galaxy</h4>
-      <p>Цена: 20,000₽</p>
-      <button>Подробнее</button>
+            <label for="price">Цена до:</label>
+            <input type="number" id="price" placeholder="10000" />
+
+            <label for="condition">Состояние:</label>
+            <select id="condition">
+                <option value="all">Все</option>
+                <option value="new">Новый</option>
+                <option value="used">Б/у</option>
+            </select>
+
+            <button type="submit">Фильтровать</button>
+        </form>
+    </section>
+
+    <section class="product-list">
+        <div class="product-card" data-category="electronics" data-price="10000" data-condition="new">
+            <img src="https://via.placeholder.com/200" alt="Телефон">
+            <h4>Телефон Samsung Galaxy</h4>
+            <p>Цена: 20,000₽</p>
+            <p>Рейтинг: ★★★★☆</p>
+            <button class="details-btn">Подробнее</button>
+            <button class="favorite-btn">Добавить в избранное</button>
+        </div>
+
+        <div class="product-card" data-category="furniture" data-price="5000" data-condition="used">
+            <img src="https://via.placeholder.com/200" alt="Кресло">
+            <h4>Кресло офисное</h4>
+            <p>Цена: 5,000₽</p>
+            <p>Рейтинг: ★★★☆☆</p>
+            <button class="details-btn">Подробнее</button>
+            <button class="favorite-btn">Добавить в избранное</button>
+        </div>
+    </section>
+</main>
+
+<!-- Модальное окно -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Телефон Samsung Galaxy</h2>
+        <p>Описание: Отличный телефон с большими возможностями...</p>
+        <p>Цена: 20,000₽</p>
+        <button>Купить</button>
     </div>
-    <div class="product-card">
-      <img src="https://via.placeholder.com/200" alt="Товар">
-      <h4>Ноутбук Apple MacBook</h4>
-      <p>Цена: 60,000₽</p>
-      <button>Подробнее</button>
-    </div>
-    <!-- Дополнительные карточки товаров -->
-  </div>
+</div>
 
-  <!-- Уведомления -->
-  <div class="notifications">
-    <h3>Уведомления</h3>
-    <ul>
-      <li>Вы получили новое сообщение от пользователя Иван</li>
-      <li>Ваше объявление было успешно размещено</li>
-    </ul>
-  </div>
-
-  <footer>
+<footer>
     <p>&copy; 2025 Авито. Все права защищены.</p>
-  </footer>
+</footer>
 
-  <script src="script.js"></script>
+<script src="scripts.js"></script>
 </body>
 </html>
