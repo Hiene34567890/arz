@@ -1,84 +1,90 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avito Clone</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Сайт как Avito</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Шапка -->
+  <header>
+    <div>Сайт как Avito</div>
+  </header>
 
-    <!-- Header -->
-    <header>
-        <div class="logo">
-            <h1>Avito Clone</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#home">Главная</a></li>
-                <li><a href="#about-us">О нас</a></li>
-                <li><a href="#contact">Контакты</a></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- Сортировка -->
+  <div class="sorting">
+    <label for="sort-by">Сортировать по:</label>
+    <select id="sort-by">
+      <option value="price-asc">Цене: от низкой к высокой</option>
+      <option value="price-desc">Цене: от высокой к низкой</option>
+      <option value="date-desc">По дате: новые сверху</option>
+      <option value="popularity">По популярности</option>
+    </select>
+  </div>
 
-    <!-- Search Bar -->
-    <section id="search-bar">
-        <input type="text" id="search-input" placeholder="Поиск по объявлениям...">
-        <button id="search-btn">Найти</button>
-    </section>
+  <!-- Управление объявлениями -->
+  <div class="manage-ad">
+    <button class="delete-ad">Удалить объявление</button>
+    <button class="block-ad">Заблокировать объявление</button>
+  </div>
 
-    <!-- Category Filter -->
-    <section id="category-filter">
-        <label for="category-select">Выберите категорию:</label>
-        <select id="category-select">
-            <option value="all">Все</option>
-            <option value="car">Автомобили</option>
-            <option value="house">Недвижимость</option>
-            <option value="electronics">Электроника</option>
-            <option value="job">Работа</option>
-            <option value="services">Услуги</option>
-        </select>
-    </section>
+  <!-- История поиска -->
+  <div class="search-history">
+    <h3>История поиска</h3>
+    <ul id="history-list">
+      <li>Поиск по "Телефоны"</li>
+      <li>Поиск по "Ноутбуки"</li>
+      <li>Поиск по "Игры для PlayStation"</li>
+    </ul>
+  </div>
 
-    <!-- Ad Listings -->
-    <section id="ad-list">
-        <div class="ad" data-category="car">
-            <h3>Автомобиль в хорошем состоянии</h3>
-            <p>Цена: 500,000 руб.</p>
-        </div>
-        <div class="ad" data-category="house">
-            <h3>Квартира в центре города</h3>
-            <p>Цена: 3,000,000 руб.</p>
-        </div>
-        <div class="ad" data-category="electronics">
-            <h3>Ноутбук HP</h3>
-            <p>Цена: 50,000 руб.</p>
-        </div>
-        <div class="ad" data-category="job">
-            <h3>Вакансия программиста</h3>
-            <p>Зарплата: 80,000 руб.</p>
-        </div>
-    </section>
+  <!-- Пагинация -->
+  <div class="pagination">
+    <button id="prev-page">Предыдущая</button>
+    <span id="page-number">Страница 1</span>
+    <button id="next-page">Следующая</button>
+  </div>
 
-    <!-- About Us -->
-    <section id="about-us">
-        <h2>О нас</h2>
-        <p>Мы — онлайн платформа для обмена объявлениями. Мы создаем удобный и безопасный сервис для пользователей по продаже товаров и услуг.</p>
-    </section>
+  <!-- Лучшие продавцы -->
+  <div class="top-sellers">
+    <h3>Лучшие продавцы</h3>
+    <div class="seller">
+      <p><strong>Иван</strong> - 1000 проданных товаров</p>
+    </div>
+    <div class="seller">
+      <p><strong>Мария</strong> - 800 проданных товаров</p>
+    </div>
+    <div class="seller">
+      <p><strong>Алексей</strong> - 600 проданных товаров</p>
+    </div>
+  </div>
 
-    <!-- Contact -->
-    <section id="contact">
-        <h2>Контакты</h2>
-        <p>Email: support@avito.com</p>
-        <p>Телефон: +7 800 555 35 35</p>
-    </section>
+  <!-- Форма добавления объявления -->
+  <div class="add-ad-form">
+    <h3>Добавить объявление</h3>
+    <form>
+      <label for="ad-title">Название:</label>
+      <input type="text" id="ad-title" name="ad-title" required>
+      
+      <label for="ad-description">Описание:</label>
+      <textarea id="ad-description" name="ad-description" required></textarea>
+      
+      <label for="ad-price">Цена:</label>
+      <input type="number" id="ad-price" name="ad-price" required>
+      
+      <label for="ad-category">Категория:</label>
+      <select id="ad-category" name="ad-category" required>
+        <option value="electronics">Электроника</option>
+        <option value="furniture">Мебель</option>
+        <option value="clothing">Одежда</option>
+      </select>
+      
+      <button type="submit">Добавить объявление</button>
+    </form>
+  </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Avito Clone. Все права защищены.</p>
-    </footer>
-
-    <script src="scripts.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
