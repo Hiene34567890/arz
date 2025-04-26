@@ -4,10 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Arizona RolePlay</title>
-  <link
-    href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-    rel="stylesheet"
-  >
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
     body { font-family: 'Poppins', sans-serif; }
     html { scroll-padding-top: 4rem; }
@@ -25,12 +22,16 @@
                   w-full md:w-auto text-center">
         <a href="#home" class="px-4 py-2 hover:text-yellow-400 transition">Главная</a>
         <a href="#servers" class="px-4 py-2 hover:text-yellow-400 transition">Сервера</a>
-        <a href="#contact" class="px-4 py-2 hover:text-yellow-400 transition">Контакты</a>
+        <a href="#rules" class="px-4 py-2 hover:text-yellow-400 transition">Правила</a>
+        <a href="#shop" class="px-4 py-2 hover:text-yellow-400 transition">Магазин</a>
+        <a href="#wiki" class="px-4 py-2 hover:text-yellow-400 transition">Вики</a>
+        <a href="https://forum.arizona-rp.com" target="_blank" class="px-4 py-2 hover:text-yellow-400 transition">Форум</a>
         <a href="https://donate.arizona-rp.com"
            class="mt-2 md:mt-0 bg-yellow-500 text-black font-extrabold text-lg rounded-full
                   px-6 py-2 hover:bg-yellow-400 transition transform hover:scale-105 shadow-lg">
           Донат
         </a>
+        <a href="#contact" class="px-4 py-2 hover:text-yellow-400 transition">Контакты</a>
       </nav>
     </div>
   </header>
@@ -76,21 +77,38 @@
     </div>
   </section>
 
-  <!-- О проекте -->
-  <section class="bg-gradient-to-r from-teal-500 via-green-500 to-blue-500 py-16 px-4">
-    <div class="container mx-auto text-center md:text-left">
-      <h3 class="text-3xl font-bold mb-6 text-white">О проекте Arizona RP</h3>
-      <div class="max-w-4xl mx-auto bg-gray-700 p-8 rounded-xl shadow-xl">
-        <p class="text-lg mb-6 text-gray-300 leading-relaxed">
-          Arizona RolePlay — это один из самых популярных проектов в мире...
-        </p>
-        <p class="text-lg mb-6 text-gray-300 leading-relaxed">
-          Проект представляет собой тщательно проработанную систему...
-        </p>
-        <p class="text-lg mb-6 text-gray-300 leading-relaxed">
-          Мы стремимся предоставить вам лучший опыт...
-        </p>
-      </div>
+  <!-- Правила -->
+  <section id="rules" class="bg-gray-800 py-16 px-4">
+    <div class="container mx-auto">
+      <h3 class="text-3xl font-bold mb-6 text-center text-yellow-400">Правила проекта</h3>
+      <ul class="list-disc list-inside text-gray-300 space-y-2">
+        <li>1. Соблюдайте уважение к другим игрокам.</li>
+        <li>2. Запрещены оскорбления, агрессия и мат.</li>
+        <li>3. Не используйте читы и баги.</li>
+        <li>4. Следуйте сюжету и ролевому отыгрышу.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Магазин -->
+  <section id="shop" class="bg-gradient-to-r from-purple-700 to-pink-500 py-16 px-4">
+    <div class="container mx-auto text-center">
+      <h3 class="text-3xl font-bold mb-6 text-white">Магазин внутриигровых товаров</h3>
+      <p class="text-gray-200 mb-4">Приобретайте уникальные скины, автомобили и VIP-пакеты.</p>
+      <a href="https://shop.arizona-rp.com" class="bg-yellow-500 text-black font-semibold px-6 py-3 rounded-full hover:bg-yellow-400 transition">
+        Перейти в магазин
+      </a>
+    </div>
+  </section>
+
+  <!-- Вики -->
+  <section id="wiki" class="container mx-auto py-16 px-4">
+    <h3 class="text-3xl font-bold mb-6 text-center text-yellow-400">Arizona RP Вики</h3>
+    <p class="text-gray-300 mb-4 text-center">Полное собрание статей по геймплею, лору и механикам.</p>
+    <div class="text-center">
+      <a href="https://wiki.arizona-rp.com" class="bg-yellow-500 text-black font-semibold px-6 py-3 rounded-full hover:bg-yellow-400 transition">
+        Открыть Вики
+      </a>
     </div>
   </section>
 
@@ -98,7 +116,7 @@
   <section id="contact" class="bg-gray-800 py-16 px-4">
     <div class="container mx-auto text-center">
       <h3 class="text-3xl font-bold mb-8 text-yellow-400">Контакты администрации</h3>
-      <p class="text-lg text-gray-300 mb-4">Мы всегда рады помочь вам. Свяжитесь:</p>
+      <p class="text-lg text-gray-300 mb-4">Мы всегда рады помочь вам. Свяжитесь через:</p>
       <p class="mb-2">Telegram: <a href="https://t.me/tiffor" class="text-cyan-400 hover:underline">@Tiffor</a></p>
       <p class="mb-2">Форум: <a href="https://forum.arizona-rp.com/" class="text-cyan-400 hover:underline">forum.arizona-rp.com</a></p>
       <p>Discord: <a href="#" class="text-cyan-400 hover:underline">Скоро...</a></p>
@@ -116,24 +134,24 @@
   </footer>
 
   <script>
-    let lastScroll = 0;
-    let ticking = false;
+    let lastScroll = 0, ticking = false;
     const header = document.getElementById('site-header');
-    const deltaThreshold = 50;
+    const delta = 50;
 
     window.addEventListener('scroll', () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const current = window.pageYOffset;
-          const delta = current - lastScroll;
+          const diff = current - lastScroll;
 
-          if (delta > deltaThreshold && current > header.offsetHeight) {
+          if (diff > delta && current > header.offsetHeight) {
             header.classList.add('-translate-y-full');
             lastScroll = current;
-          } else if (delta < -deltaThreshold) {
+          } else if (diff < -delta) {
             header.classList.remove('-translate-y-full');
             lastScroll = current;
           }
+
           ticking = false;
         });
         ticking = true;
