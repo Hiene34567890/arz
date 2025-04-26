@@ -273,7 +273,24 @@
   <section id="servers" class="py-20 bg-gray-800">
     <div class="container mx-auto text-center">
       <h2 class="section-title">Наши Сервера</h2>
-      <p class="section-content">Присоединяйтесь к нашим уникальным серверам и начните приключение.</p>
+      <p class="section-content">Выберите сервер для игры в Arizona RP!</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-6">
+        <div class="server-card bg-gray-700 p-6 rounded-lg">
+          <h3 class="text-xl font-semibold text-yellow-500">Сервер 1</h3>
+          <p class="text-gray-300">IP: 192.168.1.1</p>
+          <p class="text-gray-300">Онлайн: 120/200</p>
+        </div>
+        <div class="server-card bg-gray-700 p-6 rounded-lg">
+          <h3 class="text-xl font-semibold text-yellow-500">Сервер 2</h3>
+          <p class="text-gray-300">IP: 192.168.1.2</p>
+          <p class="text-gray-300">Онлайн: 90/200</p>
+        </div>
+        <div class="server-card bg-gray-700 p-6 rounded-lg">
+          <h3 class="text-xl font-semibold text-yellow-500">Сервер 3</h3>
+          <p class="text-gray-300">IP: 192.168.1.3</p>
+          <p class="text-gray-300">Онлайн: 150/200</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -282,6 +299,12 @@
     <div class="container mx-auto text-center">
       <h2 class="section-title">Правила игры</h2>
       <p class="section-content">Прочитайте наши правила, чтобы избежать неприятных ситуаций в игре.</p>
+      <ul class="text-gray-300 text-left mt-6">
+        <li>- Соблюдайте уважение к другим игрокам.</li>
+        <li>- Не используйте чит-коды или баги.</li>
+        <li>- Реклама других серверов запрещена.</li>
+        <li>- Запрещены оскорбления и угрозы.</li>
+      </ul>
     </div>
   </section>
 
@@ -290,6 +313,23 @@
     <div class="container mx-auto text-center">
       <h2 class="section-title">Магазин</h2>
       <p class="section-content">Покупайте предметы и улучшения для вашего персонажа.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-6">
+        <div class="shop-item bg-gray-700 p-6 rounded-lg">
+          <h3 class="text-xl font-semibold text-yellow-500">Предмет 1</h3>
+          <p class="text-gray-300">Описание предмета</p>
+          <p class="text-yellow-400">Цена: 1000$</p>
+        </div>
+        <div class="shop-item bg-gray-700 p-6 rounded-lg">
+          <h3 class="text-xl font-semibold text-yellow-500">Предмет 2</h3>
+          <p class="text-gray-300">Описание предмета</p>
+          <p class="text-yellow-400">Цена: 1500$</p>
+        </div>
+        <div class="shop-item bg-gray-700 p-6 rounded-lg">
+          <h3 class="text-xl font-semibold text-yellow-500">Предмет 3</h3>
+          <p class="text-gray-300">Описание предмета</p>
+          <p class="text-yellow-400">Цена: 2000$</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -297,7 +337,7 @@
   <section id="wiki" class="py-20 bg-gray-800">
     <div class="container mx-auto text-center">
       <h2 class="section-title">Вики</h2>
-      <p class="section-content">Изучите вики и получите полезную информацию о игре.</p>
+      <p class="section-content">Получите полезную информацию о нашем сервере.</p>
     </div>
   </section>
 
@@ -305,23 +345,23 @@
   <section id="contact" class="py-20 bg-gray-800">
     <div class="container mx-auto text-center">
       <h2 class="section-title">Контакты</h2>
-      <p class="section-content">Свяжитесь с нами через:</p>
-      <p><a href="mailto:support@arizona-rp.com" class="text-yellow-500">Email</a> | <a href="https://t.me/arizona_rp" class="text-yellow-500">Telegram</a></p>
+      <p class="section-content">Свяжитесь с нами через Telegram или Email.</p>
+      <ul class="text-gray-300">
+        <li><a href="https://t.me/username">Телеграм: @username</a></li>
+        <li><a href="mailto:support@domain.com">Email: support@domain.com</a></li>
+      </ul>
     </div>
   </section>
 
   <!-- Support Modal -->
   <div id="supportModal" class="hidden">
-    <div class="bg-black p-6 rounded-lg shadow-xl">
-      <h3 class="text-xl font-bold text-white">Техническая поддержка</h3>
-      <input type="text" placeholder="Ваше имя" class="mt-4">
-      <textarea rows="4" placeholder="Опишите проблему" class="mt-4"></textarea>
-      <button class="mt-4">Отправить</button>
-    </div>
+    <h3 class="text-xl font-semibold">Поддержка</h3>
+    <form>
+      <input type="text" placeholder="Ваше имя" required>
+      <textarea placeholder="Ваш вопрос" required></textarea>
+      <button type="submit">Отправить</button>
+    </form>
   </div>
-
-  <!-- Floating Support Button -->
-  <button id="support-btn">?</button>
 
   <script>
     // Toggle mobile menu
