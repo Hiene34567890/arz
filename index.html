@@ -3,90 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сайт - Объявления</title>
+    <title>Avito Clone</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Шапка сайта -->
+
+    <!-- Header -->
     <header>
         <div class="logo">
-            <h1>Объявления</h1>
+            <h1>Avito Clone</h1>
         </div>
         <nav>
-            <a href="#">Главная</a>
-            <a href="#">Добавить объявление</a>
-            <a href="#">Чат</a>
-            <a href="#">Отзывы</a>
+            <ul>
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#about-us">О нас</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
         </nav>
     </header>
 
-    <main>
-        <!-- Форма создания объявления -->
-        <section id="create-ad">
-            <h2>Создать объявление</h2>
-            <form id="adForm">
-                <div class="form-group">
-                    <label for="title">Название</label>
-                    <input type="text" id="title" name="title" required>
-                </div>
-                <div class="form-group">
-                    <label for="description">Описание</label>
-                    <textarea id="description" name="description" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="price">Цена</label>
-                    <input type="number" id="price" name="price" required>
-                </div>
-                <div class="form-group">
-                    <label for="category">Категория</label>
-                    <select id="category" name="category" required>
-                        <option value="Техника">Техника</option>
-                        <option value="Авто">Авто</option>
-                        <option value="Услуги">Услуги</option>
-                        <option value="Недвижимость">Недвижимость</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="image">Изображение (по желанию)</label>
-                    <input type="file" id="image" name="image">
-                </div>
-                <button type="submit">Добавить объявление</button>
-            </form>
-        </section>
+    <!-- Search Bar -->
+    <section id="search-bar">
+        <input type="text" id="search-input" placeholder="Поиск по объявлениям...">
+        <button id="search-btn">Найти</button>
+    </section>
 
-        <!-- Поиск объявлений -->
-        <section id="search">
-            <h2>Поиск объявлений</h2>
-            <form id="searchForm">
-                <input type="text" id="searchQuery" placeholder="Поиск по объявлениям...">
-                <button type="submit">Найти</button>
-            </form>
+    <!-- Category Filter -->
+    <section id="category-filter">
+        <label for="category-select">Выберите категорию:</label>
+        <select id="category-select">
+            <option value="all">Все</option>
+            <option value="car">Автомобили</option>
+            <option value="house">Недвижимость</option>
+            <option value="electronics">Электроника</option>
+            <option value="job">Работа</option>
+            <option value="services">Услуги</option>
+        </select>
+    </section>
 
-            <div id="adsContainer"></div>
-        </section>
+    <!-- Ad Listings -->
+    <section id="ad-list">
+        <div class="ad" data-category="car">
+            <h3>Автомобиль в хорошем состоянии</h3>
+            <p>Цена: 500,000 руб.</p>
+        </div>
+        <div class="ad" data-category="house">
+            <h3>Квартира в центре города</h3>
+            <p>Цена: 3,000,000 руб.</p>
+        </div>
+        <div class="ad" data-category="electronics">
+            <h3>Ноутбук HP</h3>
+            <p>Цена: 50,000 руб.</p>
+        </div>
+        <div class="ad" data-category="job">
+            <h3>Вакансия программиста</h3>
+            <p>Зарплата: 80,000 руб.</p>
+        </div>
+    </section>
 
-        <!-- Чат -->
-        <section id="chat">
-            <h2>Чат</h2>
-            <div id="chatBox">
-                <div id="messages"></div>
-                <textarea id="messageInput" placeholder="Введите сообщение..."></textarea>
-                <button onclick="sendMessage()">Отправить</button>
-            </div>
-        </section>
+    <!-- About Us -->
+    <section id="about-us">
+        <h2>О нас</h2>
+        <p>Мы — онлайн платформа для обмена объявлениями. Мы создаем удобный и безопасный сервис для пользователей по продаже товаров и услуг.</p>
+    </section>
 
-        <!-- Отзывы -->
-        <section id="reviews">
-            <h2>Отзывы</h2>
-            <form id="reviewForm">
-                <textarea id="reviewText" placeholder="Ваш отзыв"></textarea>
-                <input type="number" id="rating" min="1" max="5" placeholder="Оценка (1-5)">
-                <button type="submit">Оставить отзыв</button>
-            </form>
-        </section>
-    </main>
+    <!-- Contact -->
+    <section id="contact">
+        <h2>Контакты</h2>
+        <p>Email: support@avito.com</p>
+        <p>Телефон: +7 800 555 35 35</p>
+    </section>
 
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="script.js"></script>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Avito Clone. Все права защищены.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
