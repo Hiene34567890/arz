@@ -19,6 +19,12 @@
     #site-header {
       transition: background-color 0.4s ease, padding 0.4s ease, top 0.5s ease;
       z-index: 40;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem 0;
     }
 
     #site-header.scrolled {
@@ -27,6 +33,7 @@
       padding-bottom: 0.75rem;
     }
 
+    /* Hero Section */
     .hero-bg {
       position: relative;
       background: linear-gradient(270deg, #6a11cb, #2575fc, #6a11cb);
@@ -345,6 +352,16 @@
     document.getElementById('support-btn').addEventListener('click', () => {
       const modal = document.getElementById('supportModal');
       modal.classList.toggle('hidden');
+    });
+
+    // Handle header animation on scroll
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('site-header');
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
     });
   </script>
 </body>
