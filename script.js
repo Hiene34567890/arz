@@ -44,3 +44,17 @@ addAdForm.addEventListener("submit", function(event) {
   console.log("Добавлено объявление:", adTitle, adDescription, adPrice, adCategory);
   // Здесь добавьте код для отправки данных на сервер или обработки объявления
 });
+  // Обновление цены в реальном времени
+document.getElementById('price').addEventListener('input', function() {
+document.getElementById('price-value').textContent = this.value;
+});
+
+// Применение фильтров
+document.getElementById('filter-form').addEventListener('submit', function(event) {
+  event.preventDefault();
+  const category = document.getElementById('category').value;
+  const price = document.getElementById('price').value;
+  const condition = document.getElementById('condition').value;
+
+  console.log(`Фильтры применены: Категория: ${category}, Цена: ${price}, Состояние: ${condition}`);
+});
