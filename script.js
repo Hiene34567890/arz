@@ -44,6 +44,7 @@ addAdForm.addEventListener("submit", function(event) {
   console.log("Добавлено объявление:", adTitle, adDescription, adPrice, adCategory);
   // Здесь добавьте код для отправки данных на сервер или обработки объявления
 });
+
   // Обновление цены в реальном времени
 document.getElementById('price').addEventListener('input', function() {
 document.getElementById('price-value').textContent = this.value;
