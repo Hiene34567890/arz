@@ -2,90 +2,129 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Arizona RolePlay</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Poppins', sans-serif; }
+    body { font-family:'Poppins',sans-serif; scroll-behavior: smooth; }
+    #toTop {
+      position: fixed; bottom: 30px; right: 30px;
+      background: rgba(255,255,255,0.2); backdrop-filter: blur(4px);
+      color:#fff; padding:10px; border-radius:50%;
+      display:none; cursor:pointer; transition:0.3s;
+    }
+    #toTop:hover { background:rgba(255,255,255,0.4); }
+    /* override Particle canvas full screen */
+    #particles-js { position:absolute; width:100%; height:100%; top:0; left:0; z-index:0; }
+    section.relative { position:relative; z-index:1; }
   </style>
 </head>
-<body class="bg-gray-900 text-white">
+<body class="bg-gray-900 text-white relative overflow-x-hidden">
+
+  <!-- Кнопка Наверх -->
+  <div id="toTop" title="Наверх">&#8679;</div>
+
   <!-- Навигация -->
-  <header class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white shadow-lg">
+  <header class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 fixed w-full z-20">
     <div class="container mx-auto flex justify-between items-center p-4">
       <h1 class="text-2xl font-bold">Arizona RP</h1>
       <nav class="space-x-4 flex items-center">
         <a href="#home" class="hover:text-yellow-400">Главная</a>
         <a href="#servers" class="hover:text-yellow-400">Сервера</a>
         <a href="#contact" class="hover:text-yellow-400">Контакты</a>
-        <!-- Кнопка донат с улучшенным дизайном -->
-        <a href="https://donate.arizona-rp.com" class="bg-yellow-500 text-black py-3 px-6 rounded-full text-lg font-extrabold hover:bg-yellow-400 transition duration-300 transform hover:scale-110 shadow-lg hover:shadow-2xl ml-4">
+        <a href="https://donate.arizona-rp.com"
+           class="bg-yellow-500 text-black py-3 px-6 rounded-full text-lg font-extrabold
+                  hover:bg-yellow-400 transition duration-300 transform hover:scale-110 shadow-lg
+                  hover:shadow-2xl ml-4">
           Донат
         </a>
       </nav>
     </div>
   </header>
 
-  <!-- Герой -->
-  <section id="home" class="relative h-screen bg-cover bg-center" style="background-image:url('https://example.com/hero.jpg')">
+  <!-- Герой с частицами -->
+  <section id="home" class="relative h-screen bg-cover bg-center pt-16">
+    <div id="particles-js"></div>
     <div class="absolute inset-0 bg-black opacity-60"></div>
     <div class="relative z-10 flex flex-col justify-center items-center h-full">
-      <h2 class="text-5xl font-extrabold text-white drop-shadow-lg mb-6">Добро пожаловать в Arizona RolePlay</h2>
-      <a href="#start" class="bg-yellow-500 text-black py-3 px-8 rounded-full text-xl font-semibold hover:bg-yellow-400 transition duration-300">Начать играть</a>
+      <h2 class="text-5xl font-extrabold text-white drop-shadow-lg mb-6" data-aos="fade-down">Добро пожаловать в Arizona RP</h2>
+      <a href="#start"
+         class="bg-yellow-500 text-black py-3 px-8 rounded-full text-xl font-semibold
+                hover:bg-yellow-400 transition duration-300 transform hover:scale-105"
+         data-aos="zoom-in" data-aos-delay="200">
+        Начать играть
+      </a>
     </div>
   </section>
 
-  <!-- О серверах -->
+  <!-- Сервера с анимированными счётчиками -->
   <section id="servers" class="container mx-auto py-16">
-    <h3 class="text-3xl font-bold mb-8 text-center text-yellow-400">Наши сервера</h3>
+    <h3 class="text-3xl font-bold mb-8 text-center text-yellow-400" data-aos="fade-up">Наши сервера</h3>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div class="bg-gray-800 rounded-xl shadow-lg p-6 transform transition duration-300 hover:scale-105">
+      <div class="bg-gray-800 rounded-xl shadow-lg p-6 transform transition duration-300 hover:scale-105" data-aos="flip-left">
         <h4 class="text-xl font-semibold mb-2 text-cyan-400">Tucson</h4>
         <p>IP: <strong class="text-green-400">185.169.134.45:7777</strong></p>
-        <p>Онлайн: <strong>~900</strong> 🟢</p>
+        <p>Онлайн: <strong><span id="count1">0</span></strong> 🟢</p>
         <p>Режим: <strong>Акция</strong></p>
         <a href="https://arizona-rp.com" class="text-yellow-500 hover:underline mt-4 block">Перейти на сервер</a>
       </div>
-      <div class="bg-gray-800 rounded-xl shadow-lg p-6 transform transition duration-300 hover:scale-105">
+      <div class="bg-gray-800 rounded-xl shadow-lg p-6 transform transition duration-300 hover:scale-105" data-aos="flip-left" data-aos-delay="100">
         <h4 class="text-xl font-semibold mb-2 text-cyan-400">Scottsdale</h4>
         <p>IP: <strong class="text-green-400">185.169.134.46:7777</strong></p>
-        <p>Онлайн: <strong>~700</strong> 🟢</p>
+        <p>Онлайн: <strong><span id="count2">0</span></strong> 🟢</p>
         <p>Режим: <strong>Акция</strong></p>
         <a href="https://arizona-rp.com" class="text-yellow-500 hover:underline mt-4 block">Перейти на сервер</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Описание проекта -->
-  <section class="bg-gradient-to-r from-teal-500 via-green-500 to-blue-500 py-16">
-    <div class="container mx-auto text-center">
-      <h3 class="text-3xl font-bold mb-6 text-white">О проекте Arizona RP</h3>
-      <div class="max-w-4xl mx-auto bg-gray-700 p-8 rounded-xl shadow-xl">
-        <p class="text-lg mb-6 text-gray-300 leading-relaxed">Arizona RolePlay — это один из самых популярных проектов в мире, предлагающий игрокам уникальные возможности для развлечений и общения в виртуальном мире. Мы предлагаем вам по-настоящему погружение в атмосферу различных ролевых игр и сюжета, где каждый может найти себе занятие по душе.</p>
-        <p class="text-lg mb-6 text-gray-300 leading-relaxed">Проект представляет собой тщательно проработанную систему, основанную на принципах ролевых игр, где каждый игрок может внести свой вклад в развитие истории, взаимодействовать с другими участниками и в полной мере наслаждаться игровым процессом.</p>
-        <p class="text-lg mb-6 text-gray-300 leading-relaxed">Мы стремимся предоставить вам лучший опыт, и каждое ваше пожертвование помогает улучшать проект, добавляя новые функции и возможности. Присоединяйтесь к нашему сообществу, и пусть Arizona RolePlay станет частью вашего игрового мира.</p>
       </div>
     </div>
   </section>
 
   <!-- Контакты -->
-  <section id="contact" class="bg-gray-800 py-16">
+  <section id="contact" class="bg-gray-800 py-16" data-aos="fade-up">
     <div class="container mx-auto text-center">
       <h3 class="text-3xl font-bold mb-8 text-yellow-400">Контакты администрации</h3>
-      <p class="text-lg text-gray-300 mb-4">Мы всегда рады помочь вам. Свяжитесь с нами через один из следующих каналов:</p>
-      <p class="text-center">Telegram: <a href="https://t.me/tiffor" class="text-cyan-400 hover:underline">@Tiffor</a></p>
-      <p class="text-center">Форум: <a href="https://forum.arizona-rp.com/" class="text-cyan-400 hover:underline">forum.arizona-rp.com</a></p>
-      <p class="text-center">Discord: <a href="#" class="text-cyan-400 hover:underline">Скоро...</a></p>
+      <p class="text-lg text-gray-300 mb-4">Мы всегда рады помочь вам!</p>
+      <p>Telegram: <a href="https://t.me/tiffor" class="text-cyan-400 hover:underline">@Tiffor</a></p>
+      <p>Форум: <a href="https://forum.arizona-rp.com/" class="text-cyan-400 hover:underline">forum.arizona-rp.com</a></p>
+      <p>Discord: <a href="#" class="text-cyan-400 hover:underline">Скоро...</a></p>
     </div>
   </section>
 
-  <!-- Политика обработки персональных данных -->
-  <footer class="bg-gray-900 text-white py-4">
+  <!-- Политика и права -->
+  <footer class="bg-gray-900 text-white py-6">
     <div class="container mx-auto text-center">
-      <a href="https://arizona-games.com/privacy-policy" class="text-yellow-400 hover:underline">Политика обработки персональных данных</a>
-      <p class="text-sm mt-2">&copy; 2025 Arizona RolePlay. Все права защищены.</p>
+      <a href="https://arizona-games.com/privacy-policy" class="text-yellow-400 hover:underline mb-2 inline-block">Политика обработки персональных данных</a>
+      <p class="text-sm">&copy; 2025 Arizona RolePlay. Все права защищены.</p>
     </div>
   </footer>
+
+  <!-- Скрипты -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/countup.js@2.0.7/dist/countUp.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // particles.js init
+    particlesJS.load('particles-js', 'https://cdn.jsdelivr.net/gh/VincentGarreau/particles.js@master/demo/particles.json');
+
+    // AOS init
+    AOS.init({ duration: 800, once: true });
+
+    // CountUp init
+    window.addEventListener('load', () => {
+      const opts = { duration: 2.5, useEasing: true };
+      const c1 = new CountUp('count1', 900, opts);
+      const c2 = new CountUp('count2', 700, opts);
+      if (!c1.error) c1.start();
+      if (!c2.error) c2.start();
+    });
+
+    // Scroll-to-top button
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', () => {
+      toTop.style.display = window.pageYOffset > 300 ? 'block' : 'none';
+    });
+    toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
 </body>
 </html>
