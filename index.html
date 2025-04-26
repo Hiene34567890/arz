@@ -144,6 +144,7 @@
       font-size: 20px;
       cursor: pointer;
       z-index: 60;
+      transition: background-color 0.3s ease;
     }
 
     #support-btn:hover {
@@ -169,6 +170,61 @@
       #mobile-menu-button {
         display: none;
       }
+    }
+
+    /* Button hover effects */
+    .btn {
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn:hover {
+      background-color: #ff6600;
+      transform: scale(1.05);
+    }
+
+    /* Styling for sections */
+    section {
+      padding: 60px 0;
+      background-color: #1f2937;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fbbf24;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .section-content {
+      color: #e5e7eb;
+      font-size: 1.125rem;
+      line-height: 1.6;
+    }
+
+    .section-content a {
+      color: #fbbf24;
+      transition: color 0.3s ease;
+    }
+
+    .section-content a:hover {
+      color: #ff6600;
+    }
+
+    .cta-button {
+      padding: 15px 30px;
+      background-color: #fbbf24;
+      color: black;
+      font-size: 1.125rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .cta-button:hover {
+      background-color: #ff6600;
+      transform: scale(1.1);
     }
 
   </style>
@@ -209,61 +265,47 @@
   <section id="home" class="hero-bg flex items-center justify-center text-center px-4">
     <div class="relative z-10">
       <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6">Добро пожаловать в Arizona Role Play</h2>
-      <a href="#servers" class="bg-yellow-500 text-black px-8 py-3 rounded-full font-semibold hover:bg-yellow-400 transition">Начать играть</a>
+      <a href="#servers" class="cta-button">Начать играть</a>
     </div>
   </section>
 
   <!-- Servers Section -->
   <section id="servers" class="py-20 bg-gray-800">
     <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-extrabold text-white mb-6">Наши Сервера</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Server Cards -->
-        <div class="bg-gray-700 p-6 rounded-xl">
-          <h3 class="text-xl font-bold text-white mb-4">Сервер 1</h3>
-          <p class="text-gray-300">Сервер с уникальными правилами и возможностями для всех игроков.</p>
-        </div>
-        <div class="bg-gray-700 p-6 rounded-xl">
-          <h3 class="text-xl font-bold text-white mb-4">Сервер 2</h3>
-          <p class="text-gray-300">Сервер для настоящих фанатов ролевых игр в стиле Arizona RP.</p>
-        </div>
-        <div class="bg-gray-700 p-6 rounded-xl">
-          <h3 class="text-xl font-bold text-white mb-4">Сервер 3</h3>
-          <p class="text-gray-300">Сервер с расширенными возможностями для персонализации.</p>
-        </div>
-      </div>
+      <h2 class="section-title">Наши Сервера</h2>
+      <p class="section-content">Присоединяйтесь к нашим уникальным серверам и начните приключение.</p>
     </div>
   </section>
 
   <!-- Rules Section -->
   <section id="rules" class="py-20 bg-gray-800">
     <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-extrabold text-white mb-6">Правила игры</h2>
-      <p class="text-gray-300">Прочитайте наши правила, чтобы не нарушать их в процессе игры.</p>
+      <h2 class="section-title">Правила игры</h2>
+      <p class="section-content">Прочитайте наши правила, чтобы избежать неприятных ситуаций в игре.</p>
     </div>
   </section>
 
   <!-- Shop Section -->
   <section id="shop" class="py-20 bg-gray-800">
     <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-extrabold text-white mb-6">Магазин</h2>
-      <p class="text-gray-300">Посетите наш магазин для покупок внутри игры.</p>
+      <h2 class="section-title">Магазин</h2>
+      <p class="section-content">Покупайте предметы и улучшения для вашего персонажа.</p>
     </div>
   </section>
 
   <!-- Wiki Section -->
   <section id="wiki" class="py-20 bg-gray-800">
     <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-extrabold text-white mb-6">Вики</h2>
-      <p class="text-gray-300">Все, что вам нужно знать о мире Arizona RP.</p>
+      <h2 class="section-title">Вики</h2>
+      <p class="section-content">Изучите вики и получите полезную информацию о игре.</p>
     </div>
   </section>
 
   <!-- Contact Section -->
   <section id="contact" class="py-20 bg-gray-800">
     <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-extrabold text-white mb-6">Контакты</h2>
-      <p class="text-gray-300">Свяжитесь с нами через:</p>
+      <h2 class="section-title">Контакты</h2>
+      <p class="section-content">Свяжитесь с нами через:</p>
       <p><a href="mailto:support@arizona-rp.com" class="text-yellow-500">Email</a> | <a href="https://t.me/arizona_rp" class="text-yellow-500">Telegram</a></p>
     </div>
   </section>
@@ -271,54 +313,26 @@
   <!-- Support Modal -->
   <div id="supportModal" class="hidden">
     <div class="bg-black p-6 rounded-lg shadow-xl">
-      <h3 class="text-xl font-bold text-white mb-4">Поддержка</h3>
-      <p class="text-gray-400 mb-4">Если у вас возникли проблемы, оставьте ваше сообщение ниже:</p>
-      <textarea placeholder="Введите сообщение..." class="mb-4 p-3 bg-gray-700 text-white rounded-md"></textarea>
-      <button onclick="sendMessage()" class="w-full bg-yellow-500 text-black px-4 py-2 rounded-md">Отправить сообщение</button>
+      <h3 class="text-xl font-bold text-white">Техническая поддержка</h3>
+      <input type="text" placeholder="Ваше имя" class="mt-4">
+      <textarea rows="4" placeholder="Опишите проблему" class="mt-4"></textarea>
+      <button class="mt-4">Отправить</button>
     </div>
   </div>
 
-  <!-- Overlay -->
-  <div id="overlay" class="overlay" onclick="closeModal()"></div>
-
-  <!-- Support Button -->
-  <button id="support-btn" onclick="openSupportModal()">Поддержка</button>
+  <!-- Floating Support Button -->
+  <button id="support-btn">?</button>
 
   <script>
-    // Open Support Modal
-    function openSupportModal() {
-      document.getElementById('supportModal').style.display = 'block';
-      document.getElementById('overlay').style.display = 'block';
-    }
-
-    // Close Support Modal
-    function closeModal() {
-      document.getElementById('supportModal').style.display = 'none';
-      document.getElementById('overlay').style.display = 'none';
-    }
-
-    // Send Message
-    function sendMessage() {
-      alert('Ваше сообщение отправлено!');
-      closeModal();
-    }
-
-    // Mobile Menu Toggle
+    // Toggle mobile menu
     document.getElementById('mobile-menu-button').addEventListener('click', () => {
-      const menu = document.getElementById('mobile-menu');
-      menu.style.display = menu.style.display === 'none' || !menu.style.display ? 'block' : 'none';
+      document.getElementById('mobile-menu').classList.toggle('hidden');
     });
 
-    // Scroll Header Style
-    window.addEventListener('scroll', () => {
-      const header = document.getElementById('site-header');
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
+    // Show Support Modal
+    document.getElementById('support-btn').addEventListener('click', () => {
+      document.getElementById('supportModal').classList.toggle('hidden');
     });
   </script>
-
 </body>
 </html>
