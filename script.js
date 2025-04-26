@@ -26,3 +26,28 @@ openFormButton.addEventListener('click', () => {
 closeFormButton.addEventListener('click', () => {
     contactForm.style.display = 'none'; // Скрываем форму
 });
+
+// В будущем можно динамически создавать объявления
+const ads = [
+  {
+    title: "iPhone 13 Pro",
+    price: "80 000 ₽",
+    location: "Москва",
+    image: "https://via.placeholder.com/300x200"
+  },
+  {
+    title: "Ноутбук MacBook Air",
+    price: "100 000 ₽",
+    location: "Санкт-Петербург",
+    image: "https://via.placeholder.com/300x200"
+  },
+  {
+    title: "Игровая приставка PS5",
+    price: "50 000 ₽",
+    location: "Казань",
+    image: "https://via.placeholder.com/300x200"
+  }
+];
+
+// Пока что просто заготовка для генерации карточек через JS
+// (если нужно - могу сразу написать генератор)
