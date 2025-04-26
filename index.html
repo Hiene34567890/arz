@@ -26,6 +26,7 @@
       z-index: 50;
       transition: 0.3s ease;
     }
+
     header.scrolled {
       background: rgba(18, 18, 18, 1);
       padding: 10px 0;
@@ -317,20 +318,19 @@
     <ul class="rules-list">
       <li>1. Соблюдайте уважение к другим игрокам.</li>
       <li>2. Не используйте читы.</li>
-      <li>3. Следуйте законам игры.</li>
+      <li>3. Соблюдайте нормы поведения на сервере.</li>
     </ul>
   </section>
 
-  <!-- Контакт -->
-  <div class="contact-btn" onclick="toggleContactForm()">Связаться с нами</div>
-  <div class="contact-form">
-    <h3 class="text-2xl font-bold text-white">Напишите нам</h3>
+  <!-- Контакты -->
+  <section id="contact" class="contact-form">
+    <h2 class="text-2xl font-bold text-white mb-4">Связаться с нами</h2>
     <input type="text" placeholder="Ваше имя" id="name">
     <textarea placeholder="Ваше сообщение" id="message"></textarea>
     <button onclick="sendMessage()">Отправить</button>
-  </div>
+  </section>
 
-  <!-- Политика конфиденциальности и авторские права -->
+  <!-- Политика конфиденциальности -->
   <footer class="footer">
     <p>&copy; 2025 Arizona RP | <a href="#privacy-policy">Политика конфиденциальности</a> | Все права защищены</p>
   </footer>
