@@ -3,20 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Arizona RolePlay</n  >
+  <title>Arizona RolePlay</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
     body { font-family: 'Poppins', sans-serif; }
     html { scroll-padding-top: 5rem; }
-    /* Header transition */
-    #site-header { transition: background-color 0.4s ease, padding 0.4s ease; }
-    #site-header.scrolled { background-color: rgba(31, 41, 55, 0.9); /* bg-gray-800 at 90% */ padding-top: 0.5rem; padding-bottom: 0.5rem; }
+    /* Header transitions */
+    #site-header { transition: background-color 0.4s ease, padding 0.4s ease, top 0.4s ease; }
+    #site-header.scrolled {
+      background-color: rgba(31, 41, 55, 0.9); /* bg-gray-800 at 90% */
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+    }
+    #site-header.hide {
+      top: -100px;
+    }
   </style>
 </head>
 <body class="bg-gray-900 text-white pt-20">
 
-  <!-- Навигация -->
-  <header id="site-header" class="fixed top-0 left-0 w-full z-30 backdrop-blur-lg bg-transparent py-4">
+  <!-- Header -->
+  <header id="site-header" class="fixed top-0 left-0 w-full z-30 bg-transparent backdrop-blur-lg py-4">
     <div class="container mx-auto flex justify-between items-center px-4">
       <h1 class="text-3xl font-extrabold text-white tracking-tight">Arizona RP</h1>
       <nav class="hidden lg:flex space-x-6 items-center">
@@ -29,27 +36,27 @@
         <a href="#contact" class="text-gray-200 hover:text-yellow-400 transition">Контакты</a>
         <a href="https://donate.arizona-rp.com" class="ml-4 bg-yellow-500 text-black font-bold px-5 py-2 rounded-full hover:bg-yellow-400 transition">Донат</a>
       </nav>
-      <!-- Mobile menu button -->
       <button id="mobile-menu-button" class="lg:hidden text-white focus:outline-none">
-        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
       </button>
     </div>
-    <!-- Mobile menu -->
     <div id="mobile-menu" class="hidden lg:hidden bg-gray-800 bg-opacity-95">
       <nav class="flex flex-col p-4 space-y-2">
-        <a href="#home" class="text-gray-200 hover:text-yellow-400 transition">Главная</a>
-        <a href="#servers" class="text-gray-200 hover:text-yellow-400 transition">Сервера</a>
-        <a href="#rules" class="text-gray-200 hover:text-yellow-400 transition">Правила</a>
-        <a href="#shop" class="text-gray-200 hover:text-yellow-400 transition">Магазин</a>
-        <a href="#wiki" class="text-gray-200 hover:text-yellow-400 transition">Вики</a>
-        <a href="https://forum.arizona-rp.com" target="_blank" class="text-gray-200 hover:text-yellow-400 transition">Форум</a>
-        <a href="#contact" class="text-gray-200 hover:text-yellow-400 transition">Контакты</a>
+        <a href="#home" class="text-gray-200 hover:text-yellow-400">Главная</a>
+        <a href="#servers" class="text-gray-200 hover:text-yellow-400">Сервера</a>
+        <a href="#rules" class="text-gray-200 hover:text-yellow-400">Правила</a>
+        <a href="#shop" class="text-gray-200 hover:text-yellow-400">Магазин</a>
+        <a href="#wiki" class="text-gray-200 hover:text-yellow-400">Вики</a>
+        <a href="https://forum.arizona-rp.com" target="_blank" class="text-gray-200 hover:text-yellow-400">Форум</a>
+        <a href="#contact" class="text-gray-200 hover:text-yellow-400">Контакты</a>
         <a href="https://donate.arizona-rp.com" class="mt-2 bg-yellow-500 text-black font-bold px-5 py-2 rounded-full hover:bg-yellow-400 transition">Донат</a>
       </nav>
     </div>
   </header>
 
-  <!-- Герой -->
+  <!-- Hero Section -->
   <section id="home" class="relative h-screen bg-cover bg-center" style="background-image:url('https://example.com/hero.jpg')">
     <div class="absolute inset-0 bg-black opacity-60"></div>
     <div class="relative z-10 flex flex-col justify-center items-center h-full px-4 text-center">
@@ -58,17 +65,71 @@
     </div>
   </section>
 
-  <!-- О серверах -->
+  <!-- Servers Section -->
   <section id="servers" class="container mx-auto py-16 px-4">
     <h3 class="text-3xl font-bold mb-8 text-center text-yellow-400">Наши сервера</h3>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Server cards... -->
+      <!-- Example server card -->
+      <div class="bg-gray-800 rounded-xl shadow-lg p-6 transform hover:scale-105 transition">
+        <h4 class="text-xl font-semibold mb-2 text-cyan-400">Tucson</h4>
+        <p>IP: <strong class="text-green-400">185.169.134.45:7777</strong></p>
+        <p>Онлайн: <strong>~900</strong> 🟢</p>
+        <p>Режим: <strong>Акция</strong></p>
+        <a href="https://arizona-rp.com" class="mt-4 inline-block text-yellow-500 hover:underline">Перейти на сервер</a>
+      </div>
+      <div class="bg-gray-800 rounded-xl shadow-lg p-6 transform hover:scale-105 transition">
+        <h4 class="text-xl font-semibold mb-2 text-cyan-400">Scottsdale</h4>
+        <p>IP: <strong class="text-green-400">185.169.134.46:7777</strong></p>
+        <p>Онлайн: <strong>~700</strong> 🟢</p>
+        <p>Режим: <strong>Акция</strong></p>
+        <a href="https://arizona-rp.com" class="mt-4 inline-block text-yellow-500 hover:underline">Перейти на сервер</a>
+      </div>
     </div>
   </section>
 
-  <!-- Остальные секции... -->
+  <!-- Rules Section -->
+  <section id="rules" class="bg-gray-800 py-16 px-4">
+    <div class="container mx-auto">
+      <h3 class="text-3xl font-bold mb-6 text-center text-yellow-400">Правила проекта</h3>
+      <ul class="list-disc list-inside text-gray-300 space-y-2">
+        <li>1. Соблюдайте уважение к другим игрокам.</li>
+        <li>2. Запрещены оскорбления, агрессия и мат.</li>
+        <li>3. Не используйте читы и баги.</li>
+        <li>4. Следуйте сюжету и ролевому отыгрышу.</li>
+      </ul>
+    </div>
+  </section>
 
-  <!-- Политика и права -->
+  <!-- Shop Section -->
+  <section id="shop" class="bg-gradient-to-r from-purple-700 to-pink-500 py-16 px-4">
+    <div class="container mx-auto text-center">
+      <h3 class="text-3xl font-bold mb-6 text-white">Магазин внутриигровых товаров</h3>
+      <p class="text-gray-200 mb-4">Приобретайте уникальные скины, автомобили и VIP-пакеты.</p>
+      <a href="https://shop.arizona-rp.com" class="bg-yellow-500 text-black font-semibold px-6 py-3 rounded-full hover:bg-yellow-400 transition">Перейти в магазин</a>
+    </div>
+  </section>
+
+  <!-- Wiki Section -->
+  <section id="wiki" class="container mx-auto py-16 px-4">
+    <h3 class="text-3xl font-bold mb-6 text-center text-yellow-400">Arizona RP Вики</n    ></h3>
+    <p class="text-gray-300 mb-4 text-center">Полное собрание статей по геймплею, лору и механикам.</p>
+    <div class="text-center">
+      <a href="https://wiki.arizona-rp.com" class="bg-yellow-500 text-black font-semibold px-6 py-3 rounded-full hover:bg-yellow-400 transition">Открыть Вики</a>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="bg-gray-800 py-16 px-4">
+    <div class="container mx-auto text-center">
+      <h3 class="text-3xl font-bold mb-8 text-yellow-400">Контакты администрации</h3>
+      <p class="text-lg text-gray-300 mb-4">Свяжитесь с нами через:</p>
+      <p class="mb-2">Telegram: <a href="https://t.me/tiffor" class="text-cyan-400 hover:underline">@Tiffor</a></p>
+      <p class="mb-2">Форум: <a href="https://forum.arizona-rp.com/" class="text-cyan-400 hover:underline">forum.arizona-rp.com</a></p>
+      <p>Discord: <a href="#" class="text-cyan-400 hover:underline">Скоро...</a></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer class="bg-gray-900 text-white py-6 px-4">
     <div class="container mx-auto text-center">
       <a href="https://arizona-games.com/privacy-policy" class="text-yellow-400 hover:underline mb-2 inline-block">Политика обработки персональных данных</a>
@@ -77,14 +138,25 @@
   </footer>
 
   <script>
-    // Scroll header background and padding
     const header = document.getElementById('site-header');
+    let lastScroll = 0, ticking = false, threshold = 50;
     window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 50) header.classList.add('scrolled');
-      else header.classList.remove('scrolled');
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const current = window.pageYOffset || document.documentElement.scrollTop;
+          const diff = current - lastScroll;
+          if (diff > threshold && current > header.offsetHeight) {
+            header.classList.add('hide');
+          } else if (diff < -threshold) {
+            header.classList.remove('hide');
+          }
+          header.classList.toggle('scrolled', current > 50);
+          lastScroll = current;
+          ticking = false;
+        });
+        ticking = true;
+      }
     });
-
-    // Mobile menu toggle
     document.getElementById('mobile-menu-button').addEventListener('click', () => {
       document.getElementById('mobile-menu').classList.toggle('hidden');
     });
