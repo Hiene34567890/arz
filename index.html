@@ -106,6 +106,13 @@
         this.classList.add('hidden');
       }
     });
+
+    // Логика для отображения кнопки "Выйти", если пользователь авторизован
+    const loggedIn = false; // Замените на проверку авторизации
+    if (loggedIn) {
+      document.getElementById('logout-button').classList.remove('hidden');
+      document.getElementById('login-button').classList.add('hidden');
+    }
   </script>
 
   <!-- Footer -->
