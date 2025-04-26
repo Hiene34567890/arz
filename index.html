@@ -67,7 +67,57 @@
   <section id="servers" class="container mx-auto py-16 px-4">
     <h3 class="text-3xl font-bold mb-8 text-center text-yellow-400">Наши сервера</h3>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Example server cards -->
+      <div class="bg-gray-800 rounded-xl shadow-lg p-6 transform hover:scale-105 transition">
+        <h4 class="text-xl font-semibold mb-2 text-cyan-400">Tucson</h4>
+        <p>IP: <strong class="text-green-400">185.169.134.45:7777</strong></p>
+        <p>Онлайн: <strong>~900</strong> 🟢</p>
+        <p>Режим: <strong>Акция</strong></p>
+        <a href="https://arizona-rp.com" class="mt-4 inline-block text-yellow-500 hover:underline">Перейти на сервер</a>
+      </div>
+      <div class="bg-gray-800 rounded-xl shadow-lg p-6 transform hover:scale-105 transition">
+        <h4 class="text-xl font-semibold mb-2 text-cyan-400">Scottsdale</h4>
+        <p>IP: <strong class="text-green-400">185.169.134.46:7777</strong></p>
+        <p>Онлайн: <strong>~700</strong> 🟢</p>
+        <p>Режим: <strong>Акция</strong></p>
+        <a href="https://arizona-rp.com" class="mt-4 inline-block text-yellow-500 hover:underline">Перейти на сервер</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rules Section -->
+  <section id="rules" class="bg-gray-800 py-16 px-4">
+    <div class="container mx-auto">
+      <h3 class="text-3xl font-bold mb-6 text-center text-yellow-400">Правила проекта</h3>
+      <ul class="list-disc list-inside text-gray-300 space-y-2">
+        <li>1. Соблюдайте уважение к другим игрокам.</li>
+        <li>2. Запрещены оскорбления, агрессия и мат.</li>
+        <li>3. Не используйте читы и баги.</li>
+        <li>4. Следуйте сюжету и ролевому отыгрышу.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Shop Section -->
+  <section id="shop" class="bg-gradient-to-r from-purple-700 to-pink-500 py-16 px-4">
+    <div class="container mx-auto text-center">
+      <h3 class="text-3xl font-bold mb-6 text-white">Магазин внутриигровых товаров</h3>
+      <p class="text-gray-200 mb-4">Приобретайте уникальные скины, автомобили и VIP-пакеты.</p>
+      <a href="https://shop.arizona-rp.com" class="bg-yellow-500 text-black font-semibold px-6 py-3 rounded-full hover:bg-yellow-400 transition">Перейти в магазин</a>
+    </div>
+  </section>
+
+  <!-- Wiki Section -->
+  <section id="wiki" class="container mx-auto py-16 px-4">
+    <h3 class="text-3xl font-bold mb-6 text-center text-yellow-400">Arizona RP Вики</h3>
+    <p class="text-gray-300 mb-4 text-center">Полное собрание статей по геймплею, лору и механикам.</p>
+    <div class="text-center">
+      <a href="https://wiki.arizona-rp.com" class="bg-yellow-500 text-black font-semibold px-6 py-3 rounded-full hover:bg-yellow-400 transition">Открыть Вики</a>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="bg-gray-800 py-16 px-4">
+    <div class="container mx-auto text-center">...
     </div>
   </section>
 
@@ -88,7 +138,7 @@
     window.addEventListener('scroll', () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          const current = window.pageYOffset || document.documentElement.scrollTop;
+          const current = window.pageYOffset;
           const diff = current - lastScroll;
           if (diff > threshold && current > header.offsetHeight) header.classList.add('hide');
           else if (diff < -threshold) header.classList.remove('hide');
@@ -100,7 +150,6 @@
       }
     });
 
-    // Toggle & auto-close mobile menu
     mobileBtn.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
     });
