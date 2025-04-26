@@ -1,206 +1,344 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marketplace</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f8f8f8;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайт</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Общий стиль */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
 
-    .card {
-      background-color: #fff;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
-      padding: 20px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+        h2 {
+            color: #333;
+        }
 
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-    }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
 
-    .filter-section {
-      background-color: #fff;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
+        /* Панель поиска */
+        .search-container {
+            position: relative;
+            width: 300px;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
 
-    .filter-section h2 {
-      font-size: 1.5rem;
-      margin-bottom: 15px;
-    }
+        #searchInput {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
 
-    .filter-section select,
-    .filter-section input {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      font-size: 1rem;
-    }
+        .autocomplete-results {
+            position: absolute;
+            top: 40px;
+            width: 100%;
+            background-color: white;
+            border: 1px solid #ddd;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 1000;
+        }
 
-    .card-title {
-      font-size: 1.25rem;
-      font-weight: bold;
-    }
+        .autocomplete-results div {
+            padding: 10px;
+            cursor: pointer;
+        }
 
-    .card-price {
-      font-size: 1.125rem;
-      color: #28a745;
-    }
+        .autocomplete-results div:hover {
+            background-color: #f0f0f0;
+        }
 
-    .search-bar {
-      margin-bottom: 30px;
-    }
+        /* Панель отзывов */
+        .reviews-section {
+            padding: 50px 20px;
+            background-color: #f7f7f7;
+            text-align: center;
+        }
 
-    .search-bar input {
-      padding: 12px;
-      width: 100%;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      font-size: 1.125rem;
-      margin-bottom: 20px;
-    }
+        .reviews-list {
+            margin-bottom: 30px;
+        }
 
-    .container {
-      margin-top: 30px;
-    }
+        .review {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
 
-    .pagination {
-      display: flex;
-      justify-content: center;
-      margin-top: 30px;
-    }
+        .review-text {
+            font-style: italic;
+        }
 
-    .pagination button {
-      background-color: #007bff;
-      color: #fff;
-      padding: 10px 15px;
-      margin: 0 5px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+        .review-author {
+            font-weight: bold;
+            margin-top: 10px;
+        }
 
-    .pagination button:hover {
-      background-color: #0056b3;
-    }
+        #reviewForm textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
 
-    .pagination .disabled {
-      background-color: #ccc;
-      cursor: not-allowed;
-    }
-  </style>
+        #reviewForm button {
+            padding: 10px 20px;
+            background-color: #00aaff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #reviewForm button:hover {
+            background-color: #008ecc;
+        }
+
+        /* Популярные товары */
+        .popular-products-section {
+            padding: 50px 20px;
+            background-color: #f7f7f7;
+            text-align: center;
+        }
+
+        .popular-products-list {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .popular-product {
+            width: 30%;
+            text-align: center;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .popular-product img {
+            width: 100%;
+            height: auto;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #00aaff;
+            margin-top: 10px;
+        }
+
+        /* Галерея изображений */
+        .gallery-section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .gallery {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .gallery-item {
+            width: 30%;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        footer a {
+            color: #00aaff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Cookie Consent */
+        .cookie-consent {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            z-index: 9999;
+        }
+
+        .cookie-consent button {
+            background-color: #00aaff;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+    </style>
 </head>
 <body>
-  <!-- Header -->
-  <header class="bg-blue-500 text-white py-4">
-    <div class="container mx-auto flex justify-between items-center">
-      <h1 class="text-3xl font-bold">Marketplace</h1>
-      <nav>
-        <a href="#" class="text-white px-4">Главная</a>
-        <a href="#" class="text-white px-4">Категории</a>
-        <a href="#" class="text-white px-4">Товары</a>
-      </nav>
-    </div>
-  </header>
+    <header>
+        <div class="container">
+            <h1>Ваш сайт</h1>
+            <nav>
+                <a href="#">Главная</a> | 
+                <a href="#">О нас</a> | 
+                <a href="#">Контакты</a>
+            </nav>
+        </div>
+    </header>
 
-  <!-- Search Bar -->
-  <div class="container mx-auto search-bar">
-    <input type="text" placeholder="Поиск товаров..." class="focus:outline-none">
-  </div>
-
-  <!-- Main Section -->
-  <div class="container mx-auto flex justify-between">
-    <!-- Filters -->
-    <div class="w-1/4">
-      <div class="filter-section">
-        <h2>Фильтры</h2>
-        <select>
-          <option>Все категории</option>
-          <option>Электроника</option>
-          <option>Одежда</option>
-          <option>Мебель</option>
-        </select>
-        <select>
-          <option>Все города</option>
-          <option>Москва</option>
-          <option>Санкт-Петербург</option>
-          <option>Новосибирск</option>
-        </select>
-        <input type="text" placeholder="Цена от" />
-        <input type="text" placeholder="Цена до" />
-        <button class="bg-blue-500 text-white w-full py-2 rounded-md">Применить фильтры</button>
-      </div>
-    </div>
-
-    <!-- Product Cards -->
-    <div class="w-3/4">
-      <div class="flex justify-between mb-4">
-        <!-- Sort Dropdown -->
-        <select class="p-2 border border-gray-300 rounded-md">
-          <option>Сортировка по</option>
-          <option>Цене (по возрастанию)</option>
-          <option>Цене (по убыванию)</option>
-          <option>Популярности</option>
-        </select>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <!-- Card 1 -->
-        <div class="card">
-          <img src="https://via.placeholder.com/300" alt="Product" class="w-full h-48 object-cover rounded-md">
-          <div class="mt-4">
-            <h3 class="card-title">Телевизор Samsung</h3>
-            <p class="card-price">20,000 ₽</p>
-            <button class="bg-blue-500 text-white py-2 px-4 rounded-md w-full mt-4">Купить</button>
-          </div>
+    <main>
+        <!-- Панель поиска -->
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Поиск..." oninput="searchProducts()">
+            <div id="autocompleteResults" class="autocomplete-results"></div>
         </div>
 
-        <!-- Card 2 -->
-        <div class="card">
-          <img src="https://via.placeholder.com/300" alt="Product" class="w-full h-48 object-cover rounded-md">
-          <div class="mt-4">
-            <h3 class="card-title">Мобильный телефон</h3>
-            <p class="card-price">12,000 ₽</p>
-            <button class="bg-blue-500 text-white py-2 px-4 rounded-md w-full mt-4">Купить</button>
-          </div>
+        <!-- Панель отзывов -->
+        <div class="reviews-section">
+            <h2>Отзывы пользователей</h2>
+            <div class="reviews-list">
+                <div class="review">
+                    <p class="review-text">Отличный товар, работает без нареканий!</p>
+                    <p class="review-author">Иван Иванов</p>
+                </div>
+                <div class="review">
+                    <p class="review-text">Доставка была быстрая, всё пришло в отличном состоянии.</p>
+                    <p class="review-author">Мария Смирнова</p>
+                </div>
+            </div>
+            <form id="reviewForm">
+                <textarea id="reviewInput" placeholder="Оставьте свой отзыв" required></textarea>
+                <button type="submit">Оставить отзыв</button>
+            </form>
         </div>
 
-        <!-- Card 3 -->
-        <div class="card">
-          <img src="https://via.placeholder.com/300" alt="Product" class="w-full h-48 object-cover rounded-md">
-          <div class="mt-4">
-            <h3 class="card-title">Ноутбук Acer</h3>
-            <p class="card-price">35,000 ₽</p>
-            <button class="bg-blue-500 text-white py-2 px-4 rounded-md w-full mt-4">Купить</button>
-          </div>
+        <!-- Популярные товары -->
+        <div class="popular-products-section">
+            <h2>Популярные товары</h2>
+            <div class="popular-products-list">
+                <div class="popular-product">
+                    <img src="https://via.placeholder.com/300" alt="Товар 1">
+                    <p>Телефон Samsung Galaxy S21</p>
+                    <p class="price">$999</p>
+                </div>
+                <div class="popular-product">
+                    <img src="https://via.placeholder.com/300" alt="Товар 2">
+                    <p>Ноутбук Apple MacBook Pro</p>
+                    <p class="price">$1999</p>
+                </div>
+                <div class="popular-product">
+                    <img src="https://via.placeholder.com/300" alt="Товар 3">
+                    <p>Книга "Как стать программистом"</p>
+                    <p class="price">$20</p>
+                </div>
+            </div>
         </div>
-      </div>
 
-      <!-- Pagination -->
-      <div class="pagination">
-        <button class="disabled">Предыдущая</button>
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>4</button>
-        <button>Следующая</button>
-      </div>
-    </div>
-  </div>
+        <!-- Галерея изображений -->
+        <div class="gallery-section">
+            <h2>Галерея товаров</h2>
+            <div class="gallery">
+                <img src="https://via.placeholder.com/300" alt="Изображение 1" class="gallery-item">
+                <img src="https://via.placeholder.com/300" alt="Изображение 2" class="gallery-item">
+                <img src="https://via.placeholder.com/300" alt="Изображение 3" class="gallery-item">
+            </div>
+        </div>
+    </main>
 
-  <!-- Footer -->
-  <footer class="bg-blue-500 text-white py-4 mt-8">
-    <div class="container mx-auto text-center">
-      <p>&copy; 2025 Marketplace. Все права защищены.</p>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Все права защищены. <a href="#">Политика конфиденциальности</a></p>
+    </footer>
+
+    <!-- Cookie Consent -->
+    <div class="cookie-consent" id="cookieConsent">
+        <p>Мы используем файлы cookie для улучшения работы нашего сайта. <a href="#">Подробнее</a></p>
+        <button onclick="acceptCookies()">Принять</button>
     </div>
-  </footer>
+
+    <script>
+        // Пример списка продуктов для автодополнения
+        const products = [
+            'Телефон Samsung Galaxy S21',
+            'Ноутбук Apple MacBook Pro',
+            'Книга "Как стать программистом"',
+            'Курс по веб-разработке',
+            'Футболка с логотипом',
+            'Мышка Logitech G Pro'
+        ];
+
+        function searchProducts() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const resultsContainer = document.getElementById('autocompleteResults');
+            resultsContainer.innerHTML = ''; // Очистить результаты
+
+            if (query.length > 0) {
+                const filteredResults = products.filter(product => product.toLowerCase().includes(query));
+
+                filteredResults.forEach(result => {
+                    const div = document.createElement('div');
+                    div.textContent = result;
+                    div.onclick = () => {
+                        document.getElementById('searchInput').value = result;
+                        resultsContainer.innerHTML = ''; // Очистить результаты
+                    };
+                    resultsContainer.appendChild(div);
+                });
+            }
+        }
+
+        // Обработка отзыва
+        document.getElementById('reviewForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const reviewText = document.getElementById('reviewInput').value;
+            const reviewsList = document.querySelector('.reviews-list');
+
+            const newReview = document.createElement('div');
+            newReview.classList.add('review');
+            newReview.innerHTML = `
+                <p class="review-text">${reviewText}</p>
+                <p class="review-author">Новый отзыв</p>
+            `;
+            reviewsList.appendChild(newReview);
+            document.getElementById('reviewInput').value = ''; // Очистить форму
+        });
+
+        // Cookie Consent
+        function acceptCookies() {
+            document.getElementById('cookieConsent').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
