@@ -1,154 +1,165 @@
-body {
-  font-family: 'Arial', sans-serif;
-  background: #f5f5f5;
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-header {
-  background-color: #005bff;
-  color: white;
-  padding: 20px;
-  text-align: center;
+body {
+  font-family: 'Arial', sans-serif;
+  background: #f9f9f9;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 15px;
+}
+
+/* Header */
+.header {
+  background: #ffffff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 15px 0;
+}
+
+.logo {
   font-size: 24px;
   font-weight: bold;
-  letter-spacing: 1px;
+  color: #0066ff;
+  float: left;
 }
 
-.filters {
+.nav {
+  float: right;
+}
+
+.nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+}
+
+.nav a:hover {
+  color: #0066ff;
+}
+
+/* Search Section */
+.search-section {
+  background: #0066ff;
+  color: #fff;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.search-bar {
+  margin-top: 20px;
+}
+
+.search-bar input {
+  padding: 10px;
+  width: 300px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+}
+
+.search-bar button {
+  padding: 10px 20px;
+  background: #0052cc;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  color: #fff;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background: #003d99;
+}
+
+/* Categories */
+.categories-section {
+  padding: 50px 0;
+}
+
+.categories {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  background: #fff;
-  padding: 15px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.filters input, .filters select, .filters button {
-  padding: 8px 12px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  outline: none;
-}
-
-.filters button {
-  background-color: #005bff;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.filters button:hover {
-  background-color: #0041cc;
-}
-
-.ads-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
-  padding: 20px;
 }
 
-.ad-card {
+.category-item {
   background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 30px;
+  border: 1px solid #eee;
+  flex: 1 1 30%;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
   transition: transform 0.3s;
 }
 
-.ad-card:hover {
+.category-item:hover {
   transform: translateY(-5px);
 }
 
-.ad-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
+/* Products */
+.popular-products {
+  padding: 50px 0;
 }
 
-.ad-info {
+.products {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.product-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 10px;
   padding: 15px;
+  flex: 1 1 30%;
+  text-align: center;
+  transition: box-shadow 0.3s;
 }
 
-.ad-info h3 {
-  margin: 0 0 10px;
+.product-card img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+.product-card h3 {
+  margin: 10px 0;
+}
+
+.product-card p {
+  color: #0066ff;
+  font-weight: bold;
   font-size: 18px;
 }
 
-.price {
-  color: #28a745;
-  font-weight: bold;
-  margin-bottom: 5px;
+.product-card:hover {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-.location {
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 20px 0;
+  background: #f1f1f1;
   font-size: 14px;
   color: #666;
-  margin-bottom: 10px;
 }
 
-.btn-details {
-  padding: 8px 12px;
-  background: #005bff;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  width: 100%;
-  transition: background-color 0.3s;
-}
-
-.btn-details:hover {
-  background-color: #0041cc;
-}
-
-.pagination {
-  text-align: center;
-  margin: 20px 0;
-}
-
-.page-btn {
-  background: none;
-  border: 1px solid #005bff;
-  padding: 8px 14px;
-  margin: 0 4px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.page-btn:hover {
-  background-color: #005bff;
-  color: white;
-}
-
-.page-btn.active {
-  background-color: #005bff;
-  color: white;
-}
-
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeIn 0.5s forwards;
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+/* Responsive */
+@media (max-width: 768px) {
+  .nav {
+    float: none;
+    text-align: center;
+    margin-top: 10px;
   }
-}
-
-footer {
-  text-align: center;
-  padding: 15px;
-  font-size: 14px;
-  background: #fff;
-  margin-top: 20px;
-  border-top: 1px solid #ddd;
-  color: #777;
+  .categories, .products {
+    flex-direction: column;
+  }
 }
