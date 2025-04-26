@@ -7,14 +7,14 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
     body { font-family: 'Poppins', sans-serif; }
-    html { scroll-padding-top: 4rem; /* отступ для фиксированной шапки при переходе по якорям */ }
+    html { scroll-padding-top: 4rem; }
   </style>
 </head>
 <body class="bg-gray-900 text-white pt-16">
 
   <!-- Навигация -->
   <header id="site-header"
-          class="fixed top-0 left-0 w-full z-20 transform transition-transform duration-300
+          class="fixed top-0 left-0 w-full z-20 transform transition-transform duration-500 ease-in-out
                  bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 shadow-lg">
     <div class="container mx-auto flex flex-col md:flex-row justify-between items-center p-4">
       <h1 class="text-2xl font-bold">Arizona RP</h1>
@@ -78,14 +78,13 @@
       <h3 class="text-3xl font-bold mb-6 text-white">О проекте Arizona RP</h3>
       <div class="max-w-4xl mx-auto bg-gray-700 p-8 rounded-xl shadow-xl">
         <p class="text-lg mb-6 text-gray-300 leading-relaxed">
-          Arizona RolePlay — это один из самых популярных проектов в мире, предлагающий игрокам уникальные возможности
-          для развлечений и общения в виртуальном мире.
+          Arizona RolePlay — это один из самых популярных проектов в мире...
         </p>
         <p class="text-lg mb-6 text-gray-300 leading-relaxed">
-          Проект представляет собой тщательно проработанную систему, основанную на принципах ролевых игр.
+          Проект представляет собой тщательно проработанную систему...
         </p>
         <p class="text-lg mb-6 text-gray-300 leading-relaxed">
-          Мы стремимся предоставить вам лучший опыт, и каждое ваше пожертвование помогает улучшать проект.
+          Мы стремимся предоставить вам лучший опыт...
         </p>
       </div>
     </div>
@@ -95,7 +94,7 @@
   <section id="contact" class="bg-gray-800 py-16 px-4">
     <div class="container mx-auto text-center">
       <h3 class="text-3xl font-bold mb-8 text-yellow-400">Контакты администрации</h3>
-      <p class="text-lg text-gray-300 mb-4">Мы всегда рады помочь вам. Свяжитесь с нами через:</p>
+      <p class="text-lg text-gray-300 mb-4">Мы всегда рады помочь вам. Свяжитесь:</p>
       <p class="mb-2">Telegram: <a href="https://t.me/tiffor" class="text-cyan-400 hover:underline">@Tiffor</a></p>
       <p class="mb-2">Форум: <a href="https://forum.arizona-rp.com/" class="text-cyan-400 hover:underline">forum.arizona-rp.com</a></p>
       <p>Discord: <a href="#" class="text-cyan-400 hover:underline">Скоро...</a></p>
@@ -114,17 +113,23 @@
 
   <script>
     let lastScroll = 0;
+    let ticking = false;
     const header = document.getElementById('site-header');
+
     window.addEventListener('scroll', () => {
       const current = window.pageYOffset;
-      if (current > lastScroll && current > 100) {
-        // скрыть шапку при прокрутке вниз
-        header.classList.add('-translate-y-full');
-      } else {
-        // показать при прокрутке вверх
-        header.classList.remove('-translate-y-full');
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (current > lastScroll && current > 100) {
+            header.classList.add('-translate-y-full');
+          } else {
+            header.classList.remove('-translate-y-full');
+          }
+          lastScroll = current;
+          ticking = false;
+        });
+        ticking = true;
       }
-      lastScroll = current;
     });
   </script>
 </body>
