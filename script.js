@@ -1,27 +1,46 @@
-document.getElementById('search-btn').addEventListener('click', function() {
-    let searchQuery = document.getElementById('search-input').value.toLowerCase();
-    let ads = document.querySelectorAll('.ad');
-    
-    ads.forEach(ad => {
-        let adTitle = ad.querySelector('h3').textContent.toLowerCase();
-        if (adTitle.includes(searchQuery)) {
-            ad.style.display = 'block';
-        } else {
-            ad.style.display = 'none';
-        }
-    });
+// Сортировка товаров
+document.getElementById("sort-by").addEventListener("change", function() {
+  const sortValue = this.value;
+  console.log("Сортировка по: ", sortValue);
+  // Здесь можно добавить код для обновления списка товаров
 });
 
-document.getElementById('category-select').addEventListener('change', function() {
-    let selectedCategory = this.value;
-    let ads = document.querySelectorAll('.ad');
+// Управление объявлениями
+const deleteAdButton = document.querySelector(".delete-ad");
+const blockAdButton = document.querySelector(".block-ad");
 
-    ads.forEach(ad => {
-        let adCategory = ad.dataset.category;
-        if (selectedCategory === 'all' || adCategory === selectedCategory) {
-            ad.style.display = 'block';
-        } else {
-            ad.style.display = 'none';
-        }
-    });
+deleteAdButton.addEventListener("click", function() {
+  console.log("Объявление удалено.");
+  // Здесь добавьте код для удаления объявления
+});
+
+blockAdButton.addEventListener("click", function() {
+  console.log("Объявление заблокировано.");
+  // Здесь добавьте код для блокировки объявления
+});
+
+// Пагинация
+document.getElementById("prev-page").addEventListener("click", function() {
+  console.log("Перешли на предыдущую страницу");
+  // Здесь добавьте код для переключения на предыдущую страницу
+});
+
+document.getElementById("next-page").addEventListener("click", function() {
+  console.log("Перешли на следующую страницу");
+  // Здесь добавьте код для переключения на следующую страницу
+});
+
+// Форма добавления объявления
+const addAdForm = document.querySelector(".add-ad-form form");
+
+addAdForm.addEventListener("submit", function(event) {
+  event.preventDefault();
+  
+  const adTitle = document.getElementById("ad-title").value;
+  const adDescription = document.getElementById("ad-description").value;
+  const adPrice = document.getElementById("ad-price").value;
+  const adCategory = document.getElementById("ad-category").value;
+  
+  console.log("Добавлено объявление:", adTitle, adDescription, adPrice, adCategory);
+  // Здесь добавьте код для отправки данных на сервер или обработки объявления
 });
