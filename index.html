@@ -1,300 +1,96 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Авито Клон</title>
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      background: #f5f5f5;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background-color: #005bff;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      font-size: 24px;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
-
-    .filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-      background: #fff;
-      padding: 15px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    .filters input, .filters select, .filters button {
-      padding: 8px 12px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      outline: none;
-    }
-
-    .filters button {
-      background-color: #005bff;
-      color: white;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .filters button:hover {
-      background-color: #0041cc;
-    }
-
-    .ads-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-
-    .ad-card {
-      background: #fff;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
-    }
-
-    .ad-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .ad-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-
-    .ad-info {
-      padding: 15px;
-    }
-
-    .ad-info h3 {
-      margin: 0 0 10px;
-      font-size: 18px;
-    }
-
-    .price {
-      color: #28a745;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-
-    .location {
-      font-size: 14px;
-      color: #666;
-      margin-bottom: 10px;
-    }
-
-    .btn-details {
-      padding: 8px 12px;
-      background: #005bff;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      width: 100%;
-      transition: background-color 0.3s;
-    }
-
-    .btn-details:hover {
-      background-color: #0041cc;
-    }
-
-    .pagination {
-      text-align: center;
-      margin: 20px 0;
-    }
-
-    .page-btn {
-      background: none;
-      border: 1px solid #005bff;
-      padding: 8px 14px;
-      margin: 0 4px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background-color 0.3s, color 0.3s;
-    }
-
-    .page-btn:hover {
-      background-color: #005bff;
-      color: white;
-    }
-
-    .page-btn.active {
-      background-color: #005bff;
-      color: white;
-    }
-
-    /* Анимация карточек */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeIn 0.5s forwards;
-    }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    footer {
-      text-align: center;
-      padding: 15px;
-      font-size: 14px;
-      background: #fff;
-      margin-top: 20px;
-      border-top: 1px solid #ddd;
-      color: #777;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Онлайн магазин, товары, услуги">
+    <meta name="keywords" content="магазин, товары, услуги, покупка, интернет-магазин">
+    <title>Онлайн магазин</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="scripts.js"></script>
 </head>
 <body>
 
-<header>Клон Авито</header>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="header-container">
+            <div class="logo">AZON</div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#categories">Категории</a></li>
+                    <li><a href="#offers">Акции</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                    <li><a href="#cart">Корзина</a></li>
+                    <li><a href="#profile">Личный кабинет</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar">
+                <input type="text" placeholder="Поиск товаров...">
+                <button>Поиск</button>
+            </div>
+        </div>
+    </header>
 
-<div class="filters">
-  <input type="text" id="filter-location" placeholder="Город">
-  <input type="number" id="filter-price-min" placeholder="Мин. цена">
-  <input type="number" id="filter-price-max" placeholder="Макс. цена">
-  <input type="text" id="filter-search" placeholder="Поиск товара...">
-  <button id="filter-btn">Фильтровать</button>
+    <!-- Основной контент -->
+    <main>
+        <section id="home">
+            <div class="hero">
+                <h1>Добро пожаловать в AZON</h1>
+                <p>Товары на любой вкус и бюджет</p>
+                <a href="#categories" class="btn">Посмотреть товары</a>
+            </div>
+        </section>
 
-  <select id="sort-select">
-    <option value="">Сортировка</option>
-    <option value="price-asc">Цена ↑</option>
-    <option value="price-desc">Цена ↓</option>
-    <option value="title-asc">Название A-Z</option>
-    <option value="title-desc">Название Z-A</option>
-  </select>
-</div>
+        <section id="categories">
+            <h2>Популярные категории</h2>
+            <div class="categories-container">
+                <div class="category-card">
+                    <img src="images/electronics.jpg" alt="Электроника">
+                    <h3>Электроника</h3>
+                </div>
+                <div class="category-card">
+                    <img src="images/clothing.jpg" alt="Одежда">
+                    <h3>Одежда</h3>
+                </div>
+                <div class="category-card">
+                    <img src="images/furniture.jpg" alt="Мебель">
+                    <h3>Мебель</h3>
+                </div>
+            </div>
+        </section>
 
-<div id="ads-container" class="ads-container"></div>
+        <section id="offers">
+            <h2>Акции и предложения</h2>
+            <div class="offers-container">
+                <div class="offer-card">
+                    <h3>Скидка 50% на электронику</h3>
+                    <p>Только до конца недели!</p>
+                </div>
+                <div class="offer-card">
+                    <h3>Подарки за покупки</h3>
+                    <p>При заказе от 5000 рублей</p>
+                </div>
+            </div>
+        </section>
 
-<div id="pagination" class="pagination"></div>
+        <section id="contact">
+            <h2>Контакты</h2>
+            <p>Свяжитесь с нами, если у вас возникли вопросы.</p>
+            <form>
+                <input type="text" placeholder="Ваше имя" required>
+                <input type="email" placeholder="Ваш Email" required>
+                <textarea placeholder="Ваше сообщение" required></textarea>
+                <button type="submit">Отправить</button>
+            </form>
+        </section>
+    </main>
 
-<footer>
-  © 2025 Все права защищены. Политика конфиденциальности | Используем Cookies
-</footer>
-
-<script>
-const adsData = [
-  { title: "iPhone 13 Pro", price: 80000, location: "Москва", image: "https://via.placeholder.com/300x200" },
-  { title: "MacBook Air", price: 100000, location: "Санкт-Петербург", image: "https://via.placeholder.com/300x200" },
-  { title: "PlayStation 5", price: 50000, location: "Казань", image: "https://via.placeholder.com/300x200" },
-  { title: "Apple Watch", price: 25000, location: "Новосибирск", image: "https://via.placeholder.com/300x200" },
-  { title: "Электросамокат Xiaomi", price: 30000, location: "Екатеринбург", image: "https://via.placeholder.com/300x200" },
-  { title: "Монитор Samsung", price: 15000, location: "Самара", image: "https://via.placeholder.com/300x200" },
-  { title: "Игровой ПК", price: 120000, location: "Ростов-на-Дону", image: "https://via.placeholder.com/300x200" },
-  { title: "iPad Pro", price: 85000, location: "Москва", image: "https://via.placeholder.com/300x200" },
-  { title: "Велосипед", price: 20000, location: "Краснодар", image: "https://via.placeholder.com/300x200" },
-  { title: "Наушники AirPods", price: 12000, location: "Санкт-Петербург", image: "https://via.placeholder.com/300x200" }
-];
-
-const adsPerPage = 6;
-let currentPage = 1;
-let filteredAds = adsData.slice();
-
-function loadAds(page = 1) {
-  const container = document.getElementById('ads-container');
-  container.innerHTML = '';
-
-  const start = (page - 1) * adsPerPage;
-  const end = start + adsPerPage;
-  const adsToShow = filteredAds.slice(start, end);
-
-  adsToShow.forEach((ad, index) => {
-    const card = document.createElement('div');
-    card.className = 'ad-card fade-in';
-    card.style.animationDelay = `${index * 0.1}s`;
-    card.innerHTML = `
-      <img src="${ad.image}" alt="Товар">
-      <div class="ad-info">
-        <h3>${ad.title}</h3>
-        <p class="price">${ad.price.toLocaleString()} ₽</p>
-        <p class="location">${ad.location}</p>
-        <button class="btn-details">Подробнее</button>
-      </div>
-    `;
-    container.appendChild(card);
-  });
-
-  renderPagination();
-}
-
-function renderPagination() {
-  const paginationContainer = document.getElementById('pagination');
-  paginationContainer.innerHTML = '';
-
-  const pagesCount = Math.ceil(filteredAds.length / adsPerPage);
-
-  for (let i = 1; i <= pagesCount; i++) {
-    const pageBtn = document.createElement('button');
-    pageBtn.className = 'page-btn';
-    pageBtn.innerText = i;
-    if (i === currentPage) pageBtn.classList.add('active');
-    pageBtn.addEventListener('click', () => {
-      currentPage = i;
-      loadAds(currentPage);
-    });
-    paginationContainer.appendChild(pageBtn);
-  }
-}
-
-function applyFilters() {
-  const locationFilter = document.getElementById('filter-location').value.toLowerCase();
-  const priceMin = parseInt(document.getElementById('filter-price-min').value) || 0;
-  const priceMax = parseInt(document.getElementById('filter-price-max').value) || Infinity;
-  const searchQuery = document.getElementById('filter-search').value.toLowerCase();
-
-  filteredAds = adsData.filter(ad => {
-    return ad.location.toLowerCase().includes(locationFilter) &&
-           ad.price >= priceMin &&
-           ad.price <= priceMax &&
-           ad.title.toLowerCase().includes(searchQuery);
-  });
-
-  applySorting();
-  currentPage = 1;
-  loadAds(currentPage);
-}
-
-function applySorting() {
-  const sortType = document.getElementById('sort-select').value;
-
-  if (sortType === "price-asc") {
-    filteredAds.sort((a, b) => a.price - b.price);
-  } else if (sortType === "price-desc") {
-    filteredAds.sort((a, b) => b.price - a.price);
-  } else if (sortType === "title-asc") {
-    filteredAds.sort((a, b) => a.title.localeCompare(b.title));
-  } else if (sortType === "title-desc") {
-    filteredAds.sort((a, b) => b.title.localeCompare(a.title));
-  }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  loadAds();
-  document.getElementById('filter-btn').addEventListener('click', applyFilters);
-  document.getElementById('sort-select').addEventListener('change', () => {
-    applySorting();
-    loadAds(currentPage);
-  });
-});
-</script>
-
+    <!-- Подвал -->
+    <footer>
+        <div class="footer-container">
+            <p>© 2025 AZON. Все права защищены.</p>
+        </div>
+    </footer>
 </body>
 </html>
