@@ -28,28 +28,6 @@
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-    #mobile-menu-button {
-      width: 48px;
-      height: 48px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    #mobile-menu a {
-      padding: 1rem 1.5rem;
-      font-size: 1.125rem;
-    }
-    .login-button {
-      padding: 0.5rem 1rem;
-      background-color: #facc15;
-      color: black;
-      border-radius: 9999px;
-      font-weight: 600;
-      transition: background-color 0.3s ease;
-    }
-    .login-button:hover {
-      background-color: #fbbf24;
-    }
   </style>
 </head>
 <body class="bg-gray-900 text-white pt-20">
@@ -65,7 +43,7 @@
         <a href="#shop" class="text-gray-200 hover:text-yellow-400">Магазин</a>
         <a href="#wiki" class="text-gray-200 hover:text-yellow-400">Вики</a>
         <a href="#contact" class="text-gray-200 hover:text-yellow-400">Контакты</a>
-        <a href="auth.html" class="login-button ml-4">Войти</a>
+        <a href="https://donate.arizona-rp.com" class="ml-4 bg-yellow-500 text-black px-5 py-2 rounded-full hover:bg-yellow-400">Донат</a>
       </nav>
       <button id="mobile-menu-button" class="lg:hidden text-white focus:outline-none">
         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -81,7 +59,7 @@
         <a href="#shop" class="text-gray-200 hover:text-yellow-400">Магазин</a>
         <a href="#wiki" class="text-gray-200 hover:text-yellow-400">Вики</a>
         <a href="#contact" class="text-gray-200 hover:text-yellow-400">Контакты</a>
-        <a href="auth.html" class="login-button text-center">Войти</a>
+        <a href="https://donate.arizona-rp.com" class="mt-2 bg-yellow-500 text-black px-5 py-2 rounded-full hover:bg-yellow-400">Донат</a>
       </nav>
     </div>
   </header>
@@ -89,8 +67,17 @@
   <!-- Hero Section -->
   <section id="home" class="hero-bg flex items-center justify-center text-center px-4">
     <div class="relative z-10">
-      <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6">Добро пожаловать в Arizona Role Play</h2>
-      <a href="#servers" class="bg-yellow-500 text-black px-8 py-3 rounded-full font-semibold hover:bg-yellow-400 transition">Начать играть</a>
+      <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6">
+        Добро пожаловать в Arizona Role Play
+      </h2>
+      <a href="#servers"
+         class="bg-yellow-500 text-black px-8 py-4 sm:px-10 sm:py-5 rounded-full 
+                text-base sm:text-lg md:text-xl font-bold hover:bg-yellow-400
+                transition-all duration-300 ease-in-out shadow-lg hover:shadow-2xl
+                transform hover:scale-105 animate-pulse mt-4 inline-block 
+                active:animate-bounce">
+        Начать играть
+      </a>
     </div>
   </section>
 
@@ -162,7 +149,6 @@
     </div>
   </footer>
 
-  <!-- Script -->
   <script>
     (function() {
       const headerEl = document.getElementById('site-header');
@@ -189,12 +175,6 @@
         link.addEventListener('click', () => {
           menuEl.classList.add('hidden');
         });
-      });
-
-      window.addEventListener('click', function(event) {
-        if (!menuEl.contains(event.target) && !menuBtnEl.contains(event.target)) {
-          menuEl.classList.add('hidden');
-        }
       });
     })();
   </script>
