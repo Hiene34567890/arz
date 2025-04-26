@@ -59,3 +59,53 @@ document.getElementById('filter-form').addEventListener('submit', function(event
 
   console.log(`Фильтры применены: Категория: ${category}, Цена: ${price}, Состояние: ${condition}`);
 });
+
+// Открытие и закрытие модального окна
+const modal = document.getElementById('modal');
+const closeBtn = document.querySelector('.close-btn');
+const detailsBtn = document.querySelectorAll('.details-btn');
+
+detailsBtn.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        modal.style.display = 'block';
+    });
+});
+
+closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+});
+
+window.addEventListener('click', (event) => {
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+});
+
+// Фильтрация товаров
+document.getElementById('filter-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const category = document.getElementById('category').value;
+    const price = document.getElementById('price').value;
+    const condition = document.getElementById('condition').value;
+
+    filterProducts(category, price, condition);
+});
+
+function filterProducts(category, price, condition) {
+    const products = document.querySelectorAll('.product-card');
+    products.forEach(product => {
+        const productCategory = product.getAttribute('data-category');
+        const productPrice = parseInt(product.getAttribute('data-price'));
+        const productCondition = product.getAttribute('data-condition');
+
+        if (
+            (category === 'all' || productCategory === category) &&
+            (price == 0 || productPrice <= price) &&
+            (condition === 'all' || productCondition === condition)
+        ) {
+            product.style.display = 'block';
+        } else {
+            product.style.display = 'none';
+        }
+    });
+}
