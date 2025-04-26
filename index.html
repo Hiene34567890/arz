@@ -243,6 +243,7 @@
     .shop-section {
       background-color: #374151;
       padding: 50px 0;
+      text-align: center;
     }
 
     .shop-item {
@@ -334,12 +335,9 @@
 
   <!-- Шапка -->
   <header id="site-header" class="fixed top-0 left-0 w-full backdrop-blur-lg bg-transparent py-4">
-    <div class="container mx-auto flex justify-between items-center px-6">
-      <div class="logo">
-        Arizona Role Play
-      </div>
+    <div class="container mx-auto flex justify-between items-center">
+      <a href="#" class="logo">Arizona RP</a>
       <nav class="nav-links">
-        <a href="#home" class="nav-link">Главная</a>
         <a href="#servers" class="nav-link">Сервера</a>
         <a href="#rules" class="nav-link">Правила</a>
         <a href="#shop" class="nav-link">Магазин</a>
@@ -348,8 +346,8 @@
     </div>
   </header>
 
-  <!-- Герой-секция -->
-  <section id="home" class="hero-bg">
+  <!-- Главная секция -->
+  <section class="hero-bg">
     <div class="hero-content text-center">
       <h1>Добро пожаловать в Arizona RP</h1>
       <p>Присоединяйтесь к нашему уникальному миру и играйте с друзьями</p>
@@ -405,6 +403,11 @@
     <textarea placeholder="Ваше сообщение" id="message"></textarea>
     <button onclick="sendMessage()">Отправить</button>
   </div>
+
+  <!-- Политика конфиденциальности и авторские права -->
+  <footer class="footer">
+    <p>&copy; 2025 Arizona RP | <a href="#privacy-policy">Политика конфиденциальности</a> | Все права защищены</p>
+  </footer>
 
   <script>
     window.onscroll = function() {
