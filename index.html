@@ -1,353 +1,39 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <meta name="description" content="Avito-клон: купля-продажа товаров онлайн" />
-  <meta name="keywords" content="купить, продать, объявления, товары" />
-  <title>Avito-клон</title>
-  <style>
-    /* ===== Reset & Base ===== */
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family: Arial, sans-serif; background:#f4f4f4; color:#333; transition:background .3s,color .3s; }
-    h1,h2,h3,h4,p,ul,li { margin:0; }
-    ul { list-style:none; }
-
-    /* ===== Header ===== */
-    header { background:#2d2d2d; padding:10px; position:relative; }
-    header.dark-mode { background:#111; }
-    nav ul { display:flex; justify-content:center; }
-    nav li { margin:0 15px; }
-    nav a { color:#fff; text-decoration:none; font-weight:bold; }
-    #theme-toggle { position:absolute; top:12px; right:12px; padding:6px 10px; background:#4CAF50; color:#fff; border:none; cursor:pointer; border-radius:4px; }
-
-    /* ===== Search & Filters ===== */
-    .search-bar, .filters { display:flex; justify-content:center; gap:10px; margin:20px; flex-wrap:wrap; }
-    .search-bar input, .filters select, .filters input { padding:8px; border:1px solid #ccc; border-radius:4px; }
-    .search-bar button, .filters button { padding:8px 12px; background:#007BFF; color:#fff; border:none; cursor:pointer; border-radius:4px; transition:background .2s; }
-    .search-bar button:hover, .filters button:hover { background:#0056b3; }
-
-    /* ===== Product Grid ===== */
-    .product-list { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; padding:0 20px; }
-    .product-card { width:200px; background:#fff; border-radius:8px; box-shadow:0 4px 8px rgba(0,0,0,0.1); overflow:hidden; text-align:center; padding:15px; opacity:0; transform:translateY(20px); animation:fadeInUp .5s forwards; transition:background .3s,color .3s; }
-    .product-card.dark-mode { background:#333; color:#fff; }
-    .product-card img { width:100%; height:120px; object-fit:cover; border-radius:4px; }
-    .product-card h4 { margin:10px 0; font-size:16px; }
-    .product-card p { font-size:14px; margin:5px 0; }
-    .product-card button { width:100%; margin-top:8px; padding:8px; border:none; border-radius:4px; cursor:pointer; transition:background .2s,transform .2s; }
-    .details-btn { background:#4CAF50; color:#fff; }
-    .favorite-btn { background:#f8c700; color:#333; }
-    .product-card button:hover { transform:scale(1.03); }
-    .details-btn:hover { background:#45a049; }
-    .favorite-btn:hover { background:#f4b700; }
-
-    @keyframes fadeInUp { to { opacity:1; transform:translateY(0); } }
-
-    /* ===== Pagination ===== */
-    .pagination { display:flex; justify-content:center; gap:5px; margin:20px; }
-    .pagination button { padding:6px 10px; border:none; background:#007BFF; color:#fff; cursor:pointer; border-radius:4px; }
-    .pagination button:hover { background:#0056b3; }
-
-    /* ===== Create Ad ===== */
-    .create-ad { max-width:400px; margin:20px auto; background:#fff; padding:20px; border-radius:8px; box-shadow:0 4px 8px rgba(0,0,0,0.1); transition:background .3s,color .3s; }
-    .create-ad.dark-mode { background:#333; color:#fff; }
-    .create-ad h3 { margin-bottom:10px; }
-    .create-ad form { display:flex; flex-direction:column; gap:10px; }
-    .create-ad input, .create-ad select, .create-ad textarea, .create-ad button { padding:8px; border:1px solid #ccc; border-radius:4px; }
-    .create-ad button { background:#4CAF50; color:#fff; border:none; cursor:pointer; }
-    .create-ad button:hover { background:#45a049; }
-
-    /* ===== Favorites ===== */
-    .favorites { max-width:600px; margin:20px auto; background:#fff; padding:20px; border-radius:8px; box-shadow:0 4px 8px rgba(0,0,0,0.1); transition:background .3s,color .3s; }
-    .favorites.dark-mode { background:#333; color:#fff; }
-    .favorites h3 { margin-bottom:10px; }
-    .favorites ul { list-style:none; padding-left:0; }
-    .favorites li { background:#f4f4f4; padding:8px; border-radius:4px; margin-bottom:5px; }
-    .favorites li.dark-mode { background:#444; }
-
-    /* ===== Reviews ===== */
-    .reviews { max-width:600px; margin:20px auto; background:#fff; padding:20px; border-radius:8px; box-shadow:0 4px 8px rgba(0,0,0,0.1); transition:background .3s,color .3s; }
-    .reviews.dark-mode { background:#333; color:#fff; }
-    .reviews h3 { margin-bottom:10px; }
-    #review-form { display:flex; flex-direction:column; gap:10px; }
-    #review-form textarea { resize:none; padding:8px; border:1px solid #ccc; border-radius:4px; }
-    #review-form button { align-self:flex-start; background:#007BFF; color:#fff; border:none; padding:8px 12px; border-radius:4px; cursor:pointer; }
-    #review-form button:hover { background:#0056b3; }
-    #reviews-list .review { background:#f4f4f4; padding:10px; border-radius:4px; margin-top:10px; transition:background .3s,color .3s; }
-    .reviews .review.dark-mode { background:#444; }
-
-    /* ===== Modal ===== */
-    .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4); justify-content:center; align-items:center; }
-    .modal-content { background:#fff; padding:20px; border-radius:8px; max-width:400px; width:90%; position:relative; transition:background .3s,color .3s; }
-    .modal-content.dark-mode { background:#222; color:#fff; }
-    .close-btn { position:absolute; top:10px; right:10px; font-size:24px; cursor:pointer; }
-
-    /* ===== Dark Mode ===== */
-    body.dark-mode { background:#121212; color:#ddd; }
-    header.dark-mode a { color:#ddd; }
-    .search-bar.dark-mode input, .filters.dark-mode select, .filters.dark-mode input { background:#222; color:#ddd; border:1px solid #555; }
-    .search-bar.dark-mode button, .filters.dark-mode button { background:#0056b3; }
-    .pagination.dark-mode button { background:#0056b3; }
-
-    /* ===== Responsive ===== */
-    @media (max-width:768px) {
-      .search-bar, .filters { flex-direction:column; align-items:center; }
-      .product-list { flex-direction:column; align-items:center; }
-      .product-card { width:90%; }
-      .create-ad { width:90%; }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Авито Клон</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header>
-    <nav>
-      <ul>
-        <li><a href="#">Главная</a></li>
-        <li><a href="#">Категории</a></li>
-        <li><a href="#">Контакты</a></li>
-      </ul>
-    </nav>
-    <button id="theme-toggle">Тема</button>
-  </header>
+<header>Клон Авито</header>
 
-  <main>
-    <!-- Поиск -->
-    <section class="search-bar">
-      <input type="text" id="search-input" placeholder="Поиск товаров..." />
-      <button id="search-btn">Найти</button>
-    </section>
+<div class="filters">
+  <input type="text" id="filter-location" placeholder="Город">
+  <input type="number" id="filter-price-min" placeholder="Мин. цена">
+  <input type="number" id="filter-price-max" placeholder="Макс. цена">
+  <input type="text" id="filter-search" placeholder="Поиск товара...">
+  <button id="filter-btn">Фильтровать</button>
 
-    <!-- Фильтры -->
-    <section class="filters">
-      <form id="filter-form">
-        <select id="category">
-          <option value="all">Все категории</option>
-          <option value="electronics">Электроника</option>
-          <option value="furniture">Мебель</option>
-        </select>
-        <input type="number" id="price" placeholder="Макс. цена" min="0" />
-        <select id="condition">
-          <option value="all">Любое состояние</option>
-          <option value="new">Новое</option>
-          <option value="used">Б/у</option>
-        </select>
-        <button type="submit">Применить</button>
-      </form>
-    </section>
+  <select id="sort-select">
+    <option value="">Сортировка</option>
+    <option value="price-asc">Цена ↑</option>
+    <option value="price-desc">Цена ↓</option>
+    <option value="title-asc">Название A-Z</option>
+    <option value="title-desc">Название Z-A</option>
+  </select>
+</div>
 
-    <!-- Список товаров -->
-    <section class="product-list"></section>
+<div id="ads-container" class="ads-container"></div>
 
-    <!-- Пагинация -->
-    <section class="pagination"></section>
+<div id="pagination" class="pagination"></div>
 
-    <!-- Создать объявление -->
-    <section class="create-ad">
-      <h3>Создать объявление</h3>
-      <form id="create-ad-form">
-        <input type="text" id="new-name" placeholder="Название" required />
-        <input type="url" id="new-image" placeholder="URL изображения" required />
-        <input type="number" id="new-price" placeholder="Цена" required />
-        <select id="new-category">
-          <option value="electronics">Электроника</option>
-          <option value="furniture">Мебель</option>
-        </select>
-        <select id="new-condition">
-          <option value="new">Новое</option>
-          <option value="used">Б/у</option>
-        </select>
-        <textarea id="new-desc" placeholder="Описание"></textarea>
-        <button type="submit">Добавить</button>
-      </form>
-    </section>
+<footer>
+  © 2025 Все права защищены. Политика конфиденциальности | Используем Cookies
+</footer>
 
-    <!-- Избранное -->
-    <section class="favorites">
-      <h3>Избранное</h3>
-      <ul id="favorites-list"></ul>
-    </section>
-
-    <!-- Отзывы -->
-    <section class="reviews">
-      <h3>Отзывы</h3>
-      <form id="review-form">
-        <textarea rows="3" placeholder="Напишите отзыв..." required></textarea>
-        <button type="submit">Отправить</button>
-      </form>
-      <div id="reviews-list"></div>
-    </section>
-  </main>
-
-  <!-- Модальное окно -->
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <span class="close-btn">&times;</span>
-      <h2 id="modal-title"></h2>
-      <p id="modal-desc"></p>
-      <p id="modal-price"></p>
-      <button>Купить</button>
-    </div>
-  </div>
-
-  <script>
-    /* ===== Data ===== */
-    const productsData = [
-      { image:"https://via.placeholder.com/200", name:"Телефон Samsung Galaxy", price:20000, rating:4, category:"electronics", condition:"new", desc:"Отличный смартфон с AMOLED-экраном." },
-      { image:"https://via.placeholder.com/200", name:"Кресло офисное", price:5000, rating:3, category:"furniture", condition:"used", desc:"Удобное кресло для работы." },
-      // ...добавьте ещё товаров
-    ];
-
-    /* ===== State ===== */
-    let filteredData = [...productsData];
-    let currentPage = 1;
-    const itemsPerPage = 6;
-
-    /* ===== Elements ===== */
-    const productList = document.querySelector('.product-list');
-    const paginationEl = document.querySelector('.pagination');
-    const filterForm = document.getElementById('filter-form');
-    const searchInput = document.getElementById('search-input');
-    const searchBtn = document.getElementById('search-btn');
-    const modal = document.getElementById('modal');
-    const closeBtn = modal.querySelector('.close-btn');
-    const modalTitle = document.getElementById('modal-title');
-    const modalDesc = document.getElementById('modal-desc');
-    const modalPrice= document.getElementById('modal-price');
-    const themeToggle = document.getElementById('theme-toggle');
-    const reviewForm = document.getElementById('review-form');
-    const reviewsList = document.getElementById('reviews-list');
-    const favoritesList = document.getElementById('favorites-list');
-    const createForm = document.getElementById('create-ad-form');
-
-    /* ===== Functions ===== */
-    function displayProducts(data) {
-      productList.innerHTML = '';
-      data.forEach((prod, idx) => {
-        const card = document.createElement('div');
-        card.className = 'product-card';
-        card.setAttribute('data-index', idx);
-        card.innerHTML = `
-          <img src="${prod.image}" loading="lazy" alt="${prod.name}">
-          <h4>${prod.name}</h4>
-          <p>Цена: ${prod.price}₽</p>
-          <p>Рейтинг: ${'★'.repeat(prod.rating)}${'☆'.repeat(5-prod.rating)}</p>
-          <button class="details-btn">Подробнее</button>
-          <button class="favorite-btn">❤</button>
-        `;
-        productList.append(card);
-      });
-      attachDetailHandlers();
-      attachFavoriteHandlers();
-      applyDarkMode();
-    }
-
-    function paginate(data) {
-      const totalPages = Math.ceil(data.length / itemsPerPage);
-      const start = (currentPage-1)*itemsPerPage;
-      const pageItems = data.slice(start, start+itemsPerPage);
-      displayProducts(pageItems);
-      paginationEl.innerHTML = '';
-      for(let i=1;i<=totalPages;i++){
-        const btn = document.createElement('button');
-        btn.textContent = i;
-        btn.onclick = ()=>{ currentPage=i; paginate(data); };
-        paginationEl.append(btn);
-      }
-      applyDarkMode();
-    }
-
-    function applyFilters() {
-      const category = filterForm.category.value;
-      const price    = parseInt(filterForm.price.value) || Infinity;
-      const cond     = filterForm.condition.value;
-      const query    = searchInput.value.trim().toLowerCase();
-      filteredData = productsData.filter(p =>
-        (category==='all'||p.category===category)
-        && p.price<=price
-        && (cond==='all'||p.condition===cond)
-        && p.name.toLowerCase().includes(query)
-      );
-      currentPage = 1;
-      paginate(filteredData);
-    }
-
-    function attachDetailHandlers(){
-      document.querySelectorAll('.details-btn').forEach((btn,i)=>{
-        btn.onclick = ()=>{
-          const prod = filteredData[(currentPage-1)*itemsPerPage + i];
-          modalTitle.textContent = prod.name;
-          modalDesc.textContent  = prod.desc;
-          modalPrice.textContent = `Цена: ${prod.price}₽`;
-          modal.style.display='flex';
-        };
-      });
-    }
-
-    function loadFavorites(){ return JSON.parse(localStorage.getItem('favs')||'[]'); }
-    function saveFavorites(f){ localStorage.setItem('favs',JSON.stringify(f)); }
-    function updateFavoritesUI(){
-      favoritesList.innerHTML='';
-      loadFavorites().forEach(n=>{
-        const li=document.createElement('li'); li.textContent=n;
-        if(document.body.classList.contains('dark-mode')) li.classList.add('dark-mode');
-        favoritesList.append(li);
-      });
-    }
-
-    function attachFavoriteHandlers(){
-      document.querySelectorAll('.favorite-btn').forEach((btn,i)=>{
-        const prod = filteredData[(currentPage-1)*itemsPerPage + i];
-        const favs = loadFavorites();
-        btn.textContent = favs.includes(prod.name)?'★':'❤';
-        btn.onclick = ()=>{
-          let f = loadFavorites();
-          if(f.includes(prod.name)) f = f.filter(x=>x!==prod.name);
-          else f.push(prod.name);
-          saveFavorites(f); updateFavoritesUI(); btn.textContent=f.includes(prod.name)?'★':'❤';
-        };
-      });
-    }
-
-    function applyDarkMode(){
-      const dark = document.body.classList.contains('dark-mode');
-      document.querySelectorAll('header, .product-card, .reviews, .favorites, .create-ad, .modal-content').forEach(el=>{
-        el.classList.toggle('dark-mode',dark);
-      });
-    }
-
-    /* ===== Events ===== */
-    filterForm.addEventListener('submit',e=>{ e.preventDefault(); applyFilters(); });
-    searchBtn.addEventListener('click',applyFilters);
-    closeBtn.onclick = ()=> modal.style.display='none';
-    window.onclick = e=>{ if(e.target===modal) modal.style.display='none'; };
-    themeToggle.onclick = ()=>{ document.body.classList.toggle('dark-mode'); applyDarkMode(); updateFavoritesUI(); };
-    reviewForm.addEventListener('submit',e=>{
-      e.preventDefault(); const txt=reviewForm.querySelector('textarea').value;
-      const d=document.createElement('div'); d.className='review'; d.textContent=txt;
-      if(document.body.classList.contains('dark-mode')) d.classList.add('dark-mode');
-      reviewsList.append(d); reviewForm.reset();
-    });
-    createForm.addEventListener('submit',e=>{
-      e.preventDefault();
-      const newProd={
-        image:document.getElementById('new-image').value,
-        name:document.getElementById('new-name').value,
-        price:parseInt(document.getElementById('new-price').value),
-        rating:0,
-        category:document.getElementById('new-category').value,
-        condition:document.getElementById('new-condition').value,
-        desc:document.getElementById('new-desc').value
-      };
-      productsData.push(newProd);
-      applyFilters();
-      currentPage=Math.ceil(filteredData.length/itemsPerPage);
-      paginate(filteredData);
-      createForm.reset();
-    });
-
-    /* ===== Init ===== */
-    updateFavoritesUI(); paginate(filteredData);
-  </script>
+<script src="script.js"></script>
 </body>
 </html>
