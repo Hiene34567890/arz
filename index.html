@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Arizona Role Play</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
     body { font-family: 'Poppins', sans-serif; }
     html { scroll-padding-top: 5rem; }
-    #site-header { transition: background-color 0.4s ease, padding 0.4s ease, top 0.5s ease; z-index: 40; }
+    #site-header {
+      transition: background-color 0.4s ease, padding 0.4s ease, top 0.5s ease;
+      z-index: 40;
+    }
     #site-header.scrolled {
       background-color: rgba(31, 41, 55, 0.9);
       padding-top: 0.75rem;
@@ -28,6 +31,11 @@
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
+    .menu-hidden {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
   </style>
 </head>
 <body class="bg-gray-900 text-white pt-20">
@@ -36,7 +44,7 @@
   <header id="site-header" class="fixed top-0 left-0 w-full backdrop-blur-lg bg-transparent py-4">
     <div class="container mx-auto flex justify-between items-center px-4">
       <h1 class="text-3xl font-extrabold text-white">Arizona Role Play</h1>
-      <nav class="hidden lg:flex space-x-6 items-center">
+      <nav id="navbar" class="hidden lg:flex space-x-6 items-center transition-opacity duration-300">
         <a href="#home" class="text-gray-200 hover:text-yellow-400">Главная</a>
         <a href="#servers" class="text-gray-200 hover:text-yellow-400">Сервера</a>
         <a href="#rules" class="text-gray-200 hover:text-yellow-400">Правила</a>
@@ -44,7 +52,6 @@
         <a href="#wiki" class="text-gray-200 hover:text-yellow-400">Вики</a>
         <a href="#contact" class="text-gray-200 hover:text-yellow-400">Контакты</a>
         <a href="https://donate.arizona-rp.com" class="ml-4 bg-yellow-500 text-black px-5 py-2 rounded-full hover:bg-yellow-400">Донат</a>
-        <!-- Кнопка входа -->
         <button id="login-button" class="ml-4 bg-yellow-500 text-black px-5 py-2 rounded-full hover:bg-yellow-400">Войти</button>
       </nav>
     </div>
@@ -58,64 +65,15 @@
     </div>
   </section>
 
-  <!-- Servers Section -->
-  <section id="servers" class="container mx-auto py-16 px-4">
-    <h3 class="text-3xl font-bold text-center text-yellow-400 mb-10">Наши сервера</h3>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-yellow-500 transition">
-        <h4 class="text-xl font-semibold mb-2">Tucson</h4>
-        <p class="text-gray-300">IP: 185.169.134.45:7777 | Онлайн: ~900 | Режим: Акция</p>
-      </div>
-      <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-yellow-500 transition">
-        <h4 class="text-xl font-semibold mb-2">Phoenix</h4>
-        <p class="text-gray-300">IP: 185.169.134.46:7777 | Онлайн: ~700 | Режим: Стандарт</p>
-      </div>
-      <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-yellow-500 transition">
-        <h4 class="text-xl font-semibold mb-2">Chandler</h4>
-        <p class="text-gray-300">IP: 185.169.134.47:7777 | Онлайн: ~500 | Режим: Новичок</p>
-      </div>
-    </div>
+  <!-- Example Sections (можешь заменить/добавить содержимое) -->
+  <section id="servers" class="py-20 px-4 text-center">
+    <h3 class="text-3xl font-bold mb-6">Наши сервера</h3>
+    <p class="text-gray-300">Информация о серверах появится здесь.</p>
   </section>
 
-  <!-- Rules Section -->
-  <section id="rules" class="bg-gray-800 py-16 px-4">
-    <div class="container mx-auto">
-      <h3 class="text-3xl font-bold text-center text-yellow-400 mb-8">Правила проекта</h3>
-      <ul class="list-disc list-inside space-y-4 text-gray-300">
-        <li>Запрещены читы, багюз и другие нечестные методы.</li>
-        <li>Уважайте других игроков и администрацию.</li>
-        <li>Запрещено рекламировать сторонние проекты.</li>
-        <li>Соблюдайте правила РП-поведения.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Shop Section -->
-  <section id="shop" class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 py-16 px-4">
-    <div class="container mx-auto text-center">
-      <h3 class="text-3xl font-bold text-white mb-6">Магазин внутриигровых товаров</h3>
-      <p class="text-gray-200 mb-4">Уникальные скины, автомобили, VIP-пакеты и многое другое.</p>
-      <a href="https://shop.arizona-rp.com" class="bg-yellow-500 text-black px-6 py-3 rounded-full hover:bg-yellow-400 transition">Перейти в магазин</a>
-    </div>
-  </section>
-
-  <!-- Wiki Section -->
-  <section id="wiki" class="container mx-auto py-16 px-4">
-    <h3 class="text-3xl font-bold text-center text-yellow-400 mb-6">Arizona RP Вики</h3>
-    <p class="text-gray-300 text-center mb-4">Полное собрание статей по геймплею, лору и механикам.</p>
-    <div class="text-center">
-      <a href="https://wiki.arizona-rp.com" class="bg-yellow-500 text-black px-6 py-3 rounded-full hover:bg-yellow-400 transition">Открыть Вики</a>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="bg-gray-800 py-16 px-4">
-    <div class="container mx-auto text-center">
-      <h3 class="text-3xl font-bold text-yellow-400 mb-8">Контакты администрации</h3>
-      <p class="text-gray-300 mb-4">Telegram: <a href="https://t.me/tiffor" class="text-cyan-400 hover:underline">@Tiffor</a></p>
-      <p class="text-gray-300 mb-4">Форум: <a href="https://forum.arizona-rp.com" class="text-cyan-400 hover:underline">forum.arizona-rp.com</p>
-      <p class="text-gray-300">Discord: <span class="text-gray-500">Скоро...</span></p>
-    </div>
+  <section id="rules" class="py-20 px-4 text-center bg-gray-800">
+    <h3 class="text-3xl font-bold mb-6">Правила проекта</h3>
+    <p class="text-gray-300">Скоро здесь будут размещены правила.</p>
   </section>
 
   <!-- Footer -->
@@ -127,39 +85,45 @@
   </footer>
 
   <!-- Login Modal -->
-  <div id="login-modal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
-    <div class="bg-gray-800 p-6 rounded-lg">
+  <div id="login-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50">
+    <div class="bg-gray-800 p-8 rounded-xl w-full max-w-md mx-4">
       <form action="/login" method="POST">
-        <label for="username" class="block text-gray-300">Логин</label>
+        <label for="username" class="block text-gray-300 mb-2">Логин</label>
         <input type="text" name="username" id="username" class="w-full p-3 mb-4 bg-gray-700 text-white rounded-md" required>
 
-        <label for="password" class="block text-gray-300">Пароль</label>
+        <label for="password" class="block text-gray-300 mb-2">Пароль</label>
         <input type="password" name="password" id="password" class="w-full p-3 mb-4 bg-gray-700 text-white rounded-md" required>
 
-        <button type="submit" class="w-full bg-blue-500 text-white p-3 rounded-md">Войти</button>
+        <button type="submit" class="w-full bg-blue-500 text-white p-3 rounded-md hover:bg-blue-600">Войти</button>
       </form>
     </div>
   </div>
 
   <script>
-    // Открытие модального окна
-    document.getElementById('login-button').addEventListener('click', function() {
+    // Показ/скрытие модального окна
+    document.getElementById('login-button').addEventListener('click', () => {
       document.getElementById('login-modal').classList.remove('hidden');
     });
 
-    // Закрытие модального окна при клике вне его
-    document.getElementById('login-modal').addEventListener('click', function(event) {
-      if (event.target === this) {
-        this.classList.add('hidden');
+    document.getElementById('login-modal').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) {
+        e.currentTarget.classList.add('hidden');
       }
     });
 
-    // Логика для отображения кнопки "Выйти"
-    const loggedIn = false; // Замените на проверку авторизации
-    if (loggedIn) {
-      document.getElementById('logout-button').classList.remove('hidden');
-      document.getElementById('login-button').classList.add('hidden');
-    }
+    // Скроллинг шапки
+    let lastScrollTop = 0;
+    const navbar = document.getElementById('navbar');
+
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollTop > lastScrollTop) {
+        navbar.classList.add('menu-hidden');
+      } else {
+        navbar.classList.remove('menu-hidden');
+      }
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    });
   </script>
 
 </body>
