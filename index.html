@@ -1,94 +1,273 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="index, follow">
-    <meta property="og:title" content="Авито — Купить и продать товары онлайн">
-    <meta property="og:description" content="Авито — сайт для покупки и продажи товаров с рук. Объявления на все категории.">
-    <meta property="og:image" content="https://example.com/preview-image.jpg">
-    <meta property="og:url" content="https://example.com">
-    <title>Авито — Объявления о продаже товаров</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <meta name="description" content="Avito-клон: купля-продажа товаров онлайн" />
+  <meta name="keywords" content="купить, продать, объявления, товары" />
+  <title>Avito-клон</title>
+  <style>
+    /* ===== Reset & Base ===== */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: Arial, sans-serif; background:#f4f4f4; color:#333; transition:background .3s,color .3s; }
+    h1,h2,h3,h4,p,ul,li { margin:0; }
+    ul { list-style:none; }
+
+    /* ===== Header ===== */
+    header { background:#2d2d2d; padding:10px; }
+    header.dark-mode { background:#111; }
+    nav ul { display:flex; justify-content:center; }
+    nav li { margin:0 15px; }
+    nav a { color:#fff; text-decoration:none; font-weight:bold; }
+    #theme-toggle { position:absolute; top:12px; right:12px; padding:6px 10px; background:#4CAF50; color:#fff; border:none; cursor:pointer; border-radius:4px; }
+
+    /* ===== Search & Filters ===== */
+    .search-bar, .filters { display:flex; justify-content:center; gap:10px; margin:20px; flex-wrap:wrap; }
+    .search-bar input, .filters select, .filters input { padding:8px; border:1px solid #ccc; border-radius:4px; }
+    .search-bar button, .filters button { padding:8px 12px; background:#007BFF; color:#fff; border:none; cursor:pointer; border-radius:4px; transition:background .2s; }
+    .search-bar button:hover, .filters button:hover { background:#0056b3; }
+
+    /* ===== Product Grid ===== */
+    .product-list { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; padding:0 20px; }
+    .product-card { width:200px; background:#fff; border-radius:8px; box-shadow:0 4px 8px rgba(0,0,0,0.1); overflow:hidden; text-align:center; padding:15px; opacity:0; transform:translateY(20px); animation:fadeInUp .5s forwards; transition:background .3s,color .3s; }
+    .product-card.dark-mode { background:#333; color:#fff; }
+    .product-card img { width:100%; height:120px; object-fit:cover; border-radius:4px; }
+    .product-card h4 { margin:10px 0; font-size:16px; }
+    .product-card p { font-size:14px; margin:5px 0; }
+    .product-card button { width:100%; margin-top:8px; padding:8px; border:none; border-radius:4px; cursor:pointer; transition:background .2s,transform .2s; }
+    .details-btn { background:#4CAF50; color:#fff; }
+    .favorite-btn { background:#f8c700; color:#333; }
+    .product-card button:hover { transform:scale(1.03); }
+    .details-btn:hover { background:#45a049; }
+    .favorite-btn:hover { background:#f4b700; }
+
+    @keyframes fadeInUp { to { opacity:1; transform:translateY(0); } }
+
+    /* ===== Pagination ===== */
+    .pagination { display:flex; justify-content:center; gap:5px; margin:20px; }
+    .pagination button { padding:6px 10px; border:none; background:#007BFF; color:#fff; cursor:pointer; border-radius:4px; }
+    .pagination button:hover { background:#0056b3; }
+
+    /* ===== Modal ===== */
+    .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4); justify-content:center; align-items:center; }
+    .modal-content { background:#fff; padding:20px; border-radius:8px; max-width:400px; width:90%; position:relative; }
+    .modal-content.dark-mode { background:#222; color:#fff; }
+    .close-btn { position:absolute; top:10px; right:10px; font-size:24px; cursor:pointer; }
+
+    /* ===== Reviews ===== */
+    .reviews { max-width:600px; margin:20px auto; background:#fff; padding:20px; border-radius:8px; box-shadow:0 4px 8px rgba(0,0,0,0.1); transition:background .3s,color .3s; }
+    .reviews.dark-mode { background:#333; color:#fff; }
+    .reviews h3 { margin-bottom:10px; }
+    #review-form { display:flex; flex-direction:column; gap:10px; }
+    #review-form textarea { resize:none; padding:8px; border:1px solid #ccc; border-radius:4px; }
+    #review-form button { align-self:flex-start; background:#007BFF; color:#fff; border:none; padding:8px 12px; border-radius:4px; cursor:pointer; }
+    #review-form button:hover { background:#0056b3; }
+    #reviews-list .review { background:#f4f4f4; padding:10px; border-radius:4px; margin-top:10px; }
+    .reviews .review.dark-mode { background:#444; }
+
+    /* ===== Dark Mode ===== */
+    body.dark-mode { background:#121212; color:#ddd; }
+    header.dark-mode a { color:#ddd; }
+    .search-bar.dark-mode input, .filters.dark-mode select, .filters.dark-mode input { background:#222; color:#ddd; border:1px solid #555; }
+    .search-bar.dark-mode button, .filters.dark-mode button { background:#0056b3; }
+    .pagination.dark-mode button { background:#0056b3; }
+
+    /* ===== Responsive ===== */
+    @media (max-width:768px) {
+      .search-bar, .filters { flex-direction:column; align-items:center; }
+      .product-list { flex-direction:column; align-items:center; }
+      .product-card { width:90%; }
+    }
+  </style>
 </head>
 <body>
 
-<header>
+  <header>
     <nav>
-        <ul>
-            <li><a href="#">Главная</a></li>
-            <li><a href="#">Категории</a></li>
-            <li><a href="#">Магазин</a></li>
-            <li><a href="#">Контакты</a></li>
-        </ul>
+      <ul>
+        <li><a href="#">Главная</a></li>
+        <li><a href="#">Категории</a></li>
+        <li><a href="#">Контакты</a></li>
+      </ul>
     </nav>
-</header>
+    <button id="theme-toggle">Тема</button>
+  </header>
 
-<main>
+  <main>
+    <!-- Поиск -->
     <section class="search-bar">
-        <input type="text" id="search-input" placeholder="Поиск товаров...">
-        <button>Поиск</button>
+      <input type="text" id="search-input" placeholder="Поиск товаров..." />
+      <button id="search-btn">Найти</button>
     </section>
 
+    <!-- Фильтры -->
     <section class="filters">
-        <form id="filter-form">
-            <label for="category">Категория:</label>
-            <select id="category">
-                <option value="all">Все</option>
-                <option value="electronics">Электроника</option>
-                <option value="furniture">Мебель</option>
-            </select>
-
-            <label for="price">Цена до:</label>
-            <input type="number" id="price" placeholder="10000" />
-
-            <label for="condition">Состояние:</label>
-            <select id="condition">
-                <option value="all">Все</option>
-                <option value="new">Новый</option>
-                <option value="used">Б/у</option>
-            </select>
-
-            <button type="submit">Фильтровать</button>
-        </form>
+      <form id="filter-form">
+        <select id="category">
+          <option value="all">Все категории</option>
+          <option value="electronics">Электроника</option>
+          <option value="furniture">Мебель</option>
+        </select>
+        <input type="number" id="price" placeholder="Макс. цена" min="0" />
+        <select id="condition">
+          <option value="all">Любое состояние</option>
+          <option value="new">Новое</option>
+          <option value="used">Б/у</option>
+        </select>
+        <button type="submit">Применить</button>
+      </form>
     </section>
 
-    <section class="product-list">
-        <div class="product-card" data-category="electronics" data-price="10000" data-condition="new">
-            <img src="https://via.placeholder.com/200" alt="Телефон">
-            <h4>Телефон Samsung Galaxy</h4>
-            <p>Цена: 20,000₽</p>
-            <p>Рейтинг: ★★★★☆</p>
-            <button class="details-btn">Подробнее</button>
-            <button class="favorite-btn">Добавить в избранное</button>
-        </div>
+    <!-- Список товаров -->
+    <section class="product-list"></section>
 
-        <div class="product-card" data-category="furniture" data-price="5000" data-condition="used">
-            <img src="https://via.placeholder.com/200" alt="Кресло">
-            <h4>Кресло офисное</h4>
-            <p>Цена: 5,000₽</p>
-            <p>Рейтинг: ★★★☆☆</p>
-            <button class="details-btn">Подробнее</button>
-            <button class="favorite-btn">Добавить в избранное</button>
-        </div>
+    <!-- Пагинация -->
+    <section class="pagination"></section>
+
+    <!-- Отзывы -->
+    <section class="reviews">
+      <h3>Отзывы</h3>
+      <form id="review-form">
+        <textarea rows="3" placeholder="Напишите отзыв..." required></textarea>
+        <button type="submit">Отправить</button>
+      </form>
+      <div id="reviews-list"></div>
     </section>
-</main>
+  </main>
 
-<!-- Модальное окно -->
-<div id="modal" class="modal">
+  <!-- Модальное окно -->
+  <div id="modal" class="modal">
     <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <h2>Телефон Samsung Galaxy</h2>
-        <p>Описание: Отличный телефон с большими возможностями...</p>
-        <p>Цена: 20,000₽</p>
-        <button>Купить</button>
+      <span class="close-btn">&times;</span>
+      <h2 id="modal-title"></h2>
+      <p id="modal-desc"></p>
+      <p id="modal-price"></p>
+      <button>Купить</button>
     </div>
-</div>
+  </div>
 
-<footer>
-    <p>&copy; 2025 Авито. Все права защищены.</p>
-</footer>
+  <script>
+    /* ===== Data ===== */
+    const productsData = [
+      { image:"https://via.placeholder.com/200", name:"Телефон Samsung Galaxy", price:20000, rating:4, category:"electronics", condition:"new", desc:"Отличный смартфон с AMOLED-экраном." },
+      { image:"https://via.placeholder.com/200", name:"Кресло офисное", price:5000, rating:3, category:"furniture", condition:"used", desc:"Удобное кресло для работы." },
+      // ...добавьте ещё товаров
+    ];
 
-<script src="scripts.js"></script>
+    /* ===== State ===== */
+    let filteredData = [...productsData];
+    let currentPage = 1;
+    const itemsPerPage = 6;
+
+    /* ===== Elements ===== */
+    const productList = document.querySelector('.product-list');
+    const paginationEl = document.querySelector('.pagination');
+    const filterForm = document.getElementById('filter-form');
+    const searchInput = document.getElementById('search-input');
+    const searchBtn = document.getElementById('search-btn');
+    const modal = document.getElementById('modal');
+    const closeBtn = modal.querySelector('.close-btn');
+    const modalTitle = document.getElementById('modal-title');
+    const modalDesc = document.getElementById('modal-desc');
+    const modalPrice= document.getElementById('modal-price');
+    const themeToggle = document.getElementById('theme-toggle');
+    const reviewForm = document.getElementById('review-form');
+    const reviewsList = document.getElementById('reviews-list');
+
+    /* ===== Functions ===== */
+    function displayProducts(data) {
+      productList.innerHTML = '';
+      data.forEach(prod => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+          <img src="${prod.image}" alt="${prod.name}">
+          <h4>${prod.name}</h4>
+          <p>Цена: ${prod.price}₽</p>
+          <p>Рейтинг: ${'★'.repeat(prod.rating)}${'☆'.repeat(5-prod.rating)}</p>
+          <button class="details-btn">Подробнее</button>
+          <button class="favorite-btn">❤</button>
+        `;
+        productList.append(card);
+      });
+      attachDetailHandlers();
+      applyDarkMode(); // пересветить карты
+    }
+
+    function paginate(data) {
+      const totalPages = Math.ceil(data.length / itemsPerPage);
+      const start = (currentPage-1)*itemsPerPage;
+      const pageItems = data.slice(start, start+itemsPerPage);
+      displayProducts(pageItems);
+      paginationEl.innerHTML = '';
+      for(let i=1;i<=totalPages;i++){
+        const btn = document.createElement('button');
+        btn.textContent = i;
+        btn.onclick = ()=>{ currentPage=i; paginate(data); };
+        paginationEl.append(btn);
+      }
+    }
+
+    function applyFilters() {
+      const category = filterForm.category.value;
+      const price    = parseInt(filterForm.price.value) || Infinity;
+      const cond     = filterForm.condition.value;
+      const query    = searchInput.value.trim().toLowerCase();
+      filteredData = productsData.filter(p =>
+        (category==='all'||p.category===category)
+        && p.price<=price
+        && (cond==='all'||p.condition===cond)
+        && p.name.toLowerCase().includes(query)
+      );
+      currentPage = 1;
+      paginate(filteredData);
+    }
+
+    function attachDetailHandlers(){
+      document.querySelectorAll('.details-btn').forEach((btn,i)=>{
+        btn.onclick = ()=>{
+          const p = filteredData[(currentPage-1)*itemsPerPage + i];
+          modalTitle.textContent = p.name;
+          modalDesc.textContent  = p.desc;
+          modalPrice.textContent = `Цена: ${p.price}₽`;
+          modal.style.display='flex';
+        };
+      });
+    }
+
+    function applyDarkMode(){
+      if(document.body.classList.contains('dark-mode')){
+        document.querySelectorAll('.product-card').forEach(c=>c.classList.add('dark-mode'));
+        document.querySelector('.reviews').classList.add('dark-mode');
+      } else {
+        document.querySelectorAll('.product-card').forEach(c=>c.classList.remove('dark-mode'));
+        document.querySelector('.reviews').classList.remove('dark-mode');
+      }
+    }
+
+    /* ===== Event Listeners ===== */
+    filterForm.addEventListener('submit',e=>{ e.preventDefault(); applyFilters(); });
+    searchBtn.addEventListener('click',applyFilters);
+
+    closeBtn.onclick = ()=> modal.style.display='none';
+    window.onclick = e=>{ if(e.target===modal) modal.style.display='none'; };
+
+    themeToggle.onclick = ()=>{
+      document.body.classList.toggle('dark-mode');
+      document.querySelector('header').classList.toggle('dark-mode');
+      applyDarkMode();
+    };
+
+    reviewForm.addEventListener('submit',e=>{
+      e.preventDefault();
+      const txt = reviewForm.querySelector('textarea').value;
+      const div = document.createElement('div'); div.className='review'; div.textContent=txt;
+      reviewsList.append(div);
+      reviewForm.reset();
+    });
+
+    /* ===== Init ===== */
+    paginate(filteredData);
+  </script>
 </body>
 </html>
