@@ -8,8 +8,8 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #1f2937;
-      color: white;
+      background-color: #121212;
+      color: #E0E0E0;
       margin: 0;
       padding: 0;
       overflow-x: hidden;
@@ -21,13 +21,13 @@
       top: 0;
       left: 0;
       width: 100%;
-      background: rgba(31, 41, 55, 0.9);
-      padding: 15px 0;
+      background: rgba(18, 18, 18, 0.8);
+      padding: 20px 0;
       z-index: 50;
       transition: 0.3s ease;
     }
     header.scrolled {
-      background: rgba(31, 41, 55, 1);
+      background: rgba(18, 18, 18, 1);
       padding: 10px 0;
     }
 
@@ -35,14 +35,14 @@
     .logo {
       font-size: 1.75rem;
       font-weight: bold;
-      color: white;
+      color: #F5A623;
       letter-spacing: 1px;
       text-transform: uppercase;
       transition: color 0.3s ease;
     }
 
     .logo:hover {
-      color: #f59e0b;
+      color: #F7B84D;
     }
 
     /* Меню */
@@ -56,14 +56,15 @@
     .nav-link {
       text-decoration: none;
       font-size: 1.2rem;
-      color: white;
+      color: #E0E0E0;
       padding: 8px 20px;
       border-radius: 20px;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     .nav-link:hover {
-      background-color: #f59e0b;
+      background-color: #F5A623;
+      color: #121212;
     }
 
     /* Форма для связи */
@@ -71,10 +72,10 @@
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background-color: #f59e0b;
+      background-color: #F5A623;
       color: white;
-      padding: 10px 20px;
-      border-radius: 30px;
+      padding: 12px 25px;
+      border-radius: 50px;
       font-size: 1rem;
       font-weight: bold;
       transition: background-color 0.3s ease;
@@ -83,7 +84,7 @@
     }
 
     .contact-btn:hover {
-      background-color: #fbbf24;
+      background-color: #F7B84D;
     }
 
     .contact-form {
@@ -91,7 +92,7 @@
       position: fixed;
       right: 20px;
       bottom: 100px;
-      background-color: #1f2937;
+      background-color: #2C2C2C;
       padding: 20px;
       border-radius: 15px;
       width: 250px;
@@ -112,14 +113,14 @@
       width: 100%;
       padding: 10px;
       margin: 10px 0;
-      background-color: #374151;
+      background-color: #3C3C3C;
       color: white;
-      border: 1px solid #6b7280;
+      border: 1px solid #6B6B6B;
       border-radius: 8px;
     }
 
     .contact-form button {
-      background-color: #f59e0b;
+      background-color: #F5A623;
       color: black;
       padding: 10px 20px;
       border-radius: 8px;
@@ -130,12 +131,12 @@
     }
 
     .contact-form button:hover {
-      background-color: #fbbf24;
+      background-color: #F7B84D;
     }
 
     /* Стили для геро-секции */
     .hero-bg {
-      background: linear-gradient(270deg, #6a11cb, #2575fc);
+      background: linear-gradient(120deg, #2C3E50, #4CA1AF);
       height: 100vh;
       display: flex;
       justify-content: center;
@@ -145,19 +146,20 @@
     }
 
     .hero-content h1 {
-      font-size: 3.5rem;
+      font-size: 4rem;
       font-weight: bold;
       margin-bottom: 20px;
+      letter-spacing: 3px;
     }
 
     .hero-content p {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       margin-bottom: 30px;
     }
 
     .hero-btn {
-      padding: 12px 30px;
-      background-color: #f59e0b;
+      padding: 14px 35px;
+      background-color: #F5A623;
       border-radius: 50px;
       color: black;
       font-weight: bold;
@@ -167,27 +169,21 @@
     }
 
     .hero-btn:hover {
-      background-color: #fbbf24;
-    }
-
-    /* Анимации */
-    @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
+      background-color: #F7B84D;
     }
 
     /* Стили для секции сервера */
     .server-section {
-      background-color: #2d3748;
+      background-color: #1A242F;
       padding: 50px 0;
       text-align: center;
     }
 
     .server-card {
       display: inline-block;
-      background-color: #374151;
+      background-color: #2C3E50;
       border-radius: 10px;
-      width: 250px;
+      width: 300px;
       margin: 20px;
       padding: 20px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -195,60 +191,62 @@
 
     .server-card:hover {
       transform: scale(1.05);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
     }
 
     .server-card h3 {
-      font-size: 1.5rem;
-      color: #f59e0b;
+      font-size: 1.75rem;
+      color: #F5A623;
       margin-bottom: 10px;
     }
 
     .server-card p {
       color: white;
+      font-size: 1.2rem;
     }
 
     /* Стили для секции отзывов */
     .review-section {
-      background-color: #1f2937;
+      background-color: #2C3E50;
       padding: 50px 0;
     }
 
     .review-card {
       display: inline-block;
-      background-color: #374151;
+      background-color: #34495E;
       border-radius: 10px;
-      width: 300px;
+      width: 350px;
       margin: 20px;
       padding: 20px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     }
 
     .review-card h3 {
-      font-size: 1.25rem;
-      color: #f59e0b;
+      font-size: 1.5rem;
+      color: #F5A623;
       margin-bottom: 10px;
     }
 
     .review-card p {
       color: white;
+      font-size: 1.2rem;
     }
 
     .review-card .name {
       font-weight: bold;
-      color: #fbbf24;
+      color: #F7B84D;
     }
 
-    /* Стили для магазина */
+    /* Стили для секции магазина */
     .shop-section {
-      background-color: #374151;
+      background-color: #34495E;
       padding: 50px 0;
       text-align: center;
     }
 
     .shop-item {
       display: inline-block;
-      background-color: #2d3748;
+      background-color: #2C3E50;
       border-radius: 10px;
       width: 250px;
       margin: 20px;
@@ -257,19 +255,20 @@
     }
 
     .shop-item h3 {
-      font-size: 1.5rem;
-      color: #f59e0b;
+      font-size: 1.75rem;
+      color: #F5A623;
       margin-bottom: 10px;
     }
 
     .shop-item p {
       color: white;
+      font-size: 1.2rem;
     }
 
     .shop-item button {
-      background-color: #f59e0b;
+      background-color: #F5A623;
       color: black;
-      padding: 10px 20px;
+      padding: 12px 25px;
       border-radius: 8px;
       width: 100%;
       font-weight: bold;
@@ -278,12 +277,12 @@
     }
 
     .shop-item button:hover {
-      background-color: #fbbf24;
+      background-color: #F7B84D;
     }
 
     /* Стили для секции правил */
     .rules-section {
-      background-color: #2d3748;
+      background-color: #2C3E50;
       padding: 50px 0;
       text-align: center;
     }
@@ -295,7 +294,7 @@
 
     .rules-list li {
       color: white;
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       margin: 10px 0;
     }
 
@@ -314,7 +313,7 @@
 
     /* Додатковые стили */
     .footer {
-      background-color: #1f2937;
+      background-color: #121212;
       color: white;
       text-align: center;
       padding: 30px 0;
@@ -322,20 +321,20 @@
 
     .footer a {
       text-decoration: none;
-      color: #f59e0b;
+      color: #F5A623;
       margin: 0 10px;
     }
 
     .footer a:hover {
-      color: #fbbf24;
+      color: #F7B84D;
     }
   </style>
 </head>
 <body>
 
   <!-- Шапка -->
-  <header id="site-header" class="fixed top-0 left-0 w-full backdrop-blur-lg bg-transparent py-4">
-    <div class="container mx-auto flex justify-between items-center">
+  <header id="site-header">
+    <div class="container flex justify-between items-center">
       <a href="#" class="logo">Arizona RP</a>
       <nav class="nav-links">
         <a href="#servers" class="nav-link">Сервера</a>
