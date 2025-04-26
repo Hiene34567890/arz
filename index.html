@@ -14,7 +14,7 @@
       padding: 0;
       overflow-x: hidden;
     }
-    
+
     /* Шапка */
     header {
       position: fixed;
@@ -176,6 +176,128 @@
       100% { opacity: 1; }
     }
 
+    /* Стили для секции сервера */
+    .server-section {
+      background-color: #2d3748;
+      padding: 50px 0;
+      text-align: center;
+    }
+
+    .server-card {
+      display: inline-block;
+      background-color: #374151;
+      border-radius: 10px;
+      width: 250px;
+      margin: 20px;
+      padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .server-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .server-card h3 {
+      font-size: 1.5rem;
+      color: #f59e0b;
+      margin-bottom: 10px;
+    }
+
+    .server-card p {
+      color: white;
+    }
+
+    /* Стили для секции отзывов */
+    .review-section {
+      background-color: #1f2937;
+      padding: 50px 0;
+    }
+
+    .review-card {
+      display: inline-block;
+      background-color: #374151;
+      border-radius: 10px;
+      width: 300px;
+      margin: 20px;
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .review-card h3 {
+      font-size: 1.25rem;
+      color: #f59e0b;
+      margin-bottom: 10px;
+    }
+
+    .review-card p {
+      color: white;
+    }
+
+    .review-card .name {
+      font-weight: bold;
+      color: #fbbf24;
+    }
+
+    /* Стили для магазина */
+    .shop-section {
+      background-color: #374151;
+      padding: 50px 0;
+    }
+
+    .shop-item {
+      display: inline-block;
+      background-color: #2d3748;
+      border-radius: 10px;
+      width: 250px;
+      margin: 20px;
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .shop-item h3 {
+      font-size: 1.5rem;
+      color: #f59e0b;
+      margin-bottom: 10px;
+    }
+
+    .shop-item p {
+      color: white;
+    }
+
+    .shop-item button {
+      background-color: #f59e0b;
+      color: black;
+      padding: 10px 20px;
+      border-radius: 8px;
+      width: 100%;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .shop-item button:hover {
+      background-color: #fbbf24;
+    }
+
+    /* Стили для секции правил */
+    .rules-section {
+      background-color: #2d3748;
+      padding: 50px 0;
+      text-align: center;
+    }
+
+    .rules-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .rules-list li {
+      color: white;
+      font-size: 1.2rem;
+      margin: 10px 0;
+    }
+
     /* Адаптивность */
     @media (max-width: 768px) {
       .hero-content h1 {
@@ -187,6 +309,24 @@
       .contact-form {
         width: 200px;
       }
+    }
+
+    /* Додатковые стили */
+    .footer {
+      background-color: #1f2937;
+      color: white;
+      text-align: center;
+      padding: 30px 0;
+    }
+
+    .footer a {
+      text-decoration: none;
+      color: #f59e0b;
+      margin: 0 10px;
+    }
+
+    .footer a:hover {
+      color: #fbbf24;
     }
   </style>
 </head>
@@ -210,59 +350,82 @@
 
   <!-- Герой-секция -->
   <section id="home" class="hero-bg">
-    <div class="hero-content">
-      <h1 class="fade-in">Добро пожаловать в Arizona Role Play</h1>
-      <p class="fade-in">Присоединяйтесь к нашему уникальному миру, создайте своего персонажа и погружайтесь в захватывающие приключения!</p>
-      <a href="#servers" class="hero-btn fade-in">Начать играть</a>
+    <div class="hero-content text-center">
+      <h1>Добро пожаловать в Arizona RP</h1>
+      <p>Присоединяйтесь к нашему уникальному миру и играйте с друзьями</p>
+      <a href="#servers" class="hero-btn">Начать Играть</a>
     </div>
   </section>
 
-  <!-- Контактная кнопка -->
-  <button class="contact-btn" id="contactButton">Связаться с нами</button>
+  <!-- Сервера -->
+  <section id="servers" class="server-section">
+    <h2 class="text-3xl font-bold text-white mb-10">Наши Сервера</h2>
+    <div class="server-card">
+      <h3>Сервер 1</h3>
+      <p>IP: 123.45.67.89</p>
+      <p>Описание: Лучший RP сервер для любителей приключений!</p>
+    </div>
+    <div class="server-card">
+      <h3>Сервер 2</h3>
+      <p>IP: 98.76.54.32</p>
+      <p>Описание: Здесь собираются настоящие ценители качественного RP.</p>
+    </div>
+  </section>
 
-  <!-- Форма для связи -->
-  <div class="contact-form" id="contactForm">
-    <h3 class="text-xl font-semibold text-center text-yellow-400 mb-4">Напишите нам</h3>
-    <input type="text" placeholder="Ваше имя" id="name" required>
-    <input type="email" placeholder="Ваш Email" id="email" required>
-    <textarea rows="4" placeholder="Ваше сообщение" id="message" required></textarea>
-    <button type="submit" id="sendMessage">Отправить сообщение</button>
+  <!-- Правила -->
+  <section id="rules" class="rules-section">
+    <h2 class="text-3xl font-bold text-white mb-10">Правила игры</h2>
+    <ul class="rules-list">
+      <li>1. Соблюдайте уважение к другим игрокам.</li>
+      <li>2. Не используйте читы.</li>
+      <li>3. Следуйте законам игры.</li>
+    </ul>
+  </section>
+
+  <!-- Магазин -->
+  <section id="shop" class="shop-section">
+    <h2 class="text-3xl font-bold text-white mb-10">Магазин</h2>
+    <div class="shop-item">
+      <h3>Премиум Статус</h3>
+      <p>Получите дополнительные привилегии на сервере.</p>
+      <button>Купить</button>
+    </div>
+    <div class="shop-item">
+      <h3>VIP Тема</h3>
+      <p>Персонализируйте свою игру с уникальной темой.</p>
+      <button>Купить</button>
+    </div>
+  </section>
+
+  <!-- Контакт -->
+  <div class="contact-btn" onclick="toggleContactForm()">Связаться с нами</div>
+  <div class="contact-form">
+    <h3 class="text-2xl font-bold text-white">Напишите нам</h3>
+    <input type="text" placeholder="Ваше имя" id="name">
+    <textarea placeholder="Ваше сообщение" id="message"></textarea>
+    <button onclick="sendMessage()">Отправить</button>
   </div>
 
-  <!-- Сервера, правила и прочее -->
-  <section id="servers" class="section">
-    <!-- Ваши серверы и информация здесь -->
-  </section>
-
-  <!-- Подвал -->
-  <footer class="bg-gray-900 text-white py-6 px-4">
-    <div class="container mx-auto text-center">
-      <p class="text-sm mt-2">&copy; 2025 Arizona Role Play. Все права защищены.</p>
-    </div>
-  </footer>
-
   <script>
-    // Скрипт для прокрутки шапки
-    const header = document.getElementById('site-header');
-    let lastScrollY = window.scrollY;
-
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > lastScrollY) {
-        header.style.top = '-100px';
+    window.onscroll = function() {
+      var header = document.getElementById('site-header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
       } else {
-        header.style.top = '0';
+        header.classList.remove('scrolled');
       }
-      header.classList.toggle('scrolled', window.pageYOffset > 50);
-      lastScrollY = window.scrollY;
-    });
+    };
 
-    // Открытие и закрытие формы для связи
-    const contactButton = document.getElementById('contactButton');
-    const contactForm = document.getElementById('contactForm');
+    function toggleContactForm() {
+      const form = document.querySelector('.contact-form');
+      form.classList.toggle('show');
+    }
 
-    contactButton.addEventListener('click', () => {
-      contactForm.classList.toggle('show');
-    });
+    function sendMessage() {
+      alert('Сообщение отправлено!');
+      document.querySelector('.contact-form').classList.remove('show');
+    }
   </script>
+
 </body>
 </html>
