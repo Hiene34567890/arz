@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вход в аккаунт - Arizona Role Play</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    .form-container { max-width: 400px; margin: 0 auto; }
+  </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+  <section class="py-16 px-4">
+    <div class="form-container">
+      <h2 class="text-3xl font-bold text-center text-yellow-400 mb-6">Войти в аккаунт</h2>
+
+      <!-- Форма авторизации -->
+      <form action="/login" method="POST" class="bg-gray-800 p-8 rounded-lg shadow-lg">
+        <!-- Поле логина -->
+        <div class="mb-4">
+          <label for="username" class="block text-gray-300">Логин</label>
+          <input type="text" id="username" name="username" required class="w-full p-3 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400">
+        </div>
+
+        <!-- Поле пароля -->
+        <div class="mb-6">
+          <label for="password" class="block text-gray-300">Пароль</label>
+          <input type="password" id="password" name="password" required class="w-full p-3 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400">
+        </div>
+
+        <!-- Кнопка отправки формы -->
+        <button type="submit" class="w-full bg-blue-500 text-white p-3 rounded-md hover:bg-blue-400 transition">Войти</button>
+      </form>
+
+      <!-- Ссылка на регистрацию -->
+      <div class="text-center mt-6">
+        <p class="text-gray-300">Нет аккаунта? <a href="/register" class="text-yellow-400 hover:underline">Зарегистрироваться</a></p>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>
