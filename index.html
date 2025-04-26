@@ -3,87 +3,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Сайт как Avito</title>
+  <meta name="description" content="Авито - это сайт, где можно купить и продать товары с рук. Лучшие объявления по всем категориям.">
+  <meta name="keywords" content="купить, продать, объявления, товары, Авито">
+  <meta name="author" content="Ваша компания">
+  <title>Авито — Купить и продать товары онлайн</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <!-- Шапка -->
   <header>
-    <div>Сайт как Avito</div>
+    <div class="logo">
+      <h1>Авито</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#">Главная</a></li>
+        <li><a href="#">Товары</a></li>
+        <li><a href="#">Услуги</a></li>
+        <li><a href="#">Контакты</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <!-- Сортировка -->
-  <div class="sorting">
-    <label for="sort-by">Сортировать по:</label>
-    <select id="sort-by">
-      <option value="price-asc">Цене: от низкой к высокой</option>
-      <option value="price-desc">Цене: от высокой к низкой</option>
-      <option value="date-desc">По дате: новые сверху</option>
-      <option value="popularity">По популярности</option>
-    </select>
+  <!-- Поиск -->
+  <div class="search-bar">
+    <input type="text" id="search" placeholder="Поиск товаров...">
+    <button>Найти</button>
   </div>
 
-  <!-- Управление объявлениями -->
-  <div class="manage-ad">
-    <button class="delete-ad">Удалить объявление</button>
-    <button class="block-ad">Заблокировать объявление</button>
+  <!-- Фильтры -->
+  <div class="filters">
+    <h3>Фильтры</h3>
+    <form id="filter-form">
+      <label for="category">Категория:</label>
+      <select id="category" name="category">
+        <option value="all">Все</option>
+        <option value="electronics">Электроника</option>
+        <option value="clothing">Одежда</option>
+        <option value="furniture">Мебель</option>
+      </select>
+      <br>
+      
+      <label for="price">Цена:</label>
+      <input type="range" id="price" name="price" min="0" max="10000" step="100">
+      <span id="price-value">0</span>
+      <br>
+      
+      <label for="condition">Состояние:</label>
+      <select id="condition" name="condition">
+        <option value="new">Новое</option>
+        <option value="used">Б/у</option>
+      </select>
+      
+      <button type="submit">Применить фильтры</button>
+    </form>
   </div>
 
-  <!-- История поиска -->
-  <div class="search-history">
-    <h3>История поиска</h3>
-    <ul id="history-list">
-      <li>Поиск по "Телефоны"</li>
-      <li>Поиск по "Ноутбуки"</li>
-      <li>Поиск по "Игры для PlayStation"</li>
+  <!-- Карточки товаров -->
+  <div class="product-list">
+    <div class="product-card">
+      <img src="https://via.placeholder.com/200" alt="Товар">
+      <h4>Телефон Samsung Galaxy</h4>
+      <p>Цена: 20,000₽</p>
+      <button>Подробнее</button>
+    </div>
+    <div class="product-card">
+      <img src="https://via.placeholder.com/200" alt="Товар">
+      <h4>Ноутбук Apple MacBook</h4>
+      <p>Цена: 60,000₽</p>
+      <button>Подробнее</button>
+    </div>
+    <!-- Дополнительные карточки товаров -->
+  </div>
+
+  <!-- Уведомления -->
+  <div class="notifications">
+    <h3>Уведомления</h3>
+    <ul>
+      <li>Вы получили новое сообщение от пользователя Иван</li>
+      <li>Ваше объявление было успешно размещено</li>
     </ul>
   </div>
 
-  <!-- Пагинация -->
-  <div class="pagination">
-    <button id="prev-page">Предыдущая</button>
-    <span id="page-number">Страница 1</span>
-    <button id="next-page">Следующая</button>
-  </div>
-
-  <!-- Лучшие продавцы -->
-  <div class="top-sellers">
-    <h3>Лучшие продавцы</h3>
-    <div class="seller">
-      <p><strong>Иван</strong> - 1000 проданных товаров</p>
-    </div>
-    <div class="seller">
-      <p><strong>Мария</strong> - 800 проданных товаров</p>
-    </div>
-    <div class="seller">
-      <p><strong>Алексей</strong> - 600 проданных товаров</p>
-    </div>
-  </div>
-
-  <!-- Форма добавления объявления -->
-  <div class="add-ad-form">
-    <h3>Добавить объявление</h3>
-    <form>
-      <label for="ad-title">Название:</label>
-      <input type="text" id="ad-title" name="ad-title" required>
-      
-      <label for="ad-description">Описание:</label>
-      <textarea id="ad-description" name="ad-description" required></textarea>
-      
-      <label for="ad-price">Цена:</label>
-      <input type="number" id="ad-price" name="ad-price" required>
-      
-      <label for="ad-category">Категория:</label>
-      <select id="ad-category" name="ad-category" required>
-        <option value="electronics">Электроника</option>
-        <option value="furniture">Мебель</option>
-        <option value="clothing">Одежда</option>
-      </select>
-      
-      <button type="submit">Добавить объявление</button>
-    </form>
-  </div>
+  <footer>
+    <p>&copy; 2025 Авито. Все права защищены.</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
