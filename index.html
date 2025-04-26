@@ -57,7 +57,7 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section id="home" class="hero-bg flex items-center justify-center text-center px-4">
     <div class="relative z-10">
       <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6">Добро пожаловать в Arizona Role Play</h2>
@@ -65,15 +65,40 @@
     </div>
   </section>
 
-  <!-- Example Sections (можешь заменить/добавить содержимое) -->
+  <!-- Сервера -->
   <section id="servers" class="py-20 px-4 text-center">
     <h3 class="text-3xl font-bold mb-6">Наши сервера</h3>
-    <p class="text-gray-300">Информация о серверах появится здесь.</p>
+    <p class="text-gray-300 mb-4">Мы предлагаем более 20 игровых серверов с уникальными возможностями, активным сообществом и поддержкой 24/7.</p>
+    <p class="text-gray-300">Присоединяйтесь к любому серверу и начните своё приключение прямо сейчас!</p>
   </section>
 
+  <!-- Правила -->
   <section id="rules" class="py-20 px-4 text-center bg-gray-800">
     <h3 class="text-3xl font-bold mb-6">Правила проекта</h3>
-    <p class="text-gray-300">Скоро здесь будут размещены правила.</p>
+    <p class="text-gray-300 mb-4">Мы строго следим за соблюдением правил, чтобы обеспечить честную и приятную игру для всех участников.</p>
+    <p class="text-gray-300">Ознакомьтесь с полным списком правил на нашем форуме или внутри игры.</p>
+  </section>
+
+  <!-- Магазин -->
+  <section id="shop" class="py-20 px-4 text-center">
+    <h3 class="text-3xl font-bold mb-6">Магазин</h3>
+    <p class="text-gray-300 mb-4">Покупайте уникальные предметы, бонусы и скины с помощью удобной системы доната.</p>
+    <p class="text-gray-300">Все средства идут на развитие проекта и поддержку серверов.</p>
+  </section>
+
+  <!-- Вики -->
+  <section id="wiki" class="py-20 px-4 text-center bg-gray-800">
+    <h3 class="text-3xl font-bold mb-6">Вики</h3>
+    <p class="text-gray-300 mb-4">Изучите все возможности игры, гайды, профессии, бизнесы и прочую полезную информацию.</p>
+    <p class="text-gray-300">Наша вики — главный источник знаний для новых и опытных игроков.</p>
+  </section>
+
+  <!-- Контакты -->
+  <section id="contact" class="py-20 px-4 text-center">
+    <h3 class="text-3xl font-bold mb-6">Контакты</h3>
+    <p class="text-gray-300 mb-2">Поддержка: support@arizona-rp.com</p>
+    <p class="text-gray-300 mb-2">Форум: forum.arizona-rp.com</p>
+    <p class="text-gray-300">Телеграм: @arizonarp</p>
   </section>
 
   <!-- Footer -->
@@ -100,7 +125,6 @@
   </div>
 
   <script>
-    // Показ/скрытие модального окна
     document.getElementById('login-button').addEventListener('click', () => {
       document.getElementById('login-modal').classList.remove('hidden');
     });
@@ -111,7 +135,6 @@
       }
     });
 
-    // Скроллинг шапки
     let lastScrollTop = 0;
     const navbar = document.getElementById('navbar');
 
