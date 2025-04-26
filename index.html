@@ -9,6 +9,9 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden; /* Убирает горизонтальную прокрутку */
     }
 
     html {
@@ -41,7 +44,11 @@
       animation: gradientMove 16s ease infinite;
       color: white;
       height: 100vh;
-      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
     }
 
     @keyframes gradientMove {
@@ -207,6 +214,7 @@
     section {
       padding: 60px 0;
       background-color: #1f2937;
+      text-align: center;
     }
 
     .section-title {
@@ -247,6 +255,13 @@
       background-color: #ff6600;
       transform: scale(1.1);
     }
+
+    /* Content container fix */
+    .content-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
   </style>
 </head>
 
@@ -283,7 +298,7 @@
   </header>
 
   <!-- Hero Section -->
-  <section id="home" class="hero-bg flex items-center justify-center text-center px-4">
+  <section id="home" class="hero-bg">
     <div class="relative z-10">
       <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6">Добро пожаловать в Arizona Role Play</h2>
       <a href="#servers" class="cta-button">Начать играть</a>
@@ -304,7 +319,7 @@
   </div>
 
   <!-- Сервера -->
-  <section id="servers">
+  <section id="servers" class="content-container">
     <h2 class="section-title">Наши сервера</h2>
     <div class="section-content">
       <p>IP-адреса серверов:</p>
@@ -316,7 +331,7 @@
   </section>
 
   <!-- Правила -->
-  <section id="rules">
+  <section id="rules" class="content-container">
     <h2 class="section-title">Правила игры</h2>
     <div class="section-content">
       <ol>
@@ -328,7 +343,7 @@
   </section>
 
   <!-- Магазин -->
-  <section id="shop">
+  <section id="shop" class="content-container">
     <h2 class="section-title">Магазин</h2>
     <div class="section-content">
       <p>Посетите наш <a href="https://donate.arizona-rp.com" class="text-yellow-400">магазин</a> для покупки внутриигровых товаров.</p>
@@ -336,7 +351,7 @@
   </section>
 
   <!-- Контакты -->
-  <section id="contact">
+  <section id="contact" class="content-container">
     <h2 class="section-title">Контакты</h2>
     <div class="section-content">
       <p>Свяжитесь с нами через:</p>
