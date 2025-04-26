@@ -1,96 +1,78 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Онлайн магазин, товары, услуги">
-    <meta name="keywords" content="магазин, товары, услуги, покупка, интернет-магазин">
-    <title>Онлайн магазин</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="scripts.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Avito Клон — Главная</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Шапка сайта -->
-    <header>
-        <div class="header-container">
-            <div class="logo">AZON</div>
-            <nav class="navbar">
-                <ul>
-                    <li><a href="#home">Главная</a></li>
-                    <li><a href="#categories">Категории</a></li>
-                    <li><a href="#offers">Акции</a></li>
-                    <li><a href="#contact">Контакты</a></li>
-                    <li><a href="#cart">Корзина</a></li>
-                    <li><a href="#profile">Личный кабинет</a></li>
-                </ul>
-            </nav>
-            <div class="search-bar">
-                <input type="text" placeholder="Поиск товаров...">
-                <button>Поиск</button>
-            </div>
+  <header class="header">
+    <div class="container">
+      <div class="logo">Avito</div>
+      <nav class="nav">
+        <a href="#">Главная</a>
+        <a href="#">Категории</a>
+        <a href="#">Добавить объявление</a>
+        <a href="#">Личный кабинет</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="search-section">
+    <div class="container">
+      <h1>Найдите нужный товар или услугу</h1>
+      <div class="search-bar">
+        <input type="text" placeholder="Поиск по объявлениям...">
+        <button>Найти</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="categories-section">
+    <div class="container">
+      <h2>Категории</h2>
+      <div class="categories">
+        <div class="category-item">Транспорт</div>
+        <div class="category-item">Недвижимость</div>
+        <div class="category-item">Электроника</div>
+        <div class="category-item">Одежда</div>
+        <div class="category-item">Работа</div>
+        <div class="category-item">Услуги</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="popular-products">
+    <div class="container">
+      <h2>Популярные объявления</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="https://via.placeholder.com/150" alt="Товар">
+          <h3>iPhone 13</h3>
+          <p>70 000 ₽</p>
         </div>
-    </header>
-
-    <!-- Основной контент -->
-    <main>
-        <section id="home">
-            <div class="hero">
-                <h1>Добро пожаловать в AZON</h1>
-                <p>Товары на любой вкус и бюджет</p>
-                <a href="#categories" class="btn">Посмотреть товары</a>
-            </div>
-        </section>
-
-        <section id="categories">
-            <h2>Популярные категории</h2>
-            <div class="categories-container">
-                <div class="category-card">
-                    <img src="images/electronics.jpg" alt="Электроника">
-                    <h3>Электроника</h3>
-                </div>
-                <div class="category-card">
-                    <img src="images/clothing.jpg" alt="Одежда">
-                    <h3>Одежда</h3>
-                </div>
-                <div class="category-card">
-                    <img src="images/furniture.jpg" alt="Мебель">
-                    <h3>Мебель</h3>
-                </div>
-            </div>
-        </section>
-
-        <section id="offers">
-            <h2>Акции и предложения</h2>
-            <div class="offers-container">
-                <div class="offer-card">
-                    <h3>Скидка 50% на электронику</h3>
-                    <p>Только до конца недели!</p>
-                </div>
-                <div class="offer-card">
-                    <h3>Подарки за покупки</h3>
-                    <p>При заказе от 5000 рублей</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact">
-            <h2>Контакты</h2>
-            <p>Свяжитесь с нами, если у вас возникли вопросы.</p>
-            <form>
-                <input type="text" placeholder="Ваше имя" required>
-                <input type="email" placeholder="Ваш Email" required>
-                <textarea placeholder="Ваше сообщение" required></textarea>
-                <button type="submit">Отправить</button>
-            </form>
-        </section>
-    </main>
-
-    <!-- Подвал -->
-    <footer>
-        <div class="footer-container">
-            <p>© 2025 AZON. Все права защищены.</p>
+        <div class="product-card">
+          <img src="https://via.placeholder.com/150" alt="Товар">
+          <h3>Квартира в центре</h3>
+          <p>6 500 000 ₽</p>
         </div>
-    </footer>
+        <div class="product-card">
+          <img src="https://via.placeholder.com/150" alt="Товар">
+          <h3>Велосипед</h3>
+          <p>15 000 ₽</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Avito Клон. Все права защищены. Политика конфиденциальности.</p>
+    </div>
+  </footer>
+
+<script src="scripts.js"></script>
 </body>
 </html>
