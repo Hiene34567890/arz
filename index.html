@@ -172,14 +172,14 @@
       background-color: #F7B84D;
     }
 
-    /* Стили для секции сервера */
-    .server-section {
+    /* Стили для секции топ игроков */
+    .top-players-section {
       background-color: #1A242F;
       padding: 50px 0;
       text-align: center;
     }
 
-    .server-card {
+    .top-player-card {
       display: inline-block;
       background-color: #2C3E50;
       border-radius: 10px;
@@ -189,95 +189,20 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .server-card:hover {
+    .top-player-card:hover {
       transform: scale(1.05);
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
     }
 
-    .server-card h3 {
+    .top-player-card h3 {
       font-size: 1.75rem;
       color: #F5A623;
       margin-bottom: 10px;
     }
 
-    .server-card p {
+    .top-player-card p {
       color: white;
       font-size: 1.2rem;
-    }
-
-    /* Стили для секции отзывов */
-    .review-section {
-      background-color: #2C3E50;
-      padding: 50px 0;
-    }
-
-    .review-card {
-      display: inline-block;
-      background-color: #34495E;
-      border-radius: 10px;
-      width: 350px;
-      margin: 20px;
-      padding: 20px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    .review-card h3 {
-      font-size: 1.5rem;
-      color: #F5A623;
-      margin-bottom: 10px;
-    }
-
-    .review-card p {
-      color: white;
-      font-size: 1.2rem;
-    }
-
-    .review-card .name {
-      font-weight: bold;
-      color: #F7B84D;
-    }
-
-    /* Стили для секции магазина */
-    .shop-section {
-      background-color: #34495E;
-      padding: 50px 0;
-      text-align: center;
-    }
-
-    .shop-item {
-      display: inline-block;
-      background-color: #2C3E50;
-      border-radius: 10px;
-      width: 250px;
-      margin: 20px;
-      padding: 20px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    .shop-item h3 {
-      font-size: 1.75rem;
-      color: #F5A623;
-      margin-bottom: 10px;
-    }
-
-    .shop-item p {
-      color: white;
-      font-size: 1.2rem;
-    }
-
-    .shop-item button {
-      background-color: #F5A623;
-      color: black;
-      padding: 12px 25px;
-      border-radius: 8px;
-      width: 100%;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .shop-item button:hover {
-      background-color: #F7B84D;
     }
 
     /* Стили для секции правил */
@@ -339,7 +264,6 @@
       <nav class="nav-links">
         <a href="#servers" class="nav-link">Сервера</a>
         <a href="#rules" class="nav-link">Правила</a>
-        <a href="#shop" class="nav-link">Магазин</a>
         <a href="#contact" class="nav-link">Контакты</a>
       </nav>
     </div>
@@ -369,6 +293,23 @@
     </div>
   </section>
 
+  <!-- Топ игроков -->
+  <section class="top-players-section">
+    <h2 class="text-3xl font-bold text-white mb-10">Топ Игроков</h2>
+    <div class="top-player-card">
+      <h3>Игрок 1</h3>
+      <p>Сумма денег: $5000</p>
+    </div>
+    <div class="top-player-card">
+      <h3>Игрок 2</h3>
+      <p>Сумма денег: $4500</p>
+    </div>
+    <div class="top-player-card">
+      <h3>Игрок 3</h3>
+      <p>Сумма денег: $4200</p>
+    </div>
+  </section>
+
   <!-- Правила -->
   <section id="rules" class="rules-section">
     <h2 class="text-3xl font-bold text-white mb-10">Правила игры</h2>
@@ -377,21 +318,6 @@
       <li>2. Не используйте читы.</li>
       <li>3. Следуйте законам игры.</li>
     </ul>
-  </section>
-
-  <!-- Магазин -->
-  <section id="shop" class="shop-section">
-    <h2 class="text-3xl font-bold text-white mb-10">Магазин</h2>
-    <div class="shop-item">
-      <h3>Премиум Статус</h3>
-      <p>Получите дополнительные привилегии на сервере.</p>
-      <button>Купить</button>
-    </div>
-    <div class="shop-item">
-      <h3>VIP Тема</h3>
-      <p>Персонализируйте свою игру с уникальной темой.</p>
-      <button>Купить</button>
-    </div>
   </section>
 
   <!-- Контакт -->
