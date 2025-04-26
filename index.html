@@ -150,6 +150,27 @@
       background-color: #ff6600;
     }
 
+    /* Media Queries for Mobile */
+    @media (max-width: 768px) {
+      #mobile-menu-button {
+        display: block;
+      }
+
+      #mobile-menu {
+        display: none;
+      }
+
+      .mobile-nav {
+        display: block;
+      }
+    }
+
+    @media (min-width: 769px) {
+      #mobile-menu-button {
+        display: none;
+      }
+    }
+
   </style>
 </head>
 <body class="bg-gray-900 text-white pt-20">
